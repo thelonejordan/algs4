@@ -27,18 +27,17 @@
                                        |/
 ```
 
-### Installation:
+### Installation
 
 * https://formulae.brew.sh/formula/openjdk
 * https://formulae.brew.sh/formula/checkstyle
 * https://formulae.brew.sh/formula/spotbugs
 * https://formulae.brew.sh/formula/pmd
 
-### References:
+### Course
 
-Syllabus: https://www.coursera.org/learn/algorithms-part1/resources/CrmR4
-Assessment Guide: https://www.coursera.org/learn/algorithms-part1/resources/R2mre
-
+* [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
+* [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
 * https://algs4.cs.princeton.edu/home/
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
 * https://lift.cs.princeton.edu/java/mac/
@@ -89,3 +88,7 @@ checkstyle -coursera HelloWorld.java
 ```
 
 The argument must be a list of .java files. Here is a list of [available checks](http://checkstyle.sourceforge.net/checks.html).
+
+### More
+
+* https://openjdk.org/jeps/330
