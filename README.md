@@ -42,6 +42,8 @@
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
 * https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
 * https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
+* https://github.com/kevin-wayne/algs4
+* https://algs4.cs.princeton.edu/code/algs4-data.zip
 
 ### Jars
 
