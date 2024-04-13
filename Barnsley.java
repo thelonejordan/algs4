@@ -1,13 +1,17 @@
 /* ****************************************************************************
  *  Compilation:  javac-introcs Barnsley.java
+ *                javac -cp lib/algs4.jar: Barnsley.java 
  *  Execution:    java-introcs Barnsley n
+ *                java -cp lib/algs4.jar:. Barnsley n
  *  Dependencies: StdDraw.java
  *
  *  Play chaos game to produce Barnsley's fern.
  *
  *  % java-introcs Barnsley 10000
+ *  % java -cp lib/algs4.jar:. Barnsley 10000
  *
  * ****************************************************************************/
+
 
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdDraw;
