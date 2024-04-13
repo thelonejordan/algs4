@@ -27,22 +27,27 @@
                                        |/
 ```
 
-### References:
-
-* https://algs4.cs.princeton.edu/home/
-* https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
-* Syllabus: https://www.coursera.org/learn/algorithms-part1/resources/CrmR4
-* Assessment Guide: https://www.coursera.org/learn/algorithms-part1/resources/R2mre
-* https://lift.cs.princeton.edu/java/mac/
-* https://algs4.cs.princeton.edu/code/algs4.jar
-* https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
-
 ### Installation:
 
 * https://formulae.brew.sh/formula/openjdk
 * https://formulae.brew.sh/formula/checkstyle
 * https://formulae.brew.sh/formula/spotbugs
 * https://formulae.brew.sh/formula/pmd
+
+### References:
+
+Syllabus: https://www.coursera.org/learn/algorithms-part1/resources/CrmR4
+Assessment Guide: https://www.coursera.org/learn/algorithms-part1/resources/R2mre
+
+* https://algs4.cs.princeton.edu/home/
+* https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
+* https://lift.cs.princeton.edu/java/mac/
+* https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
+
+### Jars
+
+* https://algs4.cs.princeton.edu/code/algs4.jar
+* http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar
 
 ### Commands
 
