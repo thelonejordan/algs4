@@ -38,12 +38,16 @@
 
 * [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
 * [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
-* https://algs4.cs.princeton.edu/home/
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
+* https://coursera.cs.princeton.edu/algs4/assignments/hello/faq.php
+
+* https://algs4.cs.princeton.edu/home/
 * https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
 * https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
 * https://github.com/kevin-wayne/algs4
 * https://algs4.cs.princeton.edu/code/algs4-data.zip
+* https://algs4.cs.princeton.edu/code/
+
 
 ### Jars
 
@@ -57,14 +61,24 @@ Compile a program
 
 ```sh
 javac HelloWorld.java
-javac -cp example.jar HelloWorld.java # include jar lib
+```
+
+```sh
+# include jar lib
+# javac -cp $PWD:$PWD/example.jar HelloWorld.java
+javac -cp .:example.jar HelloWorld.java
 ```
 
 Run a program
 
 ```sh
 java HelloWorld
-javac -cp example.jar:. HelloWorld # include jar lib
+```
+
+```sh
+# include jar lib
+# javac -cp $PWD:$PWD/example.jar HelloWord
+java -cp .:example.jar HelloWord
 ```
 
 To run SpotBugs 4.2.3, type the following command in the terminal:
@@ -72,6 +86,7 @@ To run SpotBugs 4.2.3, type the following command in the terminal:
 ```sh
 spotbugs HelloWorld.class
 ```
+
 The argument must be a list of .class files. Here is a list of [bug descriptions](https://spotbugs.github.io/#bug-descriptions).
 
 To run PMD 6.34.0, type the following command in the terminal:
@@ -95,6 +110,12 @@ checkstyle -c checkstyle-coursera.xml HelloWorld.java
 ```
 
 The argument must be a list of .java files. Here is a list of [available checks](http://checkstyle.sourceforge.net/checks.html).
+
+
+How do I specify EOF to signal that standard input is empty? (Relevant to `RandomWord`)
+
+On Mac OS X and Linux, type `Enter` `Ctrl-D`. On Windows, type `Enter` `Ctrl-Z` `Enter`, even in Git Bash.
+
 
 ### More
 
