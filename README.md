@@ -34,12 +34,14 @@
 * https://formulae.brew.sh/formula/spotbugs
 * https://formulae.brew.sh/formula/pmd
 
-### Course
+### Coursera
 
 * [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
 * [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/faq.php
+
+### Course
 
 * https://algs4.cs.princeton.edu/home/
 * https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
