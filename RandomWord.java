@@ -2,7 +2,9 @@
  * 
  * Source: https://github.com/camilamaia/jornada-big-tech/blob/main/coursera-algorithms-part-1/hello/RandomWord.java
  * Compilation: javac -cp lib/algs4.jar RandomWord.java
- * Execution: java -cp lib/algs4.jar:. RandomWord
+ * Execution:
+ * java -cp lib/algs4.jar:. RandomWord
+ * java -cp lib/algs4.jar:. RandomWord < downloads/animals8.txt
  * 
  ******************************************************************************/
 
