@@ -40,12 +40,13 @@
 * [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
 * https://algs4.cs.princeton.edu/home/
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
-* https://lift.cs.princeton.edu/java/mac/
+* https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
 * https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
 
 ### Jars
 
 * https://algs4.cs.princeton.edu/code/algs4.jar
+* https://introcs.cs.princeton.edu/code/stdlib.jar
 * http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar
 
 ### Commands
@@ -85,6 +86,10 @@ To run Checkstyle 10.12.1, type one of the following commands in the terminal, d
 checkstyle -cos126 HelloWorld.java
 checkstyle -cos226 HelloWorld.java
 checkstyle -coursera HelloWorld.java
+```
+
+```sh
+checkstyle -c checkstyle-coursera.xml HelloWorld.java
 ```
 
 The argument must be a list of .java files. Here is a list of [available checks](http://checkstyle.sourceforge.net/checks.html).
