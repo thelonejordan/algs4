@@ -2,6 +2,7 @@
  *  Source:       https://introcs.cs.princeton.edu/java/11hello/HelloWorld.java.html
  *  Compilation:  javac HelloWorld.java
  *  Execution:    java HelloWorld
+ *  SpotBugs:     spotbugs HelloWorld.class
  *
  *  Prints "Hello, World". By tradition, this is everyone's first program.
  *
@@ -24,5 +25,4 @@ public class HelloWorld {
         // Prints "Hello, World" in the terminal window.
         System.out.println("Hello, World");
     }
-
 }
