@@ -25,9 +25,15 @@ public class Percolation {
         }
     }
 
+    private void check(int row, int col) {
+        if ((row < 0) || (col < 0) || (row >= gridsize) || (col >= gridsize)) {
+            throw new IllegalArgumentException("invalid args");
+        }
+    }
+
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        if ((row < 0) || (col < 0) || (row >= gridsize) || (col >= gridsize)) return;
+        check(row, col);
         int idx = col * gridsize + row;
         if (opened[idx] == 1) { return; }
         else { opened[idx] = 1; }
@@ -50,11 +56,13 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
+        check(row, col);
         return opened[col * gridsize + row] == 1;
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
+        check(row, col);
         // return model.connected(virtual_source, col * gridsize + row);
         return model.find(virtual_source) == model.find(col * gridsize + row);
     }
