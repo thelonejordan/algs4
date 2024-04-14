@@ -6,11 +6,11 @@
 #  To see descriptions of bugs:
 #  https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html
 
-SPOTBUGS_VERSION="4.2.3"
-LIFT_INSTALL="/usr/local/lift"
+SPOTBUGS_VERSION="4.8.4"
+LIFT_INSTALL="${PWD}"
 AUX_CLASSPATH="${LIFT_INSTALL}/lib/algs4.jar:${LIFT_INSTALL}/lib/stdlib.jar:${LIFT_LIB}/lib/introcs.jar"
-SPOTBUGS="spotbugs-${SPOTBUGS_VERSION}"
-SPOTBUGS_JAR="${LIFT_INSTALL}/${SPOTBUGS}/lib/spotbugs.jar"
+# SPOTBUGS="spotbugs-${SPOTBUGS_VERSION}"
+SPOTBUGS_JAR="${HOMEBREW_CELLAR}/spotbugs/${SPOTBUGS_VERSION}/libexec/lib/spotbugs.jar"
 SPOTBUGS_XML="${LIFT_INSTALL}/spotbugs.xml"
 JAVA="java"
 
