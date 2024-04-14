@@ -6,8 +6,8 @@ public class Percolation {
 
     private int gridsize;
     private int numel;
-    private int virtual_source;
-    private int virtual_sink;
+    private int virtualSource;
+    private int virtualSink;
     private int[] opened;
     private WeightedQuickUnionUF model;
 
@@ -17,11 +17,11 @@ public class Percolation {
         numel = gridsize * gridsize;
         model = new WeightedQuickUnionUF(numel + 2);
         opened = new int[numel]; // source and sink are always open
-        virtual_source = numel;
-        virtual_sink = numel + 1;
-        for (int i = 0; i < n; i++){
-            model.union(virtual_source, i);
-            model.union(virtual_sink, numel - i - 1);
+        virtualSource = numel;
+        virtualSink = numel + 1;
+        for (int i = 0; i < n; i++) {
+            model.union(virtualSource, i);
+            model.union(virtualSink, numel - i - 1);
         }
     }
 
@@ -38,12 +38,12 @@ public class Percolation {
         if (opened[idx] == 1) { return; }
         else { opened[idx] = 1; }
 
-        if (idx < gridsize) { model.union(virtual_source, idx); }
+        if (idx < gridsize) { model.union(virtualSource, idx); }
         else {
             int up = idx - gridsize;
             if (opened[up] == 1) model.union(idx, up);
         }
-        if (idx >= numel - gridsize - 1) { model.union(virtual_sink, idx); }
+        if (idx >= numel - gridsize - 1) { model.union(virtualSink, idx); }
         else {
             int down = idx + gridsize;
             if (opened[down] == 1) model.union(idx, down);
@@ -64,7 +64,7 @@ public class Percolation {
     public boolean isFull(int row, int col) {
         check(row, col);
         // return model.connected(virtual_source, col * gridsize + row);
-        return model.find(virtual_source) == model.find(col * gridsize + row);
+        return model.find(virtualSource) == model.find(col * gridsize + row);
     }
 
     // returns the number of open sites
@@ -79,7 +79,7 @@ public class Percolation {
     // does the system percolate?
     public boolean percolates() {
         // return model.connected(virtual_source, virtual_sink);
-        return model.find(virtual_source) == model.find(virtual_sink);
+        return model.find(virtualSource) == model.find(virtualSink);
     }
 
     // test client (optional)

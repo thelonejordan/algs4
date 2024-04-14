@@ -9,8 +9,9 @@ import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
 
-    private double[] opened_fracs;
+    private double[] openedFractions;
     private int ntrials;
+    private static final double ZSCORE95 = 1.96;
 
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
@@ -18,7 +19,7 @@ public class PercolationStats {
             throw new IllegalArgumentException("invalid args");
         }
         ntrials = trials;
-        opened_fracs = new double[trials];
+        openedFractions = new double[trials];
         for (int i = 0; i < trials; i++) {
             int opened_sites = 0;
             Percolation experiment = new Percolation(n);
@@ -30,36 +31,35 @@ public class PercolationStats {
                     opened_sites++;
                 }
             }
-            opened_fracs[i] = (double) opened_sites / (n * n);
+            openedFractions[i] = (double) opened_sites / (n * n);
         }
     }
 
     // sample mean of percolation threshold
     public double mean() {
-        return StdStats.mean(opened_fracs);
+        return StdStats.mean(openedFractions);
     }
 
     // sample standard deviation of percolation threshold
     public double stddev() {
-        return StdStats.stddev(opened_fracs);
+        return StdStats.stddev(openedFractions);
     }
 
     // low endpoint of 95% confidence interval
     public double confidenceLo() {
-        double z_score_95 = 1.96;
-        return mean() - ((z_score_95 * stddev()) / Math.sqrt(ntrials));
+        return mean() - ((ZSCORE95 * stddev()) / Math.sqrt(ntrials));
     }
 
     // high endpoint of 95% confidence interval
     public double confidenceHi() {
-        return mean() + ((1.96 * stddev()) / Math.sqrt(ntrials));
+        return mean() + ((ZSCORE95 * stddev()) / Math.sqrt(ntrials));
     }
 
    // test client (see below)
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
-        int T = Integer.parseInt(args[1]);
-        PercolationStats ps = new PercolationStats(N, T);
+        int n = Integer.parseInt(args[0]);
+        int t = Integer.parseInt(args[1]);
+        PercolationStats ps = new PercolationStats(n, t);
 
         String confidence = ps.confidenceLo() + ", " + ps.confidenceHi();
         StdOut.println("mean                    = " + ps.mean());
