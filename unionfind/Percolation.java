@@ -1,5 +1,7 @@
 package unionfind;
 
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+
 public class Percolation {
 
     private int gridsize;
@@ -13,7 +15,7 @@ public class Percolation {
     public Percolation(int n) {
         gridsize = n;
         numel = gridsize * gridsize;
-        model = new unionfind.WeightedQuickUnionUF(numel + 2);
+        model = new WeightedQuickUnionUF(numel + 2);
         opened = new int[numel]; // source and sink are always open
         virtual_source = numel;
         virtual_sink = numel + 1;
@@ -53,7 +55,8 @@ public class Percolation {
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        return model.connected(virtual_source, col * gridsize + row);
+        // return model.connected(virtual_source, col * gridsize + row);
+        return model.find(virtual_source) == model.find(col * gridsize + row);
     }
 
     // returns the number of open sites
@@ -67,7 +70,8 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return model.connected(virtual_source, virtual_sink);
+        // return model.connected(virtual_source, virtual_sink);
+        return model.find(virtual_source) == model.find(virtual_sink);
     }
 
     // test client (optional)
