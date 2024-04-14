@@ -8,7 +8,7 @@ public class Percolation {
     private int numel;
     private int virtualSource;
     private int virtualSink;
-    private int[] opened;
+    private boolean[] opened;
     private WeightedQuickUnionUF model;
 
     // creates n-by-n grid, with all sites initially blocked
@@ -16,7 +16,7 @@ public class Percolation {
         gridsize = n;
         numel = gridsize * gridsize;
         model = new WeightedQuickUnionUF(numel + 2);
-        opened = new int[numel]; // source and sink are always open
+        opened = new boolean[numel]; // source and sink are always open
         virtualSource = numel;
         virtualSink = numel + 1;
         for (int i = 0; i < n; i++) {
@@ -35,29 +35,29 @@ public class Percolation {
     public void open(int row, int col) {
         check(row, col);
         int idx = col * gridsize + row;
-        if (opened[idx] == 1) { return; }
-        else { opened[idx] = 1; }
+        if (opened[idx]) { return; }
+        else { opened[idx] = true; }
 
         if (idx < gridsize) { model.union(virtualSource, idx); }
         else {
             int up = idx - gridsize;
-            if (opened[up] == 1) model.union(idx, up);
+            if (opened[up]) model.union(idx, up);
         }
         if (idx >= numel - gridsize - 1) { model.union(virtualSink, idx); }
         else {
             int down = idx + gridsize;
-            if (opened[down] == 1) model.union(idx, down);
+            if (opened[down]) model.union(idx, down);
         }
         int left = idx - 1;
         int right = idx + 1;
-        if ((left >= 0) && (opened[left] == 1)) model.union(idx, left);
-        if ((right < numel) && (opened[right] == 1)) model.union(idx, right);
+        if ((left >= 0) && (opened[left])) model.union(idx, left);
+        if ((right < numel) && (opened[right])) model.union(idx, right);
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
         check(row, col);
-        return opened[col * gridsize + row] == 1;
+        return opened[col * gridsize + row];
     }
 
     // is the site (row, col) full?
@@ -71,7 +71,7 @@ public class Percolation {
     public int numberOfOpenSites() {
         int count = 0;
         for (int i = 0; i < numel; i++) {
-            if (opened[i] == 1) count++;
+            if (opened[i]) count++;
         }
         return count;
     }
