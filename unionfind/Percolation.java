@@ -9,6 +9,7 @@ public class Percolation {
     private int virtualSource;
     private int virtualSink;
     private boolean[] opened;
+    private int openedCount;
     private WeightedQuickUnionUF model;
 
     // creates n-by-n grid, with all sites initially blocked
@@ -17,12 +18,18 @@ public class Percolation {
         numel = gridsize * gridsize;
         model = new WeightedQuickUnionUF(numel + 2);
         opened = new boolean[numel]; // source and sink are always open
+        openedCount = 0;
         virtualSource = numel;
         virtualSink = numel + 1;
         for (int i = 0; i < n; i++) {
             model.union(virtualSource, i);
             model.union(virtualSink, numel - i - 1);
         }
+    }
+
+    private int flatIndex(int row, int col) {
+        check(row, col);
+        return col * gridsize + row;
     }
 
     private void check(int row, int col) {
@@ -36,7 +43,10 @@ public class Percolation {
         check(row, col);
         int idx = col * gridsize + row;
         if (opened[idx]) { return; }
-        else { opened[idx] = true; }
+        else {
+            opened[idx] = true;
+            openedCount++;
+        }
 
         if (idx < gridsize) { model.union(virtualSource, idx); }
         else {
@@ -56,24 +66,20 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        check(row, col);
-        return opened[col * gridsize + row];
+        int idx = flatIndex(row, col);
+        return opened[idx];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        check(row, col);
+        int idx = flatIndex(row, col);
         // return model.connected(virtual_source, col * gridsize + row);
-        return model.find(virtualSource) == model.find(col * gridsize + row);
+        return model.find(virtualSource) == model.find(idx);
     }
 
     // returns the number of open sites
     public int numberOfOpenSites() {
-        int count = 0;
-        for (int i = 0; i < numel; i++) {
-            if (opened[i]) count++;
-        }
-        return count;
+        return openedCount;
     }
 
     // does the system percolate?

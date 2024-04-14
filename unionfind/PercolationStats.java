@@ -9,9 +9,9 @@ import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
 
+    private static final double ZSCORE95 = 1.96;
     private double[] openedFractions;
     private int ntrials;
-    private static final double ZSCORE95 = 1.96;
 
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
@@ -21,17 +21,17 @@ public class PercolationStats {
         ntrials = trials;
         openedFractions = new double[trials];
         for (int i = 0; i < trials; i++) {
-            int opened_sites = 0;
+            int openedSites = 0;
             Percolation experiment = new Percolation(n);
             while (!experiment.percolates()) {
                 int r = StdRandom.uniformInt(n);
                 int c = StdRandom.uniformInt(n);
                 if (!experiment.isOpen(r, c)) {
                     experiment.open(r, c);
-                    opened_sites++;
+                    openedSites++;
                 }
             }
-            openedFractions[i] = (double) opened_sites / (n * n);
+            openedFractions[i] = (double) openedSites / (n * n);
         }
     }
 
