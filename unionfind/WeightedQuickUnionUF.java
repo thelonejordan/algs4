@@ -8,6 +8,7 @@ public class WeightedQuickUnionUF {
     // constructor
     public WeightedQuickUnionUF(int N) {
         id = new int[N];
+        sz = new int[N];
         for (int i = 0; i < N; i++) { id[i] = i; sz[i] = 1; }
     }
 
@@ -31,5 +32,9 @@ public class WeightedQuickUnionUF {
             { id[p_root] = q_root; sz[q_root] += sz[p_root]; }
         else
             { id[q_root] = p_root; sz[p_root] += sz[q_root]; }
+    }
+
+    public static void main (String[] args) {
+        // TODO: write this
     }
 }

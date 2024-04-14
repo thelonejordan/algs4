@@ -22,4 +22,8 @@ public class QuickFindUF {
             if (id[i] == p_id) id[i] = q_id;
         }
     }
+
+    public static void main (String[] args) {
+        // TODO: write this
+    }
 }

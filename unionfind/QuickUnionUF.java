@@ -24,4 +24,8 @@ public class QuickUnionUF {
         int q_root = root(q);
         id[p_root] = q_root;
     }
+
+    public static void main (String[] args) {
+        // TODO: write this
+    }
 }
