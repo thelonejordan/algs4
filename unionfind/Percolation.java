@@ -5,12 +5,12 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
 
     private int gridsize;
-    private int numel;
     private int virtualSource;
     private int virtualSink;
     private boolean[] opened;
     private int openedCount;
     private WeightedQuickUnionUF model;
+    private WeightedQuickUnionUF backwash;
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
@@ -18,10 +18,11 @@ public class Percolation {
             throw new IllegalArgumentException("invalid arg");
         }
         gridsize = n;
-        numel = gridsize * gridsize;
+        int numel = gridsize * gridsize;
         virtualSource = numel;
         virtualSink = virtualSource + 1;
         model = new WeightedQuickUnionUF(numel + 2);
+        backwash = new WeightedQuickUnionUF(numel + 1);
         opened = new boolean[numel]; // source and sink are always open
         openedCount = 0;
     }
@@ -44,22 +45,40 @@ public class Percolation {
         opened[idx] = true;
         openedCount++;
 
-        if (row == 1) { model.union(virtualSource, idx); }
+        if (row == 1) {
+            model.union(virtualSource, idx);
+            backwash.union(virtualSource, idx);
+        }
         else {
             // up exists
             int up = idx - gridsize;
-            if (opened[up]) model.union(idx, up);
+            if (opened[up]) {
+                model.union(idx, up);
+                backwash.union(idx, up);
+            }
         }
-        if (row == gridsize) { model.union(virtualSink, idx); }
+        if (row == gridsize) {
+            model.union(virtualSink, idx);
+            // no backwash here
+        }
         else {
             // down exists
             int down = idx + gridsize;
-            if (opened[down]) model.union(idx, down);
+            if (opened[down]) {
+                model.union(idx, down);
+                backwash.union(idx, down);
+            }
         }
         int left = idx - 1;
         int right = idx + 1;
-        if (col != 1 && opened[left]) model.union(idx, left);
-        if (col != gridsize && opened[right]) model.union(idx, right);
+        if (col != 1 && opened[left]) {
+            model.union(idx, left);
+            backwash.union(idx, left);
+        }
+        if (col != gridsize && opened[right]) {
+            model.union(idx, right);
+            backwash.union(idx, right);
+        }
     }
 
     // is the site (row, col) open?
@@ -72,7 +91,7 @@ public class Percolation {
     public boolean isFull(int row, int col) {
         int idx = flatIndex(row, col);
         // return model.connected(virtualSource, idx);
-        return isOpen(row, col) && model.find(virtualSource) == model.find(idx);
+        return isOpen(row, col) && backwash.find(virtualSource) == backwash.find(idx);
     }
 
     // returns the number of open sites
