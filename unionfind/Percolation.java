@@ -29,19 +29,18 @@ public class Percolation {
 
     private int flatIndex(int row, int col) {
         check(row, col);
-        return col * gridsize + row;
+        return (col - 1) * gridsize + row - 1;
     }
 
     private void check(int row, int col) {
-        if ((row < 0) || (col < 0) || (row >= gridsize) || (col >= gridsize)) {
+        if ((row < 1) || (col < 1) || (row > gridsize) || (col > gridsize)) {
             throw new IllegalArgumentException("invalid args");
         }
     }
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        check(row, col);
-        int idx = col * gridsize + row;
+        int idx = flatIndex(row, col);
         if (opened[idx]) { return; }
         else {
             opened[idx] = true;
