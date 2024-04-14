@@ -2,3 +2,4 @@
 project/
 downloads/*
 submissions/**/*.java
+percolation.sh
