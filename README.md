@@ -41,7 +41,7 @@ javac HelloWorld.java
 javac -cp .:example.jar HelloWorld.java
 ```
 
-Run a program
+Execute a program
 
 ```sh
 java HelloWorld
