@@ -27,36 +27,6 @@
                                        |/
 ```
 
-### Installation
-
-* https://formulae.brew.sh/formula/openjdk
-* https://formulae.brew.sh/formula/checkstyle
-* https://formulae.brew.sh/formula/spotbugs
-* https://formulae.brew.sh/formula/pmd
-
-### Coursera
-
-* [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
-* [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
-* https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
-* https://coursera.cs.princeton.edu/algs4/assignments/hello/faq.php
-
-### Course
-
-* https://algs4.cs.princeton.edu/home/
-* https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
-* https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
-* https://github.com/kevin-wayne/algs4
-* https://algs4.cs.princeton.edu/code/algs4-data.zip
-* https://algs4.cs.princeton.edu/code/
-
-
-### Jars
-
-* https://algs4.cs.princeton.edu/code/algs4.jar
-* https://introcs.cs.princeton.edu/code/stdlib.jar
-* http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar
-
 ### Commands
 
 Compile a program
@@ -118,6 +88,35 @@ How do I specify EOF to signal that standard input is empty? (Relevant to `Rando
 
 On Mac OS X and Linux, type `Enter` `Ctrl-D`. On Windows, type `Enter` `Ctrl-Z` `Enter`, even in Git Bash.
 
+### Brew Installation Links
+
+* https://formulae.brew.sh/formula/openjdk
+* https://formulae.brew.sh/formula/checkstyle
+* https://formulae.brew.sh/formula/spotbugs
+* https://formulae.brew.sh/formula/pmd
+
+### Coursera
+
+* [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
+* [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
+* https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
+* https://coursera.cs.princeton.edu/algs4/assignments/hello/faq.php
+
+### Course
+
+* https://algs4.cs.princeton.edu/home/
+* https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
+* https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
+* https://github.com/kevin-wayne/algs4
+* https://algs4.cs.princeton.edu/code/algs4-data.zip
+* https://algs4.cs.princeton.edu/code/
+
+
+### Jars
+
+* https://algs4.cs.princeton.edu/code/algs4.jar
+* https://introcs.cs.princeton.edu/code/stdlib.jar
+* http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar
 
 ### More
 
