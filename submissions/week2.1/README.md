@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  48/49 tests passed
+Correctness:  49/49 tests passed
 Memory:       115/131 tests passed
 Timing:       193/193 tests passed
 
-Aggregate score: 97.55%
+Aggregate score: 98.78%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 97.55%
 ```
 The following files were submitted:
 ----------------------------------
-3.9K Apr 17 16:07 Deque.java
- 406 Apr 17 16:07 Permutation.java
-3.1K Apr 17 16:07 RandomizedQueue.java
+3.9K Apr 17 20:34 Deque.java
+ 406 Apr 17 20:34 Permutation.java
+3.2K Apr 17 20:34 RandomizedQueue.java
 
 
 ********************************************************************************
@@ -338,11 +338,7 @@ Test 6: check random calls to all methods, including iterator()
 Test 7: call dequeue() and sample() from an empty randomized queue
   * dequeue()
   * sample()
-    - sample() throws wrong exception when queue is empty
-    - throws a java.lang.IllegalArgumentException
-    - should throw a java.util.NoSuchElementException
-
-==> FAILED
+==> passed
 
 Test 8: create multiple randomized queue objects at the same time
   * n = 10
@@ -419,7 +415,7 @@ Test 21: call iterator() when randomized queue is empty
 ==> passed
 
 
-Total: 20/21 tests passed!
+Total: 21/21 tests passed!
 
 
 ================================================================
@@ -437,35 +433,35 @@ Running 9 total tests.
 Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
   A
-  I
-  D
+  E
+  F
 
   % java Permutation 3 < distinct.txt
-  E
-  C
-  I
+  F
+  A
+  H
 
   % java Permutation 8 < duplicates.txt
-  CC
   BB
+  BB
+  BB
+  BB
+  BB
+  CC
   AA
-  BB
-  BB
-  BB
   CC
-  BB
 
 ==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
+  times
+  the
+  worst
+  it
+  of
   it
   was
-  the
-  the
-  foolishness
-  was
-  of
   age
 
   % java Permutation 0 < distinct.txt
@@ -578,7 +574,7 @@ Test 4: Time main() with k = 5, for inputs containing n random strings
 => passed        8000     0.00
 => passed       16000     0.01
 => passed       32000     0.01
-=> passed       64000     0.03
+=> passed       64000     0.02
 => passed      128000     0.04
 => passed      256000     0.08
 => passed      512000     0.16
@@ -969,46 +965,42 @@ Test 7b: Perform random operations, checking for loitering after
          each operation. The probabilities of enqueue(), dequeue(),
          and sample() are (p1, p2, p3), respectively.
   * 200 random operations (0.8, 0.2, 0.0)
+    - loitering detected after operation 4 of 200
     - sequence of operations was:
-         rq.enqueue("EDIDCZYGRK")
-         rq.enqueue("CLWYOHAQYK")
-         rq.enqueue("YHKTDFMTRQ")
-         rq.enqueue("QJNQDMORKH")
-         rq.enqueue("EPAYGPMJWG")
-         rq.enqueue("CAIXMBQXSI")
-         rq.enqueue("APIUBMEYOA")
-         rq.enqueue("UEYPFDHPBP")
-         rq.dequeue()     ==> "UEYPFDHPBP"
+         rq.enqueue("NCUZJDIOKS")
+         rq.enqueue("MUOADQEQQR")
+         rq.enqueue("UTFZGFKSEQ")
+         rq.dequeue()     ==> "MUOADQEQQR"
     - loitered object(s):
-
-      UEYPFDHPBP
+      MUOADQEQQR
 
   * 200 random operations (0.2, 0.8, 0.0)
     - loitering detected after operation 2 of 200
     - sequence of operations was:
-         rq.enqueue("WQTANJLMEK")
-         rq.dequeue()     ==> "WQTANJLMEK"
+         rq.enqueue("NUQSFBYKLP")
+         rq.dequeue()     ==> "NUQSFBYKLP"
     - loitered object(s):
-      WQTANJLMEK
+      NUQSFBYKLP
 
   * 200 random operations (0.6, 0.2, 0.2)
-    - loitering detected after operation 3 of 200
+    - loitering detected after operation 5 of 200
     - sequence of operations was:
-         rq.enqueue("MYGNQGIELF")
-         rq.enqueue("IFEVNZLLVU")
-         rq.dequeue()     ==> "MYGNQGIELF"
+         rq.enqueue("WXPLHQYQWC")
+         rq.sample()      ==> "WXPLHQYQWC"
+         rq.enqueue("CFGLIYEVOJ")
+         rq.sample()      ==> "CFGLIYEVOJ"
+         rq.dequeue()     ==> "WXPLHQYQWC"
     - loitered object(s):
-      MYGNQGIELF
+      WXPLHQYQWC
 
   * 200 random operations (0.2, 0.4, 0.4)
-    - loitering detected after operation 4 of 200
+    - loitering detected after operation 3 of 200
     - sequence of operations was:
-         rq.enqueue("XHHOOHVKQL")
-         rq.sample()      ==> "XHHOOHVKQL"
-         rq.enqueue("MYPXFOESZR")
-         rq.dequeue()     ==> "XHHOOHVKQL"
+         rq.enqueue("IUUZIOFDTQ")
+         rq.enqueue("WJHWAXLGOC")
+         rq.dequeue()     ==> "IUUZIOFDTQ"
     - loitered object(s):
-      XHHOOHVKQL
+      IUUZIOFDTQ
 
 ==> FAILED
 
@@ -1087,7 +1079,7 @@ Test 1a-1k: make n calls to addFirst() followed by n calls to removeFirst()
 => passed      128000     0.00
 => passed      256000     0.00
 => passed      512000     0.01
-=> passed     1024000     0.03
+=> passed     1024000     0.02
 ==> 11/11 tests passed
 
 
@@ -1198,7 +1190,7 @@ Test 7a-7g: make n random calls to addFirst(), addLast(), removeFirst(), removeL
 => passed      256000     0.01
 => passed      512000     0.02
 => passed     1024000     0.04
-=> passed     2048000     0.08
+=> passed     2048000     0.07
 ==> 12/12 tests passed
 
 
@@ -1216,7 +1208,7 @@ Test 8a-8g: make n calls to addFirst(); iterate over the n items by calling
 => passed       65536     0.00
 => passed      128000     0.00
 => passed      256000     0.00
-=> passed      512000     0.01
+=> passed      512000     0.02
 => passed     1024000     0.02
 => passed     2048000     0.04
 ==> 12/12 tests passed
@@ -1233,7 +1225,7 @@ Test 9a-9k: make n calls to addFirst()/addLast(); interleave n calls each to
 => passed        8193     0.00
 => passed       16385     0.00
 => passed       32769     0.00
-=> passed       65537     0.01
+=> passed       65537     0.00
 => passed      128001     0.01
 => passed      256001     0.01
 => passed      512001     0.03
@@ -1282,10 +1274,10 @@ Test 4a-k: make n calls to enqueue() followed by n calls to dequeue()
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
+=> passed       65536     0.00
 => passed      128000     0.01
-=> passed      256000     0.02
-=> passed      512000     0.02
+=> passed      256000     0.01
+=> passed      512000     0.01
 => passed     1024000     0.03
 ==> 11/11 tests passed
 
@@ -1304,9 +1296,9 @@ Test 5a-k: make n calls to enqueue() followed by n random calls to
 => passed       32768     0.00
 => passed       65536     0.01
 => passed      128000     0.01
-=> passed      256000     0.03
+=> passed      256000     0.02
 => passed      512000     0.05
-=> passed     1024000     0.12
+=> passed     1024000     0.11
 ==> 11/11 tests passed
 
 
@@ -1324,8 +1316,8 @@ Test 6a-k: make n calls to enqueue() followed by n random calls to
 => passed       32768     0.00
 => passed       65536     0.01
 => passed      128000     0.01
-=> passed      256000     0.03
-=> passed      512000     0.06
+=> passed      256000     0.02
+=> passed      512000     0.05
 => passed     1024000     0.12
 ==> 11/11 tests passed
 
@@ -1342,11 +1334,11 @@ Test 7a-k: make n calls to enqueue() followed by n random calls to
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
+=> passed       65536     0.00
 => passed      128000     0.01
-=> passed      256000     0.03
+=> passed      256000     0.02
 => passed      512000     0.06
-=> passed     1024000     0.17
+=> passed     1024000     0.13
 ==> 11/11 tests passed
 
 
@@ -1364,8 +1356,8 @@ Test 8a-k: make n calls to enqueue() followed by n calls each to
 => passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.04
-=> passed     1024000     0.09
+=> passed      512000     0.03
+=> passed     1024000     0.07
 ==> 11/11 tests passed
 
 
@@ -1380,7 +1372,7 @@ Test 9a-i: make 100 calls to enqueue; 99 calls to dequeue;
 => passed        4096     0.00
 => passed        8192     0.00
 => passed       16384     0.00
-=> passed       32768     0.01
+=> passed       32768     0.00
 => passed       65536     0.01
 => passed      128000     0.02
 => passed      256000     0.05
