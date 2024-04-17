@@ -4,7 +4,7 @@
  * Compilation: javac -cp lib/algs4.jar RandomWord.java
  * Execution:
  * java -cp .:lib/algs4.jar RandomWord
- * java -cp .:lib/algs4.jar RandomWord < downloads/animals.txt
+ * java -cp .:lib/algs4.jar RandomWord < algorithms.txt
  * 
  ******************************************************************************/
 
