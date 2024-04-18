@@ -28,9 +28,7 @@ public class RandomWord {
             index++;
             String word = StdIn.readString();
             boolean accept = StdRandom.bernoulli(1 / (double) index);
-            if (accept) {
-                champion = word;
-            }
+            if (accept) champion = word;
         }
         StdOut.println(champion);
     }

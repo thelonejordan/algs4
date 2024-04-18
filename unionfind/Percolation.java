@@ -20,9 +20,7 @@ public class Percolation {
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
-        if (n < 1) {
-            throw new IllegalArgumentException("invalid arg");
-        }
+        if (n < 1) throw new IllegalArgumentException("invalid arg");
         gridsize = n;
         int numel = gridsize * gridsize;
         virtualSource = numel;

@@ -1,3 +1,5 @@
+// javac HelloGoodbye.java
+// java HelloGoodbye
 
 public class HelloGoodbye {
 

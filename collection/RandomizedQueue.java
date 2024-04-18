@@ -35,9 +35,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private void resize(int capacity) {
         @SuppressWarnings("unchecked") // comment this out before submitting
         Item[] newarr = (Item[]) new Object[capacity];
-        for (int i = 0; i < sz; i++) {
-            newarr[i] = arr[i];
-        }
+        for (int i = 0; i < sz; i++) newarr[i] = arr[i];
         arr = newarr;
     }
 
@@ -52,24 +50,20 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // remove and return a random item
     public Item dequeue() {
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
+        if (isEmpty()) throw new NoSuchElementException();
         int idx = StdRandom.uniformInt(sz);
         Item item = arr[idx];
-        if (idx != sz - 1) {
-            arr[idx] = arr[sz - 1];
-        }
-        arr[--sz] = null; // no loitering (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
+        if (idx != sz - 1) arr[idx] = arr[sz - 1];
+        // no loitering
+        // (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
+        arr[--sz] = null;
         if (sz > 0 && sz == arr.length / 4) resize(arr.length / 2);
         return item;
     }
 
     // return a random item (but do not remove it)
     public Item sample() {
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
+        if (isEmpty()) throw new NoSuchElementException();
         return arr[StdRandom.uniformInt(sz)];
     }
 
@@ -85,9 +79,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         private int[] rngIndices = new int[sz];
 
         public ArrayIterator() {
-            for (int j = 0; j < sz; j++) {
-                rngIndices[j] = j;
-            }
+            for (int j = 0; j < sz; j++) rngIndices[j] = j;
             StdRandom.shuffle(rngIndices);
         }
 
@@ -119,9 +111,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         rq.enqueue(4);
         rq.enqueue(5);
         StdOut.println(rq.dequeue());
-        for (int i : rq) {
-            StdOut.println(i);
-        }
+        for (int i : rq) StdOut.println(i);
         StdOut.println(rq.size());
         StdOut.println(rq.isEmpty());
     }

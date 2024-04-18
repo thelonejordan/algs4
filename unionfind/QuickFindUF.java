@@ -18,7 +18,7 @@ public class QuickFindUF {
         int p_id = id[p];
         int q_id = id[q];
         for (int i = 0; i < id.length; i++) {
-            // NOTE: can't use connected here. why?
+            // NOTE: can't use connected here. can you tell why?
             if (id[i] == p_id) id[i] = q_id;
         }
     }
