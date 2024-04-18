@@ -24,12 +24,15 @@ public class FastCollinearPoints {
     public static void main(String[] args) {
 
         // read the n points from a file
-        In in = new In(args[0]);
-        int n = in.readInt();
+        // In in = new In(args[0]);
+        // int n = in.readInt();
+        int n = Integer.parseInt(args[0]);
         Point[] points = new Point[n];
         for (int i = 0; i < n; i++) {
-            int x = in.readInt();
-            int y = in.readInt();
+            // int x = in.readInt();
+            int x = Integer.parseInt(args[1]);
+            // int y = in.readInt();
+            int y = Integer.parseInt(args[2]);
             points[i] = new Point(x, y);
         }
 
