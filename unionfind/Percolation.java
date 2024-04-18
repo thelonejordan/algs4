@@ -1,5 +1,11 @@
 package unionfind;
 
+// TODO: fix bonus test (MEMORY :: Analyzing memory of Percolation)
+
+// Test 2 (bonus): check that total memory <= 11 n^2 + 128 n + 1024 bytes
+// -  failed memory test for n = 64
+// ==> FAILED
+
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
