@@ -19,7 +19,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // construct an empty randomized queue
     public RandomizedQueue() {
-        // @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked") // comment this out before submitting
         Item[] newarr = (Item[]) new Object[2];
         arr = newarr;
         sz = 0;
@@ -36,7 +36,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private void resize(int capacity) {
-        // @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked") // comment this out before submitting
         Item[] newarr = (Item[]) new Object[capacity];
         for (int i = 0; i < sz; i++) {
             newarr[i] = arr[i];
