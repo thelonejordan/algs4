@@ -47,16 +47,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             throw new IllegalArgumentException();
         }
         if (sz == arr.length) resize(sz * 2);
-        if (sz == 0) {
-            arr[sz++] = item;
-            return;
-        }
-        int rngIndex = StdRandom.uniformInt(sz + 1);
-        if (rngIndex != sz) {
-            Item replaced = arr[rngIndex];
-            arr[rngIndex] = item;
-            item = replaced;
-        }
         arr[sz++] = item;
     }
 
@@ -65,10 +55,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        if (sz == arr.length / 4) resize(arr.length / 2);
-        Item ret = arr[--sz];
-        arr[sz] = null; // no loitering (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
-        return ret;
+        int idx = StdRandom.uniformInt(sz);
+        Item item = arr[idx];
+        if (idx != sz - 1) {
+            arr[idx] = arr[sz - 1];
+        }
+        arr[--sz] = null; // no loitering (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
+        if (sz > 0 && sz == arr.length / 4) resize(arr.length / 2);
+        return item;
     }
 
     // return a random item (but do not remove it)
@@ -87,11 +81,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class ArrayIterator implements Iterator<Item> {
 
-        private int i;
-        private int[] rngIndices;
+        private int i = 0;
+        private int[] rngIndices = new int[sz];
+
         public ArrayIterator() {
-            i = 0;
-            rngIndices = new int[sz];
             for (int j = 0; j < sz; j++) {
                 rngIndices[j] = j;
             }
