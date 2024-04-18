@@ -66,7 +66,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             throw new NoSuchElementException();
         }
         if (sz == arr.length / 4) resize(arr.length / 2);
-        return arr[--sz];
+        Item ret = arr[--sz];
+        arr[sz] = null; // no loitering (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
+        return ret;
     }
 
     // return a random item (but do not remove it)
