@@ -1,6 +1,9 @@
 // javac -cp .:lib/algs4.jar collection/RandomizedQueue.java
 // java -cp .:lib/algs4.jar collection.RandomizedQueue
 
+// for bonus: reservior sampling
+// https://github.com/herricane/Deques-and-Randomized-Queues/commit/617b7e35b9e4bebbf6d5a467b8d6d2f774428c37
+
 package collection;
 
 import java.util.Iterator;
