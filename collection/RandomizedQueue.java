@@ -65,7 +65,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        if (arr.length == sz / 4) resize(sz / 2);
+        if (sz == arr.length / 4) resize(arr.length / 2);
         return arr[--sz];
     }
 
