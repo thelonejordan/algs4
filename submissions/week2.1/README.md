@@ -11,10 +11,10 @@ PMD:          PASSED
 Checkstyle:   PASSED
 
 Correctness:  49/49 tests passed
-Memory:       131/133 tests passed
+Memory:       133/133 tests passed
 Timing:       193/193 tests passed
 
-Aggregate score: 99.85%
+Aggregate score: 100.00%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 99.85%
 ```
 The following files were submitted:
 ----------------------------------
-3.9K Apr 18 04:39 Deque.java
- 406 Apr 18 04:39 Permutation.java
-3.2K Apr 18 04:39 RandomizedQueue.java
+3.9K Apr 18 04:58 Deque.java
+ 406 Apr 18 04:58 Permutation.java
+3.4K Apr 18 04:58 RandomizedQueue.java
 
 
 ********************************************************************************
@@ -434,35 +434,35 @@ Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
   D
   H
-  B
+  I
 
   % java Permutation 3 < distinct.txt
-  G
-  B
+  A
+  F
   H
 
   % java Permutation 8 < duplicates.txt
   BB
   BB
   BB
+  CC
+  BB
+  CC
+  BB
   AA
-  CC
-  BB
-  CC
-  BB
 
 ==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
-  the
   it
-  it
-  the
-  was
-  age
-  foolishness
   of
+  wisdom
+  of
+  was
+  best
+  times
+  age
 
   % java Permutation 0 < distinct.txt
   [no output]
@@ -956,52 +956,16 @@ Memory: 4.00 n + 64.00   (R^2 = 1.000)
 
 Test 7a: Insert 100 strings; delete them one at a time, checking
          for loitering after each deletion.
-    - loitering observed during 100 of 100 deletions
-    - maximum number of loitered objects at one time = 68
-
-==> FAILED
+==> passed
 
 Test 7b: Perform random operations, checking for loitering after
          each operation. The probabilities of enqueue(), dequeue(),
          and sample() are (p1, p2, p3), respectively.
   * 200 random operations (0.8, 0.2, 0.0)
-    - loitering detected after operation 5 of 200
-    - sequence of operations was:
-         rq.enqueue("ULNIYPHZFL")
-         rq.enqueue("SDOVDRGHCR")
-         rq.enqueue("IJYJLMJEQY")
-         rq.enqueue("PPFBJPSJTO")
-         rq.dequeue()     ==> "PPFBJPSJTO"
-    - loitered object(s):
-      PPFBJPSJTO
-
   * 200 random operations (0.2, 0.8, 0.0)
-    - loitering detected after operation 3 of 200
-    - sequence of operations was:
-         rq.enqueue("EBBYVXIPYQ")
-         rq.enqueue("ACRINNOFJJ")
-         rq.dequeue()     ==> "ACRINNOFJJ"
-    - loitered object(s):
-      ACRINNOFJJ
-
   * 200 random operations (0.6, 0.2, 0.2)
-    - loitering detected after operation 3 of 200
-    - sequence of operations was:
-         rq.enqueue("DZYIMOLBFZ")
-         rq.enqueue("VXWEHGQYLP")
-         rq.dequeue()     ==> "DZYIMOLBFZ"
-    - loitered object(s):
-      DZYIMOLBFZ
-
   * 200 random operations (0.2, 0.4, 0.4)
-    - loitering detected after operation 2 of 200
-    - sequence of operations was:
-         rq.enqueue("JPVTRUTBWJ")
-         rq.dequeue()     ==> "JPVTRUTBWJ"
-    - loitered object(s):
-      JPVTRUTBWJ
-
-==> FAILED
+==> passed
 
 Test 8: Insert m items into queue; then iterate over deque and check
         that only constant memory is allocated/deallocated per operation
@@ -1052,7 +1016,7 @@ Max observed memory for RandomizedQueue: 32.00 n + 24.00   (R^2 = 1.000)
 
 Running 82 total tests.
 
-Total: 80/82 tests passed!
+Total: 82/82 tests passed!
 
 
 ================================================================
@@ -1149,7 +1113,7 @@ Test 5a-5g: make n random calls to addFirst(), removeFirst(), isEmpty(), and siz
 => passed       65536     0.00
 => passed      128000     0.00
 => passed      256000     0.01
-=> passed      512000     0.02
+=> passed      512000     0.01
 => passed     1024000     0.03
 => passed     2048000     0.06
 ==> 12/12 tests passed
@@ -1211,7 +1175,7 @@ Test 8a-8g: make n calls to addFirst(); iterate over the n items by calling
 => passed      256000     0.00
 => passed      512000     0.01
 => passed     1024000     0.02
-=> passed     2048000     0.04
+=> passed     2048000     0.05
 ==> 12/12 tests passed
 
 
@@ -1226,7 +1190,7 @@ Test 9a-9k: make n calls to addFirst()/addLast(); interleave n calls each to
 => passed        8193     0.00
 => passed       16385     0.00
 => passed       32769     0.00
-=> passed       65537     0.01
+=> passed       65537     0.00
 => passed      128001     0.01
 => passed      256001     0.01
 => passed      512001     0.03
@@ -1275,10 +1239,10 @@ Test 4a-k: make n calls to enqueue() followed by n calls to dequeue()
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.00
-=> passed      128000     0.01
+=> passed       65536     0.01
+=> passed      128000     0.00
 => passed      256000     0.01
-=> passed      512000     0.02
+=> passed      512000     0.01
 => passed     1024000     0.03
 ==> 11/11 tests passed
 
@@ -1299,7 +1263,7 @@ Test 5a-k: make n calls to enqueue() followed by n random calls to
 => passed      128000     0.01
 => passed      256000     0.02
 => passed      512000     0.05
-=> passed     1024000     0.11
+=> passed     1024000     0.12
 ==> 11/11 tests passed
 
 
@@ -1319,7 +1283,7 @@ Test 6a-k: make n calls to enqueue() followed by n random calls to
 => passed      128000     0.01
 => passed      256000     0.02
 => passed      512000     0.05
-=> passed     1024000     0.12
+=> passed     1024000     0.13
 ==> 11/11 tests passed
 
 
@@ -1338,7 +1302,7 @@ Test 7a-k: make n calls to enqueue() followed by n random calls to
 => passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.05
+=> passed      512000     0.06
 => passed     1024000     0.14
 ==> 11/11 tests passed
 
@@ -1357,7 +1321,7 @@ Test 8a-k: make n calls to enqueue() followed by n calls each to
 => passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.03
+=> passed      512000     0.04
 => passed     1024000     0.08
 ==> 11/11 tests passed
 
@@ -1376,7 +1340,7 @@ Test 9a-i: make 100 calls to enqueue; 99 calls to dequeue;
 => passed       32768     0.00
 => passed       65536     0.01
 => passed      128000     0.02
-=> passed      256000     0.04
+=> passed      256000     0.05
 ==> 9/9 tests passed
 
 
