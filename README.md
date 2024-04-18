@@ -59,21 +59,24 @@ How do I specify EOF to signal that standard input is empty? (Relevant to `Rando
 
 On Mac OS X and Linux, type `Enter` `Ctrl-D`. On Windows, type `Enter` `Ctrl-Z` `Enter`, even in Git Bash.
 
-### Brew Installation Links
+
+### More
+
+#### Brew Installation Links
 
 * https://formulae.brew.sh/formula/openjdk
 * https://formulae.brew.sh/formula/checkstyle
 * https://formulae.brew.sh/formula/spotbugs
 * https://formulae.brew.sh/formula/pmd
 
-### Coursera
+#### Coursera
 
 * [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
 * [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
 * https://coursera.cs.princeton.edu/algs4/assignments/hello/faq.php
 
-### Course
+#### Course
 
 * https://algs4.cs.princeton.edu/home/
 * https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
@@ -83,7 +86,7 @@ On Mac OS X and Linux, type `Enter` `Ctrl-D`. On Windows, type `Enter` `Ctrl-Z` 
 * https://algs4.cs.princeton.edu/code/
 
 
-### Jars
+#### Jars
 
 * https://algs4.cs.princeton.edu/code/algs4.jar
 * https://introcs.cs.princeton.edu/code/stdlib.jar
