@@ -27,6 +27,15 @@
                                        |/
 ```
 
+Coursera:
+
+* [Algorithms Part I](https://www.coursera.org/learn/algorithms-part1)
+* [Algorithms Part II](https://www.coursera.org/learn/algorithms-part2)
+
+Course Book:
+
+* [Algorithms 4th Edition](http://algs4.cs.princeton.edu/home/)
+
 ### Commands
 
 Compile a program
