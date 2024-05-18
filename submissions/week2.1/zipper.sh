@@ -1,5 +1,8 @@
 #!/bin/sh
 
-rm queues.zip
-zip queues.zip Deque.java RandomizedQueue.java Permutation.java
-cp queues.zip ~/Downloads
+SUBMISSION_FN=queues.zip
+
+rm $SUBMISSION_FN
+zip $SUBMISSION_FN Deque.java RandomizedQueue.java Permutation.java
+rm $HOME/Downloads/$SUBMISSION_FN
+cp $SUBMISSION_FN $HOME/Downloads

@@ -1,8 +1,10 @@
 #!/bin/sh
 
+FOLDER=collinear
+
 rm BruteCollinearPoints.java
 rm FastCollinearPoints.java
 rm Point.java
-cp ../../collinear/BruteCollinearPoints.java .
-cp ../../collinear/FastCollinearPoints.java .
-cp ../../collinear/Point.java .
+cp ../../$FOLDER/BruteCollinearPoints.java .
+cp ../../$FOLDER/FastCollinearPoints.java .
+cp ../../$FOLDER/Point.java .

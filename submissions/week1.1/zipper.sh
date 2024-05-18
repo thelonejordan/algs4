@@ -1,4 +1,7 @@
 #!/bin/sh
 
-zip hello.zip HelloWorld.java HelloGoodbye.java
-cp hello.zip ~/Downloads
+SUBMISSION_FN=hello.zip
+
+zip $SUBMISSION_FN HelloWorld.java HelloGoodbye.java
+rm $HOME/Downloads/$SUBMISSION_FN
+cp hello.zip $HOME/Downloads
