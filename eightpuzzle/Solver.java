@@ -12,33 +12,32 @@ import edu.princeton.cs.algs4.Stack;
 
 public class Solver {
     // Search Node
-    private class Node{
+    private class Node {
         Board board;
         int moves;
         Node prev;
+        int priorityCache;
 
         public Node(Board board, int moves, Node prev) {
             this.board = board;
             this.moves = moves;
             this.prev = prev;
+            this.priorityCache = -1;
         }
     }
-    // Node Comparators
-    private static final Comparator<Node> BY_HAMMING = new ByHammingPriority();
-    private static final Comparator<Node> BY_MANHATTON = new ByManhattanPriority();
-
     private Node first;
     private Node firstTwin;
     private Node answer;
-
-    // submission requires Manhattan Priority Function
-    private MinPQ<Node> pq = new MinPQ<>(BY_MANHATTON);
-    private MinPQ<Node> pqTwin = new MinPQ<>(BY_MANHATTON);
 
     private boolean solved = false;
 
     // find a solution to the initial board (using the A* algorithm)
     public Solver(Board initial) {
+
+        Comparator<Node> BY_MANHATTON = new ByManhattanPriority();
+
+        MinPQ<Node> pq = new MinPQ<>(BY_MANHATTON);
+        MinPQ<Node> pqTwin = new MinPQ<>(BY_MANHATTON);
 
         first = new Node(initial, 0, null);
         firstTwin = new Node(initial.twin(), 0, null);
@@ -48,7 +47,7 @@ public class Solver {
 
         while (true) {
             if (!pq.isEmpty()) {
-                // pop min
+                // pop node with min priority
                 Node minNode = pq.delMin();
                 if (minNode.board.isGoal()) {
                     solved = true;
@@ -58,7 +57,7 @@ public class Solver {
                 // insert its neighbors
                 for (Board b : minNode.board.neighbors()) {
                     if (minNode.prev != null) {
-                        if (b.equals(minNode.prev.board)) continue; // skip previous node
+                        if (b.equals(minNode.prev.board)) continue; // skip previous node (Optimization 1)
                     }
                     Node n = new Node(b, minNode.moves + 1, minNode);
                     pq.insert(n);
@@ -71,7 +70,7 @@ public class Solver {
                 }
                 for (Board b : minNode.board.neighbors()) {
                     if (minNode.prev != null) {
-                        if (b.equals(minNode.prev.board)) continue; // skip previous node
+                        if (b.equals(minNode.prev.board)) continue; // skip previous node (Optimization 1)
                     }
                     Node n = new Node(b, minNode.moves + 1, minNode);
                     pqTwin.insert(n);
@@ -82,20 +81,14 @@ public class Solver {
 
     private static class ByManhattanPriority implements Comparator<Node> {
         public int compare(Node a, Node b) {
-            int priorityA = a.board.manhattan() + a.moves;
-            int priorityB = b.board.manhattan() + b.moves;
-            if (priorityA > priorityB) return 1;
-            if (priorityA == priorityB) return 0;
-            return -1;
-        }
-    }
-
-    private static class ByHammingPriority implements Comparator<Node> {
-        public int compare(Node a, Node b) {
-            int priorityA = a.board.hamming() + a.moves;
-            int priorityB = b.board.hamming() + b.moves;
-            if (priorityA > priorityB) return 1;
-            if (priorityA == priorityB) return 0;
+            // cache priorities (Optimization 2)
+            if (a.priorityCache == -1)
+                a.priorityCache = a.board.manhattan() + a.moves;
+            if (b.priorityCache == -1)
+                b.priorityCache = b.board.manhattan() + b.moves;
+            // compare
+            if (a.priorityCache > b.priorityCache) return 1;
+            if (a.priorityCache == b.priorityCache) return 0;
             return -1;
         }
     }
@@ -116,7 +109,7 @@ public class Solver {
         if (!isSolvable()) return null;
         Stack<Board> ret = new Stack<>();
         Node curr = answer;
-        while(curr != null) {
+        while (curr != null) {
             ret.push(curr.board);
             curr = curr.prev;
         }
