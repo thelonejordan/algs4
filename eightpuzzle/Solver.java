@@ -34,6 +34,8 @@ public class Solver {
     // find a solution to the initial board (using the A* algorithm)
     public Solver(Board initial) {
 
+        if (initial == null) throw new IllegalArgumentException();
+
         Comparator<Node> BY_MANHATTON = new ByManhattanPriority();
 
         MinPQ<Node> pq = new MinPQ<>(BY_MANHATTON);

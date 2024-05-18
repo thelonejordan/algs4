@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  51/52 tests passed
+Correctness:  52/52 tests passed
 Memory:       22/22 tests passed
 Timing:       125/125 tests passed
 
-Aggregate score: 98.85%
+Aggregate score: 100.00%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,8 +23,8 @@ Aggregate score: 98.85%
 ```
 The following files were submitted:
 ----------------------------------
-6.3K May 18 14:27 Board.java
-4.4K May 18 14:27 Solver.java
+6.3K May 18 14:55 Board.java
+4.4K May 18 14:55 Solver.java
 
 
 ********************************************************************************
@@ -573,11 +573,7 @@ Test 10c: check that equals() method in Board is called only
 ==> passed
 
 Test 11: check that constructor throws exception if board is null
-    - throws wrong exception when calling constructor with a null argument
-    - throws a java.lang.NullPointerException
-    - should throw a java.lang.IllegalArgumentException
-
-==> FAILED
+==> passed
 
 Test 12a: check moves() with 2-by-2 file inputs
   * puzzle2x2-00.txt
@@ -750,7 +746,7 @@ Test 15b: check solution() with random solvable n-by-n boards
 ==> passed
 
 
-Total: 25/26 tests passed!
+Total: 26/26 tests passed!
 
 
 ================================================================
@@ -816,7 +812,7 @@ Test 1: Measure CPU time and check correctness
 ---------------------------------------------
 => passed  puzzle20.txt      20    3     0.01 
 => passed  puzzle22.txt      22    3     0.00 
-=> passed  puzzle21.txt      21    3     0.00 
+=> passed  puzzle21.txt      21    3     0.01 
 => passed  puzzle23.txt      23    3     0.01 
 => passed  puzzle24.txt      24    3     0.01 
 => passed  puzzle25.txt      25    3     0.01 
@@ -826,19 +822,19 @@ Test 1: Measure CPU time and check correctness
 => passed  puzzle28.txt      28    3     0.01 
 => passed  puzzle30.txt      30    3     0.02 
 => passed  puzzle31.txt      31    3     0.02 
-=> passed  puzzle39.txt      39    4     0.03 
-=> passed  puzzle41.txt      41    5     0.06 
-=> passed  puzzle34.txt      34    4     0.07 
+=> passed  puzzle39.txt      39    4     0.04 
+=> passed  puzzle41.txt      41    5     0.07 
+=> passed  puzzle34.txt      34    4     0.06 
 => passed  puzzle37.txt      37    4     0.07 
 => passed  puzzle44.txt      44    5     0.14 
-=> passed  puzzle32.txt      32    4     0.24 
-=> passed  puzzle35.txt      35    4     0.24 
-=> passed  puzzle33.txt      33    4     0.28 
-=> passed  puzzle43.txt      43    4     0.49 
-=> passed  puzzle46.txt      46    4     0.47 
-=> passed  puzzle40.txt      40    4     0.51 
-=> passed  puzzle36.txt      36    4     1.00 
-=> passed  puzzle45.txt      45    4     1.11 
+=> passed  puzzle32.txt      32    4     0.27 
+=> passed  puzzle35.txt      35    4     0.27 
+=> passed  puzzle33.txt      33    4     0.29 
+=> passed  puzzle43.txt      43    4     0.48 
+=> passed  puzzle46.txt      46    4     0.50 
+=> passed  puzzle40.txt      40    4     0.52 
+=> passed  puzzle36.txt      36    4     1.01 
+=> passed  puzzle45.txt      45    4     1.15 
 ==> 25/25 tests passed
 
 
