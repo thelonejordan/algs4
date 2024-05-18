@@ -3,3 +3,4 @@ project/
 downloads/*
 submissions/**/*.java
 percolation.sh
+eightpuzzle/puzzle*
