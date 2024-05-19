@@ -1,7 +1,7 @@
 // javac -cp .:lib/algs4.jar unionfind/PercolationStats.java
 // java -cp .:lib/algs4.jar unionfind.PercolationStats 30 100
 
-package unionfind;
+package percolation;
 
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;

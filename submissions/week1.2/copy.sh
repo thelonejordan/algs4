@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FOLDER=unionfind
+FOLDER=percolation
 
 rm Percolation.java
 rm PercolationStats.java

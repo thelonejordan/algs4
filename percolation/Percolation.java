@@ -1,4 +1,4 @@
-package unionfind;
+package percolation;
 
 // TODO: fix bonus test (MEMORY :: Analyzing memory of Percolation)
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FOLDER=collection
+FOLDER=queues
 
 rm Deque.java
 rm RandomizedQueue.java

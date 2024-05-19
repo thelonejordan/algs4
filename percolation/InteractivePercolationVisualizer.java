@@ -12,7 +12,7 @@
  * https://github.com/allegoricalJest/coursera-percolation/blob/main/InteractivePercolationVisualizer.java
  * 
  ******************************************************************************/
-package unionfind;
+package percolation;
 
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;

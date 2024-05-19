@@ -1,7 +1,7 @@
 // javac -cp .:lib/algs4.jar collection/RandomizedQueue.java
 // java -cp .:lib/algs4.jar collection.RandomizedQueue
 
-package collection;
+package queues;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

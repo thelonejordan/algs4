@@ -2,7 +2,7 @@
 // java -cp .:lib/algs4.jar collection.Permutation 3 < collection/distinct.txt
 // java -cp .:lib/algs4.jar collection.Permutation 8 < collection/duplicates.txt
 
-package collection;
+package queues;
 
 // TODO: fix bonus test (MEMORY :: Analyzing memory of Permutation) by using reservior sampling
 // https://github.com/herricane/Deques-and-Randomized-Queues/commit/617b7e35b9e4bebbf6d5a467b8d6d2f774428c37
