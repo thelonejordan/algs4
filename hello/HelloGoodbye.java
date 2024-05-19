@@ -1,5 +1,5 @@
 // javac hello/HelloGoodbye.java
-// java hello.HelloGoodbye
+// java hello.HelloGoodbye Tom Jerry
 
 package hello;
 
