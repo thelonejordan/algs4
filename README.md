@@ -41,33 +41,24 @@ Course Book:
 Compile a program
 
 ```sh
-javac HelloWorld.java
+javac SomeProgram.java
 ```
 
 ```sh
 # include jar lib
-# javac -cp $PWD:$PWD/example.jar HelloWorld.java
-javac -cp .:example.jar HelloWorld.java
+javac -cp .:example.jar SomeProgram.java
 ```
 
 Execute a program
 
 ```sh
-java HelloWorld
+java SomeProgram
 ```
 
 ```sh
 # include jar lib
-# javac -cp $PWD:$PWD/example.jar HelloWord
-java -cp .:example.jar HelloWord
+java -cp .:example.jar SomeProgram
 ```
-
-### FAQ
-
-How do I specify EOF to signal that standard input is empty? (Relevant to `RandomWord`)
-
-On Mac OS X and Linux, type `Enter` `Ctrl-D`. On Windows, type `Enter` `Ctrl-Z` `Enter`, even in Git Bash.
-
 
 ### Links
 

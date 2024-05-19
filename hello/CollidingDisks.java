@@ -1,3 +1,4 @@
+package hello;
 /******************************************************************************
  *  Compilation:  javac-algs4 CollidingDisks.java
  *                javac -cp .:lib/algs4.jar CollidingDisks.java

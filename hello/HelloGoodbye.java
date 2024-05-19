@@ -1,5 +1,7 @@
-// javac HelloGoodbye.java
-// java HelloGoodbye
+// javac hello/HelloGoodbye.java
+// java hello.HelloGoodbye
+
+package hello;
 
 public class HelloGoodbye {
 

@@ -1,6 +1,6 @@
-// javac -cp .:lib/algs4.jar collection/Permutation.java
-// java -cp .:lib/algs4.jar collection.Permutation 3 < collection/distinct.txt
-// java -cp .:lib/algs4.jar collection.Permutation 8 < collection/duplicates.txt
+// javac -cp .:lib/algs4.jar queues/Permutation.java
+// java -cp .:lib/algs4.jar queues.Permutation 3 < queues/distinct.txt
+// java -cp .:lib/algs4.jar queues.Permutation 8 < queues/duplicates.txt
 
 package queues;
 

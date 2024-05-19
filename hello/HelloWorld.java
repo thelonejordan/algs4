@@ -1,3 +1,8 @@
+// javac hello/HelloWorld.java
+//java hello.HelloWorld
+
+package hello;
+
 /******************************************************************************
  *  Source:       https://introcs.cs.princeton.edu/java/11hello/HelloWorld.java.html
  *  Compilation:  javac HelloWorld.java

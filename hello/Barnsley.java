@@ -1,3 +1,4 @@
+package hello;
 /* ****************************************************************************
  *  Compilation:  javac-introcs Barnsley.java
  *                javac -cp .:lib/algs4.jar Barnsley.java

@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac -cp .:lib/algs4.jar unionfind/InteractivePercolationVisualizer.java
- *  Execution:    java -cp .:lib/algs4.jar unionfind/InteractivePercolationVisualizer n
+ *  Compilation:  javac -cp .:lib/algs4.jar percolation/InteractivePercolationVisualizer.java
+ *  Execution:    java -cp .:lib/algs4.jar percolation/InteractivePercolationVisualizer n
  *  Dependencies: PercolationVisualizer.java Percolation.java
  *                StdDraw.java StdOut.java
  *
@@ -12,6 +12,7 @@
  * https://github.com/allegoricalJest/coursera-percolation/blob/main/InteractivePercolationVisualizer.java
  * 
  ******************************************************************************/
+
 package percolation;
 
 import edu.princeton.cs.algs4.StdDraw;

@@ -1,3 +1,9 @@
+// javac -cp lib/algs4.jar hello/RandomWord.java
+// java -cp .:lib/algs4.jar hello.RandomWord
+// java -cp .:lib/algs4.jar hello.RandomWord < hello/algorithms.txt
+
+package hello;
+
 /******************************************************************************
  * 
  * Source: https://github.com/camilamaia/jornada-big-tech/blob/main/coursera-algorithms-part-1/hello/RandomWord.java
