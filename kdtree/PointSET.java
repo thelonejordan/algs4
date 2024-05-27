@@ -1,12 +1,13 @@
 // javac -cp .:lib/algs4.jar kdtree/PointSET.java
-// java -cp .:lib/algs4.jar kdtree.PointSET kdtree/input10.txt
+// java -cp .:lib/algs4.jar kdtree.PointSET < kdtree/input10.txt
 
 package kdtree;
 
 import edu.princeton.cs.algs4.Stack;
-import edu.princeton.cs.algs4.SET;
-import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.SET;
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 
@@ -60,12 +61,11 @@ public class PointSET {
         return nearestPoint;
     }
     public static void main(String[] args) {                 // unit testing of the methods (optional)
-        if (args == null) throw new IllegalArgumentException();
-        In in = new In(args[0]);
+        
         PointSET pts = new PointSET();
-        while (!in.isEmpty()) {
-            double x = in.readDouble();
-            double y = in.readDouble();
+        while (!StdIn.isEmpty()) {
+            double x = StdIn.readDouble();
+            double y = StdIn.readDouble();
             pts.insert(new Point2D(x, y));
         }
         StdDraw.setPenRadius(0.01);
@@ -73,6 +73,15 @@ public class PointSET {
         StdDraw.setXscale(0, 1);
         StdDraw.setYscale(0, 1);
         pts.draw();
+        StdOut.println("no. of points = " + pts.size());
+        Point2D np = pts.nearest(new Point2D(0, 0));
+        StdOut.println("nearest = " + np.toString());
+        RectHV rect = new RectHV(0.5, 0.5, 1, 1);
+        StdDraw.setPenColor(StdDraw.RED);
+        rect.draw();
+        for (Point2D p : pts.range(rect)) {
+            StdOut.println("within range = " + p.toString());
+        }
         StdDraw.show();
     }
 }
