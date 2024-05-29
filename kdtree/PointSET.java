@@ -13,11 +13,9 @@ import edu.princeton.cs.algs4.RectHV;
 
 public class PointSET {
     private SET<Point2D> points;
+
     public PointSET() {                               // construct an empty set of points
         points = new SET<>();
-    }
-    private static void validate(Point2D p) {
-        if (p == null) throw new IllegalArgumentException();
     }
     public boolean isEmpty() {                     // is the set empty?
         return points.isEmpty();
@@ -26,11 +24,11 @@ public class PointSET {
         return points.size();
     } 
     public void insert(Point2D p) {             // add the point to the set (if it is not already in the set)
-        validate(p);
+        if (p == null) throw new IllegalArgumentException();
         points.add(p);
     }
     public boolean contains(Point2D p) {           // does the set contain point p?
-        validate(p);
+        if (p == null) throw new IllegalArgumentException();
         return points.contains(p);
     }
     public void draw() {                        // draw all points to standard draw
@@ -39,6 +37,7 @@ public class PointSET {
         }
     }
     public Iterable<Point2D> range(RectHV rect) {            // all points that are inside the rectangle (or on the boundary)
+        if (rect == null) throw new IllegalArgumentException();
         if (points.isEmpty()) return null;
         Stack<Point2D> ret = new Stack<>();
         for (Point2D p : points) {
@@ -47,6 +46,7 @@ public class PointSET {
         return ret;
     }
     public Point2D nearest(Point2D p) {            // a nearest neighbor in the set to point p; null if the set is empty
+        if (p == null) throw new IllegalArgumentException();
         if (points.isEmpty()) return null;
         Point2D nearestPoint = null;
         for (Point2D x : points) {
@@ -74,14 +74,16 @@ public class PointSET {
         StdDraw.setYscale(0, 1);
         pts.draw();
         StdOut.println("no. of points = " + pts.size());
-        Point2D np = pts.nearest(new Point2D(0, 0));
-        StdOut.println("nearest = " + np.toString());
-        RectHV rect = new RectHV(0.5, 0.5, 1, 1);
+        RectHV rect = new RectHV(0.25, 0.25, 0.6, 0.6);
         StdDraw.setPenColor(StdDraw.RED);
         rect.draw();
+        StdOut.println("range = " + rect.toString());
         for (Point2D p : pts.range(rect)) {
             StdOut.println("within range = " + p.toString());
         }
         StdDraw.show();
+        Point2D np = pts.nearest(new Point2D(0, 0));
+        if (np == null) StdOut.println("nearest = null");
+        else StdOut.println("nearest = " + np.toString());
     }
 }
