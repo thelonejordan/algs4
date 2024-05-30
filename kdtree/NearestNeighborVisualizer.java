@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac -cp .:lib/algs4.jar kdtree/NearestNeighborVisualizer.java
- *  Execution:    java -cp .:lib/algs4.jar kdtree.NearestNeighborVisualizer kdtree/input.txt
+ *  Execution:    java -cp .:lib/algs4.jar kdtree.NearestNeighborVisualizer kdtree/input10.txt
  *  Dependencies: PointSET.java KdTree.java
  *
  *  Read points from a file (specified as a command-line argument) and
