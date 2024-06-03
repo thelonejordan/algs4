@@ -1,4 +1,10 @@
+// javac -cp .:lib/algs4.jar wordnet/Outcast.java
+// java -cp .:lib/algs4.jar wordnet.Outcast wordnet/synsets.txt wordnet/hypernyms.txt wordnet/outcast5.txt wordnet/outcast8.txt wordnet/outcast11.txt
+
 package wordnet;
+
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Outcast {
     private final WordNet wn;
@@ -24,6 +30,13 @@ public class Outcast {
     }
 
     public static void main(String[] args) { // see test client below
-
+        if (args.length < 3) throw new IllegalArgumentException();
+        WordNet wordnet = new WordNet(args[0], args[1]);
+        Outcast outcast = new Outcast(wordnet);
+        for (int i = 2; i < args.length; i++) {
+            In in = new In(args[i]);
+            String[] nouns = in.readAllStrings();
+            StdOut.println(args[i] + ": " + outcast.outcast(nouns));
+        }
     }
 }

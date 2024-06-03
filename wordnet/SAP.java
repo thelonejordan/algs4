@@ -13,7 +13,7 @@ public class SAP {
     private final Digraph dg;
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph G) {
-        dg = G;
+        dg = new Digraph(G);
     }
 
     private void bfs(int s, boolean[] marked, int[] distance) {
@@ -79,6 +79,13 @@ public class SAP {
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
     public int length(Iterable<Integer> v, Iterable<Integer> w) {
+        if (v == null || w == null) throw new IllegalArgumentException();
+        for (Object iv : v) {
+            if (iv == null) throw new IllegalArgumentException();
+        }
+        for (Object iw : w) {
+            if (iw == null) throw new IllegalArgumentException();
+        }
         int minDist = -1;
         for (int iv : v) {
             for (int iw : w) {
@@ -93,9 +100,16 @@ public class SAP {
 
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
     public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
+        if (v == null || w == null) throw new IllegalArgumentException();
+        for (Object iv : v) {
+            if (iv == null) throw new IllegalArgumentException();
+        }
+        for (Object iw : w) {
+            if (iw == null) throw new IllegalArgumentException();
+        }
         int minDist = -1;
-        int a = 0;
-        int b = 0;
+        int a = -1;
+        int b = -1;
         for (int iv : v) {
             for (int iw : w) {
                 int dist = length(iv, iw);
@@ -108,6 +122,7 @@ public class SAP {
                 }
             }
         }
+        if (a == -1 || b == -1) return -1;
         return ancestor(a, b);
     }
 

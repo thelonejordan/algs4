@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  26/36 tests passed
+Correctness:  29/36 tests passed
 Memory:       4/4 tests passed
-Timing:       14/27 tests passed
+Timing:       13/27 tests passed
 
-Aggregate score: 73.70%
+Aggregate score: 77.96%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 73.70%
 ```
 The following files were submitted:
 ----------------------------------
- 796 Jun  2 23:14 Outcast.java
-4.2K Jun  2 23:14 SAP.java
-4.4K Jun  2 23:14 WordNet.java
+1.5K Jun  3 15:23 Outcast.java
+4.8K Jun  3 15:23 SAP.java
+4.4K Jun  3 15:23 WordNet.java
 
 
 ********************************************************************************
@@ -197,48 +197,13 @@ Test 14: check whether two SAP objects can be created at the same time
 
 Test 15: check whether SAP is immutable
   * digraph1.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 3
-    - student length before = 2
-    - student length after  = 1
-
   * digraph2.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 2
-    - student length before = 4
-    - student length after  = 1
-
   * digraph3.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 1
-    - student length before = -1
-    - student length after  = 1
-
   * digraph4.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 1
-    - student length before = 3
-    - student length after  = 1
-
   * digraph5.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 1
-    - student length before = -1
-    - student length after  = 1
-
   * digraph6.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 2
-    - student length before = 2
-    - student length after  = 1
-
   * digraph-ambiguous-ancestor.txt
-    - after adding edges (v, 0) to G
-    - v = 0, w = 2
-    - student length before = 2
-    - student length after  = 1
-
-==> FAILED
+==> passed
 
 Test 16: check length() and ancestor() with iterable arguments
   * 100 random subsets of 1 and 1 vertices in digraph-wordnet.txt
@@ -258,33 +223,9 @@ Test 16: check length() and ancestor() with iterable arguments
 
 Test 17: check length() and ancestor() with zero-length iterable arguments
   * 100 random subsets of 0 and 5 vertices in digraph-wordnet.txt
-    - failed on trial 1 of 100
-    - v = { }
-    - w = { 9665, 12898, 58940, 61847, 65330 }
-    - student   length   = -1
-    - reference length   = -1
-    - student   ancestor = 0
-    - reference ancestor = -1
-
   * 100 random subsets of 5 and 0 vertices in digraph-wordnet.txt
-    - failed on trial 1 of 100
-    - v = { 15586, 72334, 72990, 73839, 77565 }
-    - w = { }
-    - student   length   = -1
-    - reference length   = -1
-    - student   ancestor = 0
-    - reference ancestor = -1
-
   * 100 random subsets of 0 and 0 vertices in digraph-wordnet.txt
-    - failed on trial 1 of 100
-    - v = { }
-    - w = { }
-    - student   length   = -1
-    - reference length   = -1
-    - student   ancestor = 0
-    - reference ancestor = -1
-
-==> FAILED
+==> passed
 
 Test 18: check length() and ancestor() with invalid arguments
   * G = digraph1.txt v = -1, w = 0
@@ -294,56 +235,16 @@ Test 18: check length() and ancestor() with invalid arguments
 ==> passed
 
 Test 19: check iterable versions of length() and ancestor() with invalid arguments
-  * G = digraph1.txt, v = { 4, 8, 9, 10 }, w = null
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
-  * G = digraph1.txt, v = null, w = { 1, 6 }
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
+  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = null
+  * G = digraph1.txt, v = null, w = { 1, 4, 5, 8 }
   * G = digraph1.txt, v = null, w = null
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
-  * G = digraph1.txt, v = { 4, -1, 8, 9, 10 }, w = { 1, 6 }
-  * G = digraph1.txt, v = { 4, 8, 9, 10 }, w = { 1, 6, -1 }
-  * G = digraph1.txt, v = { 13, 4, 8, 9, 10 }, w = { 1, 6 }
-  * G = digraph1.txt, v = { 4, 8, 9, 10 }, w = { 1, 13, 6 }
-  * G = digraph1.txt, v = { 4, null, 8, 9, 10 }, w = { 1, 6 }
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
-  * G = digraph1.txt, v = { 4, 8, 9, 10 }, w = { null, 1, 6 }
-    - throws the wrong exception when calling length() with invalid argument
-    - length() throws a java.lang.NullPointerException
-    - length() should throw a java.lang.IllegalArgumentException
-
-    - throws the wrong exception when calling ancestor() with invalid argument
-    - ancestor() throws a java.lang.NullPointerException
-    - ancestor() should throw a java.lang.IllegalArgumentException
-
-==> FAILED
+  * G = digraph1.txt, v = { -1, 0, 2, 3, 6, 7, 10, 11, 12 }, w = { 1, 4, 5, 8 }
+  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = { -1, 1, 4, 5, 8 }
+  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12, 13 }, w = { 1, 4, 5, 8 }
+  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = { 1, 4, 5, 13, 8 }
+  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, null, 10, 11, 12 }, w = { 1, 4, 5, 8 }
+  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = { 1, 4, 5, null, 8 }
+==> passed
 
 Test 20: random calls to both version of length() and ancestor(),
          with probabilities p1 and p2, respectively
@@ -354,7 +255,7 @@ Test 20: random calls to both version of length() and ancestor(),
 ==> passed
 
 
-Total: 16/20 tests passed!
+Total: 19/20 tests passed!
 
 
 ================================================================
@@ -390,16 +291,16 @@ Test 3: check distance() with random noun pairs
 Test 4: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
     - failed considering pair 1 of 1000
-    - nounA = Diacalpa
-    - nounB = golden_parachute
-    - reference distance() = 17
-    - reference sap()      = 'abstraction abstract_entity'
+    - nounA = damsel
+    - nounB = styrax_family
+    - reference distance() = 15
+    - reference sap()      = 'entity'
 
 
     java.lang.OutOfMemoryError: Java heap space
 
     edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:104)
+    WordNet.sap(WordNet.java:105)
     TestWordNet.checkOneRandomSAP(TestWordNet.java:157)
     TestWordNet.checkRandomSAP(TestWordNet.java:229)
     TestWordNet.test4(TestWordNet.java:304)
@@ -485,16 +386,16 @@ Test 5: check sap() with all noun pairs
 Test 6: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
     - failed considering pair 1 of 1000
-    - nounA = proconvertin
-    - nounB = iodoprotein
-    - reference distance() = 4
-    - reference sap()      = 'protein'
+    - nounA = freshener
+    - nounB = iodinated_protein
+    - reference distance() = 9
+    - reference sap()      = 'entity'
 
 
     java.lang.OutOfMemoryError: Java heap space
 
     edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:104)
+    WordNet.sap(WordNet.java:105)
     TestWordNet.checkOneRandomSAP(TestWordNet.java:157)
     TestWordNet.checkRandomSAP(TestWordNet.java:229)
     TestWordNet.test6(TestWordNet.java:324)
@@ -502,10 +403,10 @@ Test 6: check sap() with random noun pairs
 
   * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
     - failed considering pair 1 of 1000
-    - nounA = antihaemophilic_globulin
-    - nounB = brain_sugar
-    - reference distance() = 9
-    - reference sap()      = 'macromolecule supermolecule'
+    - nounA = restriction_endonuclease
+    - nounB = Forssman_antibody
+    - reference distance() = 6
+    - reference sap()      = 'protein'
 
 
     java.lang.OutOfMemoryError: Java heap space
@@ -513,10 +414,10 @@ Test 6: check sap() with random noun pairs
 
   * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - failed considering pair 1 of 1000
-    - nounA = canine
-    - nounB = antihaemophilic_factor
-    - reference distance() = 15
-    - reference sap()      = 'thing'
+    - nounA = internode
+    - nounB = grey_substance
+    - reference distance() = 7
+    - reference sap()      = 'part piece'
 
 
     java.lang.OutOfMemoryError: Java heap space
@@ -716,7 +617,7 @@ Test 1c: check memory of WordNet object
   * synsets = synsets10000-subgraph.txt; hypernyms = hypernyms10000-subgraph.txt
     - number of vertices in digraph = 10000
     - number of edges    in digraph = 10087
-    - student   memory              = 8042400 bytes
+    - student   memory              = 8042280 bytes
     - reference memory              = 16173176 bytes
     - student / reference ratio     = 0.5
     - maximum allowed rato          = 2.0
@@ -740,15 +641,15 @@ Running 14 total tests.
 
 Test 1: time SAP constructor
    *  digraph-wordnet.txt
-      -  student solution time =  0.00 seconds
+      -  student solution time =  0.01 seconds
       -  maximum allowed  time =  1.00 seconds
 ==> passed
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  756221.00
-     -  student   solution calls per second:    6916.00
-     -  reference / student ratio:               109.34
+     -  reference solution calls per second:  766652.00
+     -  student   solution calls per second:    5543.00
+     -  reference / student ratio:               138.31
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -757,20 +658,20 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  229693.00
-     -  student   solution calls per second:     269.00
-     -  reference / student ratio:               853.88
+     -  reference solution calls per second:  233960.00
+     -  student   solution calls per second:     206.00
+     -  reference / student ratio:              1135.73
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
-=> passed      student <=  1000x reference
+=> FAILED      student <=  1000x reference
 => FAILED      student <=   500x reference
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   15725.00
+     -  reference solution calls per second:   16534.00
      -  student   solution calls per second:       1.00
-     -  reference / student ratio:             15725.00
+     -  reference / student ratio:             16534.00
 
 => FAILED      student <= 10000x reference
 => FAILED      student <=  5000x reference
@@ -782,11 +683,12 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
 
              V  seconds
         ---------------
-         65536     0.12
+         32768     0.06
+         65536     0.14
 ==> passed
 
 
-Total: 9/14 tests passed!
+Total: 8/14 tests passed!
 
 
 ================================================================
@@ -807,7 +709,7 @@ Test 1: check that exactly two In object created
     java.lang.OutOfMemoryError: Java heap space
 
     edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:104)
+    WordNet.sap(WordNet.java:105)
     TimeWordNet.test1(TimeWordNet.java:136)
     TimeWordNet.main(TimeWordNet.java:493)
 
@@ -819,7 +721,7 @@ Test 2: count number of SAP operations when constructing a WordNet object
     java.lang.OutOfMemoryError: Java heap space
 
     edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:104)
+    WordNet.sap(WordNet.java:105)
     TimeWordNet.test2(TimeWordNet.java:164)
     TimeWordNet.main(TimeWordNet.java:496)
 
@@ -863,9 +765,9 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  977092.00
-    - student   solution calls per second:  537874.00
-    - reference / student ratio:                 1.82
+    - reference solution calls per second: 1084968.00
+    - student   solution calls per second:  601320.00
+    - reference / student ratio:                 1.80
     - allowed ratio:                             4.00
 ==> passed
 
