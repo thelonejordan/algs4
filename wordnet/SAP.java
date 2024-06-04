@@ -10,6 +10,8 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class SAP {
+    // check out https://algs4.cs.princeton.edu/42directed/BreadthFirstDirectedPaths.java.html
+    // private static final int INFINITY = Integer.MAX_VALUE;
     private final Digraph dg;
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph G) {
@@ -28,6 +30,25 @@ public class SAP {
                     q.enqueue(w);
                     marked[w] = true;
                     distance[w] = distance[v] + 1;
+                }
+            }
+        }
+    }
+
+    private void bfs(Iterable<Integer> sources, boolean[] marked, int[] distance) {
+        Queue<Integer> q = new Queue<Integer>();
+        for (int s : sources) {
+            marked[s] = true;
+            distance[s] = 0;
+            q.enqueue(s);
+        }
+        while (!q.isEmpty()) {
+            int v = q.dequeue();
+            for (int w : dg.adj(v)) {
+                if (!marked[w]) {
+                    distance[w] = distance[v] + 1;
+                    marked[w] = true;
+                    q.enqueue(w);
                 }
             }
         }
@@ -82,17 +103,25 @@ public class SAP {
         if (v == null || w == null) throw new IllegalArgumentException();
         for (Object iv : v) {
             if (iv == null) throw new IllegalArgumentException();
+            int iiv = (int) iv;
+            if (iiv < 0 || iiv >= dg.V()) throw new IllegalArgumentException();
         }
         for (Object iw : w) {
             if (iw == null) throw new IllegalArgumentException();
+            int iiw = (int) iw;
+            if (iiw < 0 || iiw >= dg.V()) throw new IllegalArgumentException();
         }
+        boolean[] markedA = new boolean[dg.V()];
+        boolean[] markedB = new boolean[dg.V()];
+        int[] distanceA = new int[dg.V()];
+        int[] distanceB = new int[dg.V()];
+        bfs(v, markedA, distanceA);
+        bfs(w, markedB, distanceB);
         int minDist = -1;
-        for (int iv : v) {
-            for (int iw : w) {
-                int dist = length(iv, iw);
-                if (dist != -1) {
-                    if (minDist == -1 || minDist > dist) minDist = dist;
-                }
+        for (int i = 0; i < dg.V(); i++) {
+            if (markedA[i] && markedB[i]) {
+                int dist = distanceA[i] + distanceB[i];
+                if (minDist == -1 || minDist > dist) minDist = dist;
             }
         }
         return minDist;
@@ -103,27 +132,32 @@ public class SAP {
         if (v == null || w == null) throw new IllegalArgumentException();
         for (Object iv : v) {
             if (iv == null) throw new IllegalArgumentException();
+            int iiv = (int) iv;
+            if (iiv < 0 || iiv >= dg.V()) throw new IllegalArgumentException();
         }
         for (Object iw : w) {
             if (iw == null) throw new IllegalArgumentException();
+            int iiw = (int) iw;
+            if (iiw < 0 || iiw >= dg.V()) throw new IllegalArgumentException();
         }
+        boolean[] markedA = new boolean[dg.V()];
+        boolean[] markedB = new boolean[dg.V()];
+        int[] distanceA = new int[dg.V()];
+        int[] distanceB = new int[dg.V()];
+        bfs(v, markedA, distanceA);
+        bfs(w, markedB, distanceB);
         int minDist = -1;
-        int a = -1;
-        int b = -1;
-        for (int iv : v) {
-            for (int iw : w) {
-                int dist = length(iv, iw);
-                if (dist != -1) {
-                    if (minDist == -1 || minDist > dist) {
-                        minDist = dist;
-                        a = iv;
-                        b = iw;
-                    }
+        int sca = -1;
+        for (int i = 0; i < dg.V(); i++) {
+            if (markedA[i] && markedB[i]) {
+                int dist = distanceA[i] + distanceB[i];
+                if (minDist == -1 || minDist > dist) {
+                    minDist = dist;
+                    sca = i;
                 }
             }
         }
-        if (a == -1 || b == -1) return -1;
-        return ancestor(a, b);
+        return sca;
     }
 
     public static void main(String[] args) {

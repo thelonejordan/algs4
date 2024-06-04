@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  29/36 tests passed
+Correctness:  30/36 tests passed
 Memory:       4/4 tests passed
-Timing:       13/27 tests passed
+Timing:       19/27 tests passed
 
-Aggregate score: 77.96%
+Aggregate score: 84.07%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 77.96%
 ```
 The following files were submitted:
 ----------------------------------
-1.5K Jun  3 15:23 Outcast.java
-4.8K Jun  3 15:23 SAP.java
-4.4K Jun  3 15:23 WordNet.java
+1.5K Jun  4 13:48 Outcast.java
+6.3K Jun  4 13:48 SAP.java
+4.4K Jun  4 13:48 WordNet.java
 
 
 ********************************************************************************
@@ -212,14 +212,7 @@ Test 16: check length() and ancestor() with iterable arguments
   * 100 random subsets of 2 and 2 vertices in digraph-wordnet.txt
   * 100 random subsets of 3 and 11 vertices in digraph-wordnet.txt
   * 100 random subsets of 11 and 3 vertices in digraph-wordnet.txt
-
-    
-        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        OperationCountLimitExceededException
-        Number of primitive operations in Digraph exceeds limit: 1000000000
-        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-==> FAILED
+==> passed
 
 Test 17: check length() and ancestor() with zero-length iterable arguments
   * 100 random subsets of 0 and 5 vertices in digraph-wordnet.txt
@@ -235,15 +228,15 @@ Test 18: check length() and ancestor() with invalid arguments
 ==> passed
 
 Test 19: check iterable versions of length() and ancestor() with invalid arguments
-  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = null
-  * G = digraph1.txt, v = null, w = { 1, 4, 5, 8 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = null
+  * G = digraph1.txt, v = null, w = { 1, 2, 4, 5, 10 }
   * G = digraph1.txt, v = null, w = null
-  * G = digraph1.txt, v = { -1, 0, 2, 3, 6, 7, 10, 11, 12 }, w = { 1, 4, 5, 8 }
-  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = { -1, 1, 4, 5, 8 }
-  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12, 13 }, w = { 1, 4, 5, 8 }
-  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = { 1, 4, 5, 13, 8 }
-  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, null, 10, 11, 12 }, w = { 1, 4, 5, 8 }
-  * G = digraph1.txt, v = { 0, 2, 3, 6, 7, 10, 11, 12 }, w = { 1, 4, 5, null, 8 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12, -1 }, w = { 1, 2, 4, 5, 10 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = { 1, 2, -1, 4, 5, 10 }
+  * G = digraph1.txt, v = { 13, 0, 7, 9, 12 }, w = { 1, 2, 4, 5, 10 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = { 1, 2, 4, 5, 13, 10 }
+  * G = digraph1.txt, v = { 0, null, 7, 9, 12 }, w = { 1, 2, 4, 5, 10 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = { 1, 2, 4, null, 5, 10 }
 ==> passed
 
 Test 20: random calls to both version of length() and ancestor(),
@@ -255,7 +248,7 @@ Test 20: random calls to both version of length() and ancestor(),
 ==> passed
 
 
-Total: 19/20 tests passed!
+Total: 20/20 tests passed!
 
 
 ================================================================
@@ -291,10 +284,10 @@ Test 3: check distance() with random noun pairs
 Test 4: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
     - failed considering pair 1 of 1000
-    - nounA = damsel
-    - nounB = styrax_family
-    - reference distance() = 15
-    - reference sap()      = 'entity'
+    - nounA = bank_martin
+    - nounB = amnesic
+    - reference distance() = 12
+    - reference sap()      = 'organism being'
 
 
     java.lang.OutOfMemoryError: Java heap space
@@ -386,10 +379,10 @@ Test 5: check sap() with all noun pairs
 Test 6: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
     - failed considering pair 1 of 1000
-    - nounA = freshener
-    - nounB = iodinated_protein
-    - reference distance() = 9
-    - reference sap()      = 'entity'
+    - nounA = phosphoprotein
+    - nounB = protamine
+    - reference distance() = 3
+    - reference sap()      = 'protein'
 
 
     java.lang.OutOfMemoryError: Java heap space
@@ -403,10 +396,10 @@ Test 6: check sap() with random noun pairs
 
   * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
     - failed considering pair 1 of 1000
-    - nounA = restriction_endonuclease
-    - nounB = Forssman_antibody
-    - reference distance() = 6
-    - reference sap()      = 'protein'
+    - nounA = mustard_oil
+    - nounB = ring
+    - reference distance() = 7
+    - reference sap()      = 'unit building_block'
 
 
     java.lang.OutOfMemoryError: Java heap space
@@ -414,10 +407,10 @@ Test 6: check sap() with random noun pairs
 
   * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - failed considering pair 1 of 1000
-    - nounA = internode
-    - nounB = grey_substance
-    - reference distance() = 7
-    - reference sap()      = 'part piece'
+    - nounA = PSA
+    - nounB = pudendal_vein
+    - reference distance() = 13
+    - reference sap()      = 'thing'
 
 
     java.lang.OutOfMemoryError: Java heap space
@@ -509,6 +502,12 @@ Test 14: random calls to isNoun(), distance(), and sap(), with
 
 
 Total: 8/14 tests passed!
+
+
+
+WARNING: the time limit of 180 seconds was exceeded, so not all tests could be completed.
+         This usually indicates a performance bug or an infinite loop.
+
 
 
 ================================================================
@@ -647,9 +646,9 @@ Test 1: time SAP constructor
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  766652.00
-     -  student   solution calls per second:    5543.00
-     -  reference / student ratio:               138.31
+     -  reference solution calls per second:  674736.00
+     -  student   solution calls per second:    5209.00
+     -  reference / student ratio:               129.53
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -658,25 +657,25 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  233960.00
-     -  student   solution calls per second:     206.00
-     -  reference / student ratio:              1135.73
+     -  reference solution calls per second:  212391.00
+     -  student   solution calls per second:    4231.00
+     -  reference / student ratio:                50.20
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
-=> FAILED      student <=  1000x reference
-=> FAILED      student <=   500x reference
+=> passed      student <=  1000x reference
+=> passed      student <=   500x reference
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   16534.00
-     -  student   solution calls per second:       1.00
-     -  reference / student ratio:             16534.00
+     -  reference solution calls per second:   13341.00
+     -  student   solution calls per second:    2994.00
+     -  reference / student ratio:                 4.46
 
-=> FAILED      student <= 10000x reference
-=> FAILED      student <=  5000x reference
-=> FAILED      student <=  1000x reference
-=> FAILED      student <=   500x reference
+=> passed      student <= 10000x reference
+=> passed      student <=  5000x reference
+=> passed      student <=  1000x reference
+=> passed      student <=   500x reference
 
 Test 5: Time 10 calls to length() and ancestor() on random path graphs
         (must handle V = 65536 in under 2 seconds)
@@ -684,11 +683,11 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
              V  seconds
         ---------------
          32768     0.06
-         65536     0.14
+         65536     0.17
 ==> passed
 
 
-Total: 8/14 tests passed!
+Total: 14/14 tests passed!
 
 
 ================================================================
@@ -751,7 +750,7 @@ Test 4: count Digraph operations during 1000 calls each
 
 Test 5: time WordNet constructor
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - student constructor time =  0.31 seconds
+    - student constructor time =  0.33 seconds
     - maximum allowed     time = 10.00 seconds
 
 ==> passed
@@ -765,9 +764,9 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second: 1084968.00
-    - student   solution calls per second:  601320.00
-    - reference / student ratio:                 1.80
+    - reference solution calls per second:  914507.00
+    - student   solution calls per second:  511252.00
+    - reference / student ratio:                 1.79
     - allowed ratio:                             4.00
 ==> passed
 
