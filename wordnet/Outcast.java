@@ -1,5 +1,5 @@
 // javac -cp .:lib/algs4.jar wordnet/Outcast.java
-// java -cp .:lib/algs4.jar wordnet.Outcast wordnet/synsets.txt wordnet/hypernyms.txt wordnet/outcast5.txt wordnet/outcast8.txt wordnet/outcast11.txt
+// java -cp .:lib/algs4.jar wordnet.Outcast wordnet/synsets.txt wordnet/hypernyms.txt wordnet/outcast5.txt wordnet/outcast7.txt wordnet/outcast11.txt
 
 package wordnet;
 
