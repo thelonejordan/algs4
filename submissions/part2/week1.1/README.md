@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  35/36 tests passed
+Correctness:  36/36 tests passed
 Memory:       4/4 tests passed
 Timing:       27/27 tests passed
 
-Aggregate score: 98.33%
+Aggregate score: 100.00%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 98.33%
 ```
 The following files were submitted:
 ----------------------------------
-1.5K Jun  4 16:06 Outcast.java
-6.3K Jun  4 16:06 SAP.java
-3.7K Jun  4 16:06 WordNet.java
+1.5K Jun  4 19:18 Outcast.java
+6.3K Jun  4 19:18 SAP.java
+4.1K Jun  4 19:18 WordNet.java
 
 
 ********************************************************************************
@@ -308,20 +308,11 @@ Test 7: check whether WordNet is immutable
 
 Test 8: check constructor when input is not a rooted DAG
   * synsets3.txt, hypernyms3InvalidTwoRoots.txt
-    - constructor fails to throw an exception
-    - it should throw a java.lang.IllegalArgumentException
-
   * synsets3.txt, hypernyms3InvalidCycle.txt
   * synsets6.txt, hypernyms6InvalidTwoRoots.txt
-    - constructor fails to throw an exception
-    - it should throw a java.lang.IllegalArgumentException
-
   * synsets6.txt, hypernyms6InvalidCycle.txt
   * synsets6.txt, hypernyms6InvalidCycle+Path.txt
-    - constructor fails to throw an exception
-    - it should throw a java.lang.IllegalArgumentException
-
-==> FAILED
+==> passed
 
 Test 9: check isNoun()
   * synsets = synsets.txt; hypernyms = hypernyms.txt
@@ -367,7 +358,7 @@ Test 14: random calls to isNoun(), distance(), and sap(), with
 ==> passed
 
 
-Total: 13/14 tests passed!
+Total: 14/14 tests passed!
 
 
 ================================================================
@@ -476,8 +467,8 @@ Test 1c: check memory of WordNet object
   * synsets = synsets10000-subgraph.txt; hypernyms = hypernyms10000-subgraph.txt
     - number of vertices in digraph = 10000
     - number of edges    in digraph = 10087
-    - student   memory              = 9529432 bytes
-    - reference memory              = 16173536 bytes
+    - student   memory              = 9530904 bytes
+    - reference memory              = 16173200 bytes
     - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
 
@@ -506,9 +497,9 @@ Test 1: time SAP constructor
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  715066.00
-     -  student   solution calls per second:    5240.00
-     -  reference / student ratio:               136.46
+     -  reference solution calls per second:  737198.00
+     -  student   solution calls per second:    5525.00
+     -  reference / student ratio:               133.43
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -517,9 +508,9 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  215592.00
-     -  student   solution calls per second:    4759.00
-     -  reference / student ratio:                45.30
+     -  reference solution calls per second:  229916.00
+     -  student   solution calls per second:    4842.00
+     -  reference / student ratio:                47.48
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -528,9 +519,9 @@ Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   14818.00
-     -  student   solution calls per second:    3277.00
-     -  reference / student ratio:                 4.52
+     -  reference solution calls per second:   15603.00
+     -  student   solution calls per second:    3469.00
+     -  reference / student ratio:                 4.50
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -542,8 +533,8 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
 
              V  seconds
         ---------------
-         32768     0.05
-         65536     0.16
+         32768     0.07
+         65536     0.12
 ==> passed
 
 
@@ -581,7 +572,7 @@ Test 3: count Digraph operations during WordNet constructor
   * calls to constructor = 2
   * calls to addEdge()   = 84505
   * calls to adj()       = 82192
-  * calls to outdegree() = 0
+  * calls to outdegree() = 82192
   * calls to indegree()  = 82192
   * calls to reverse()   = 0
   * calls to toString()  = 0
@@ -593,7 +584,7 @@ Test 4: count Digraph operations during 1000 calls each
   * synsets = synsets.txt; hypernyms = hypernyms.txt
   * calls to constructor = 0
   * calls to addEdge()   = 0
-  * calls to adj()       = 46690
+  * calls to adj()       = 47018
   * calls to reverse()   = 0
   * calls to toString()  = 0
 
@@ -601,16 +592,16 @@ Test 4: count Digraph operations during 1000 calls each
 
 Test 5: time WordNet constructor
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - student constructor time =  0.36 seconds
+    - student constructor time =  0.38 seconds
     - maximum allowed     time = 10.00 seconds
 
 ==> passed
 
 Test 6a-e: time sap() and distance() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  200180.25
-    - student   solution calls per second:  123049.75
-    - reference / student ratio:                 1.63
+    - reference solution calls per second:  210240.00
+    - student   solution calls per second:  126404.50
+    - reference / student ratio:                 1.66
 
 => passed    student <= 10000x reference
 => passed    student <=  1000x reference
@@ -620,9 +611,9 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  988514.00
-    - student   solution calls per second:  497031.00
-    - reference / student ratio:                 1.99
+    - reference solution calls per second:  988603.00
+    - student   solution calls per second:  521271.00
+    - reference / student ratio:                 1.90
     - allowed ratio:                             4.00
 ==> passed
 

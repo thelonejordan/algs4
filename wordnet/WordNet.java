@@ -19,11 +19,11 @@ public class WordNet {
     public WordNet(String synsets, String hypernyms) {
         if (synsets == null) throw new IllegalArgumentException();
         if (hypernyms == null) throw new IllegalArgumentException();
-        int count = 0;
         vertices = new ST<>();
         nouns = new ST<>();
         In syn = new In(synsets);
         In hyp = new In(hypernyms);
+        int count = 0;
         while (!syn.isEmpty()) {
             String[] content = syn.readLine().split(",");
             assert content.length == 3;
@@ -53,10 +53,23 @@ public class WordNet {
                 dg.addEdge(synId, Integer.parseInt(content[i]));
             }
         }
-        // this ensures SAP methods doesn't return -1
-        Topological t = new Topological(dg);
-        if (!t.hasOrder()) throw new IllegalArgumentException();
+        // graph must be rooted in-tree DAG (see https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/DigraphGenerator.java.html)
+        // this ensures SAP methods, length() and ancestor(), don't return -1
+        if (!(isRootedIntree(dg) && isDAG(dg))) throw new IllegalArgumentException();
         sap = new SAP(dg);
+    }
+
+    private static boolean isRootedIntree(Digraph G) {
+        int count = 0;
+        for (int i = 0; i < G.V(); i++) {
+            if (G.outdegree(i) == 0) count++;
+        }
+        return count == 1;
+    }
+
+    private static boolean isDAG(Digraph G) {
+        Topological t = new Topological(G);
+        return t.hasOrder();
     }
 
     // returns all WordNet nouns
