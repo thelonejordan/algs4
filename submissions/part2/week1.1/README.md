@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  30/36 tests passed
+Correctness:  35/36 tests passed
 Memory:       4/4 tests passed
-Timing:       19/27 tests passed
+Timing:       27/27 tests passed
 
-Aggregate score: 84.07%
+Aggregate score: 98.33%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 84.07%
 ```
 The following files were submitted:
 ----------------------------------
-1.5K Jun  4 13:48 Outcast.java
-6.3K Jun  4 13:48 SAP.java
-4.4K Jun  4 13:48 WordNet.java
+1.5K Jun  4 16:06 Outcast.java
+6.3K Jun  4 16:06 SAP.java
+3.7K Jun  4 16:06 WordNet.java
 
 
 ********************************************************************************
@@ -283,150 +283,28 @@ Test 3: check distance() with random noun pairs
 
 Test 4: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
-    - failed considering pair 1 of 1000
-    - nounA = bank_martin
-    - nounB = amnesic
-    - reference distance() = 12
-    - reference sap()      = 'organism being'
-
-
-    java.lang.OutOfMemoryError: Java heap space
-
-    edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:105)
-    TestWordNet.checkOneRandomSAP(TestWordNet.java:157)
-    TestWordNet.checkRandomSAP(TestWordNet.java:229)
-    TestWordNet.test4(TestWordNet.java:304)
-    TestWordNet.main(TestWordNet.java:832)
-
-==> FAILED
+==> passed
 
 Test 5: check sap() with all noun pairs
   * synsets = synsets15.txt; hypernyms = hypernyms15Path.txt
-    - student returns invalid synset on pair 1 of 15
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets15.txt; hypernyms = hypernyms15Tree.txt
-    - student returns invalid synset on pair 1 of 15
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets6.txt; hypernyms = hypernyms6TwoAncestors.txt
-    - student returns invalid synset on pair 1 of 6
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets11.txt; hypernyms = hypernyms11AmbiguousAncestor.txt
-    - student returns invalid synset on pair 1 of 11
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets8.txt; hypernyms = hypernyms8ModTree.txt
-    - student returns invalid synset on pair 1 of 8
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets8.txt; hypernyms = hypernyms8WrongBFS.txt
-    - student returns invalid synset on pair 1 of 8
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets11.txt; hypernyms = hypernyms11ManyPathsOneAncestor.txt
-    - student returns invalid synset on pair 1 of 11
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
   * synsets = synsets8.txt; hypernyms = hypernyms8ManyAncestors.txt
-    - student returns invalid synset on pair 1 of 8
-    - nounA = a
-    - nounB = a
-    - student   distance() = 0
-    - reference distance() = 0
-    - student   sap() = '0'
-    - reference sap() = 'a'
-
-==> FAILED
+==> passed
 
 Test 6: check sap() with random noun pairs
   * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
-    - failed considering pair 1 of 1000
-    - nounA = phosphoprotein
-    - nounB = protamine
-    - reference distance() = 3
-    - reference sap()      = 'protein'
-
-
-    java.lang.OutOfMemoryError: Java heap space
-
-    edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:105)
-    TestWordNet.checkOneRandomSAP(TestWordNet.java:157)
-    TestWordNet.checkRandomSAP(TestWordNet.java:229)
-    TestWordNet.test6(TestWordNet.java:324)
-    TestWordNet.main(TestWordNet.java:838)
-
   * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
-    - failed considering pair 1 of 1000
-    - nounA = mustard_oil
-    - nounB = ring
-    - reference distance() = 7
-    - reference sap()      = 'unit building_block'
-
-
-    java.lang.OutOfMemoryError: Java heap space
-
-
   * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
-    - failed considering pair 1 of 1000
-    - nounA = PSA
-    - nounB = pudendal_vein
-    - reference distance() = 13
-    - reference sap()      = 'thing'
-
-
-    java.lang.OutOfMemoryError: Java heap space
-
-
-==> FAILED
+==> passed
 
 Test 7: check whether WordNet is immutable
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - failed on noun 0
-
-
-    java.lang.OutOfMemoryError: Java heap space
-
-
-==> FAILED
+==> passed
 
 Test 8: check constructor when input is not a rooted DAG
   * synsets3.txt, hypernyms3InvalidTwoRoots.txt
@@ -484,30 +362,12 @@ Test 14: random calls to isNoun(), distance(), and sap(), with
          probabilities p1, p2, and p3, respectively
   * 100 random calls (p1 = 0.5, p2 = 0.5, p3 = 0.0)
   * 100 random calls (p1 = 0.5, p2 = 0.0, p3 = 0.5)
-
-    java.lang.OutOfMemoryError: Java heap space
-
-
   * 100 random calls (p1 = 0.0, p2 = 0.5, p3 = 0.5)
-
-    java.lang.OutOfMemoryError: Java heap space
-
-
   * 100 random calls (p1 = 0.2, p2 = 0.4, p3 = 0.4)
-
-    java.lang.OutOfMemoryError: Java heap space
-
-
-==> FAILED
+==> passed
 
 
-Total: 8/14 tests passed!
-
-
-
-WARNING: the time limit of 180 seconds was exceeded, so not all tests could be completed.
-         This usually indicates a performance bug or an infinite loop.
-
+Total: 13/14 tests passed!
 
 
 ================================================================
@@ -594,9 +454,9 @@ Test 1a: check memory of WordNet object
   * synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - number of vertices in digraph = 1000
     - number of edges    in digraph = 1008
-    - student   memory              = 680016 bytes
+    - student   memory              = 806832 bytes
     - reference memory              = 1441648 bytes
-    - student / reference ratio     = 0.5
+    - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
 
 ==> passed
@@ -605,9 +465,9 @@ Test 1b: check memory of WordNet object
   * synsets = synsets5000-subgraph.txt; hypernyms = hypernyms5000-subgraph.txt
     - number of vertices in digraph = 5000
     - number of edges    in digraph = 5059
-    - student   memory              = 3346008 bytes
-    - reference memory              = 7042496 bytes
-    - student / reference ratio     = 0.5
+    - student   memory              = 3993736 bytes
+    - reference memory              = 7042168 bytes
+    - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
 
 ==> passed
@@ -616,9 +476,9 @@ Test 1c: check memory of WordNet object
   * synsets = synsets10000-subgraph.txt; hypernyms = hypernyms10000-subgraph.txt
     - number of vertices in digraph = 10000
     - number of edges    in digraph = 10087
-    - student   memory              = 8042280 bytes
-    - reference memory              = 16173176 bytes
-    - student / reference ratio     = 0.5
+    - student   memory              = 9529432 bytes
+    - reference memory              = 16173536 bytes
+    - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
 
 ==> passed
@@ -646,9 +506,9 @@ Test 1: time SAP constructor
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  674736.00
-     -  student   solution calls per second:    5209.00
-     -  reference / student ratio:               129.53
+     -  reference solution calls per second:  715066.00
+     -  student   solution calls per second:    5240.00
+     -  reference / student ratio:               136.46
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -657,9 +517,9 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  212391.00
-     -  student   solution calls per second:    4231.00
-     -  reference / student ratio:                50.20
+     -  reference solution calls per second:  215592.00
+     -  student   solution calls per second:    4759.00
+     -  reference / student ratio:                45.30
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -668,9 +528,9 @@ Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   13341.00
-     -  student   solution calls per second:    2994.00
-     -  reference / student ratio:                 4.46
+     -  reference solution calls per second:   14818.00
+     -  student   solution calls per second:    3277.00
+     -  reference / student ratio:                 4.52
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
@@ -682,8 +542,8 @@ Test 5: Time 10 calls to length() and ancestor() on random path graphs
 
              V  seconds
         ---------------
-         32768     0.06
-         65536     0.17
+         32768     0.05
+         65536     0.16
 ==> passed
 
 
@@ -704,33 +564,21 @@ Running 11 total tests.
 
 Test 1: check that exactly two In object created
         (one for synsets file and one for hypernyms file)
-
-    java.lang.OutOfMemoryError: Java heap space
-
-    edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:105)
-    TimeWordNet.test1(TimeWordNet.java:136)
-    TimeWordNet.main(TimeWordNet.java:493)
-
-==> FAILED
+==> passed
 
 Test 2: count number of SAP operations when constructing a WordNet object
         and calling distance() and sap() three times each
+  * calls to constructor = 1
+  * calls to length()    = 3
+  * calls to ancestor()  = 3
 
-    java.lang.OutOfMemoryError: Java heap space
-
-    edu.princeton.cs.algs4.Stack.push(Stack.java:93)
-    WordNet.sap(WordNet.java:105)
-    TimeWordNet.test2(TimeWordNet.java:164)
-    TimeWordNet.main(TimeWordNet.java:496)
-
-==> FAILED
+==> passed
 
 Test 3: count Digraph operations during WordNet constructor
   * synsets = synsets.txt; hypernyms = hypernyms.txt
   * number of synsets    = 82192
   * number of hypernyms  = 84505
-  * calls to constructor = 1
+  * calls to constructor = 2
   * calls to addEdge()   = 84505
   * calls to adj()       = 82192
   * calls to outdegree() = 0
@@ -742,35 +590,43 @@ Test 3: count Digraph operations during WordNet constructor
 
 Test 4: count Digraph operations during 1000 calls each
         to distance() and sap()
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+  * calls to constructor = 0
+  * calls to addEdge()   = 0
+  * calls to adj()       = 46690
+  * calls to reverse()   = 0
+  * calls to toString()  = 0
 
-    java.lang.OutOfMemoryError: Java heap space: failed reallocation of scalar replaced objects
-
-
-==> FAILED
+==> passed
 
 Test 5: time WordNet constructor
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - student constructor time =  0.33 seconds
+    - student constructor time =  0.36 seconds
     - maximum allowed     time = 10.00 seconds
 
 ==> passed
 
 Test 6a-e: time sap() and distance() with random nouns
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+    - reference solution calls per second:  200180.25
+    - student   solution calls per second:  123049.75
+    - reference / student ratio:                 1.63
 
-    java.lang.OutOfMemoryError: Java heap space: failed reallocation of scalar replaced objects
-
-
-==> FAILED
+=> passed    student <= 10000x reference
+=> passed    student <=  1000x reference
+=> passed    student <=   100x reference
+=> passed    student <=    10x reference
+=> passed    student <=     5x reference
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  914507.00
-    - student   solution calls per second:  511252.00
-    - reference / student ratio:                 1.79
+    - reference solution calls per second:  988514.00
+    - student   solution calls per second:  497031.00
+    - reference / student ratio:                 1.99
     - allowed ratio:                             4.00
 ==> passed
 
-Total: 3/11 tests passed!
+Total: 11/11 tests passed!
 
 
 ================================================================

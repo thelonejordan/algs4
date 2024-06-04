@@ -4,22 +4,23 @@
 package wordnet;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Queue;
-import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Topological;
 import edu.princeton.cs.algs4.ST;
+import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.SET;
 import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.Topological;
 
 public class WordNet {
-    private final Digraph dg;
+    private final ST<Integer, String> vertices;
     private final ST<String, SET<Integer>> nouns;
+    private final SAP sap;
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
         if (synsets == null) throw new IllegalArgumentException();
         if (hypernyms == null) throw new IllegalArgumentException();
         int count = 0;
+        vertices = new ST<>();
         nouns = new ST<>();
         In syn = new In(synsets);
         In hyp = new In(hypernyms);
@@ -30,6 +31,7 @@ public class WordNet {
             String synset = content[1];
             // String definition = content[2];
             String[] words = synset.split(" ");
+            vertices.put(id, synset);
             for (String word : words) {
                 if (nouns.contains(word)) {
                     nouns.get(word).add(id);
@@ -42,7 +44,7 @@ public class WordNet {
             }
             count++;
         }
-        dg = new Digraph(count);
+        Digraph dg = new Digraph(count);
         while (!hyp.isEmpty()) {
             String[] content = hyp.readLine().split(",");
             assert content.length >= 1;
@@ -51,8 +53,10 @@ public class WordNet {
                 dg.addEdge(synId, Integer.parseInt(content[i]));
             }
         }
+        // this ensures SAP methods doesn't return -1
         Topological t = new Topological(dg);
         if (!t.hasOrder()) throw new IllegalArgumentException();
+        sap = new SAP(dg);
     }
 
     // returns all WordNet nouns
@@ -67,57 +71,15 @@ public class WordNet {
 
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
-        SAP sap = new SAP(dg);
         return sap.length(nouns.get(nounA), nouns.get(nounB));
-    }
-
-    private int[] bfs(int s) {
-        boolean[] marked = new boolean[dg.V()];
-        int[] edgeTo = new int[dg.V()];
-        Queue<Integer> q = new Queue<>();
-        q.enqueue(s);
-        marked[s] = true;
-        while (!q.isEmpty()) {
-            int v = q.dequeue();
-            for (int w : dg.adj(v)) {
-                if (!marked[w]) {
-                    marked[w] = true;
-                    edgeTo[w] = v;
-                }
-            }
-        }
-        return edgeTo;
     }
 
     // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
     // in a shortest ancestral path (defined below)
     public String sap(String nounA, String nounB) {
-        SAP sap = new SAP(dg);
         SET<Integer> as = nouns.get(nounA);
         SET<Integer> bs = nouns.get(nounB);
-        int ca = sap.ancestor(as, bs);
-        int[] edgeTo = bfs(ca);
-        int a = ca;
-        int b = ca;
-        Stack<Integer> s = new Stack<>();
-        Queue<Integer> q = new Queue<>();
-        while (!as.contains(a)) {
-            a = edgeTo[a];
-            s.push(a);
-        }
-        while (!bs.contains(b)) {
-            b = edgeTo[b];
-            q.enqueue(b);
-        }
-        StringBuilder out = new StringBuilder();
-        while (!s.isEmpty()) {
-            out.append(s.pop() + "-");
-        }
-        out.append(ca);
-        while (!q.isEmpty()) {
-            out.append("-" + q.dequeue());
-        }
-        return out.toString();
+        return vertices.get(sap.ancestor(as, bs));
     }
 
     // do unit testing of this class
@@ -127,10 +89,13 @@ public class WordNet {
             StdOut.println(noun);
             StdOut.println(wn.nouns.get(noun));
         }
-        String nounA = "1900s";
-        String nounB = "9/11";
-        StdOut.println(wn.isNoun(nounA));
-        StdOut.println(wn.isNoun(nounB));
-        StdOut.println(wn.distance(nounA, nounB));
+        while (!StdIn.isEmpty()) {
+            String nounA = StdIn.readString();
+            String nounB = StdIn.readString();
+            StdOut.println("isNoun(nounA) = " + wn.isNoun(nounA));
+            StdOut.println("isNoun(nounB) = " + wn.isNoun(nounB));
+            StdOut.println("distance(nounA, nounB) = " + wn.distance(nounA, nounB));
+            StdOut.println("sap(nounA, nounB) = " + wn.sap(nounA, nounB));
+        }
     }
 }
