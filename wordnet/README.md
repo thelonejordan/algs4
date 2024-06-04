@@ -1,0 +1,5 @@
+## WORDNET
+
+Specification: https://coursera.cs.princeton.edu/algs4/assignments/wordnet/specification.php
+
+Grade: 100% ([assessment report](../submissions/part2/week1/README.md))
