@@ -62,13 +62,6 @@ java -cp .:example.jar SomeProgram
 
 ### Links
 
-#### Coursera
-
-* [Syllabus](https://www.coursera.org/learn/algorithms-part1/resources/CrmR4)
-* [Assessment Guide]( https://www.coursera.org/learn/algorithms-part1/resources/R2mre)
-* https://coursera.cs.princeton.edu/algs4/assignments/hello/specification.php
-* https://coursera.cs.princeton.edu/algs4/assignments/hello/faq.php
-
 #### Course
 
 * https://algs4.cs.princeton.edu/home/
@@ -84,13 +77,13 @@ java -cp .:example.jar SomeProgram
 * https://introcs.cs.princeton.edu/code/stdlib.jar
 * http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar
 
-#### Brew Installation Links
+#### Brew
 
 * https://formulae.brew.sh/formula/openjdk
 * https://formulae.brew.sh/formula/checkstyle
 * https://formulae.brew.sh/formula/spotbugs
 * https://formulae.brew.sh/formula/pmd
 
-### More
+#### More
 
 * https://openjdk.org/jeps/330
