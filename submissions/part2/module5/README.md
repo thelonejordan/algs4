@@ -10,11 +10,11 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  31/34 tests passed
+Correctness:  34/34 tests passed
 Memory:       6/6 tests passed
 Timing:       18/17 tests passed
 
-Aggregate score: 95.88%
+Aggregate score: 101.18%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,7 +23,7 @@ Aggregate score: 95.88%
 ```
 The following files were submitted:
 ----------------------------------
-7.3K Jul  4 09:17 SeamCarver.java
+7.4K Jul  4 10:04 SeamCarver.java
 
 
 ********************************************************************************
@@ -327,97 +327,25 @@ Test 8: check energy() with invalid arguments
 
 Test 9a: check removeVerticalSeam() with invalid seam
   * picture = 10x10.png
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 3 is not between 0 and 9
-    - invalid seam = { 9, 8, 9, 10, 9, 9, 9, 8, 8, 7 }
-    - failed on trial 1 of 250
-
   * picture = 3x7.png
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 2
-    - invalid seam = { 6, 5, 5, 5, 5, 5, 5 }
-    - failed on trial 1 of 250
-
   * picture = 7x3.png
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 2 is not between 0 and 6
-    - invalid seam = { 5, 6, 7 }
-    - failed on trial 3 of 250
-
   * picture = 10x12.png
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 1 is not between 0 and 9
-    - invalid seam = { 0, -1, 0, 1, 2, 2, 2, 3, 2, 3, 2, 3 }
-    - failed on trial 4 of 250
-
   * picture = 12x10.png
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 1 is not between 0 and 11
-    - invalid seam = { 11, 12, 12, 12, 13, 13, 13, 12, 12, 12 }
-    - failed on trial 1 of 250
-
   * picture = 1x8.png
   * picture = 8x1.png
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 7
-    - invalid seam = { 10 }
-    - failed on trial 1 of 250
-
   * picture = 1x1.png
-==> FAILED
+==> passed
 
 Test 9b: check removeHorizontalSeam() with invalid seam
   * picture = 10x10.png
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 9
-    - invalid seam = { 13, 13, 14, 13, 14, 13, 13, 12, 13, 12 }
-    - failed on trial 1 of 250
-
   * picture = 3x7.png
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 6
-    - invalid seam = { -1, 0, 1 }
-    - failed on trial 1 of 250
-
   * picture = 7x3.png
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 2 is not between 0 and 2
-    - invalid seam = { 2, 2, 3, 2, 2, 3, 3 }
-    - failed on trial 2 of 250
-
   * picture = 10x12.png
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 8 is not between 0 and 11
-    - invalid seam = { 10, 9, 9, 9, 10, 10, 10, 11, 12, 12 }
-    - failed on trial 1 of 250
-
   * picture = 12x10.png
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 9
-    - invalid seam = { -1, -2, -2, -1, 0, -1, -2, -1, -1, -1, -1, -2 }
-    - failed on trial 1 of 250
-
   * picture = 1x8.png
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 7
-    - invalid seam = { -1 }
-    - failed on trial 1 of 250
-
   * picture = 8x1.png
   * picture = 1x1.png
-==> FAILED
+==> passed
 
 Test 9c: check removeHorizontalSeam() and removeVerticalSeam() with null arguments
   * picture = 6x5.png
@@ -499,79 +427,12 @@ Test 12e: check intermixed calls to findHorizontalSeam(), findVerticalSeam(),
 Test 12f: check intermixed calls to removeHorizontalSeam(), and removeVerticalSeam(),
           and picture(), with optimal or invalid seams on small images
   * 250 random 5-by-6 images with p = (0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5)
-    - failed on image 2 of 250
-    - failed on operation 5 of 5
-    - fails to throw an exception when calling removeHorizontalSeam()
-      with an invalid seam
-    - entry 0 is not between 0 and 4
-    - invalid seam = { -1, 0, 1, 0, 1 }
-    - sequence of operations was:
-      Picture picture = new Picture(...)
-      
-       5-by-6 picture (RGB values given in hex)
-       #060206 #080309 #080407 #090906 #070308 
-       #050802 #070007 #070403 #040800 #020409 
-       #040801 #040107 #050506 #090903 #040005 
-       #070802 #080402 #080203 #060801 #050802 
-       #050603 #080709 #040300 #080503 #040307 
-       #070106 #040804 #020006 #040500 #080203
-
-      SeamCarver carver = new SeamCarver(picture)
-      carver.picture()
-      carver.picture()
-      carver.picture()
-      carver.removeHorizontalSeam([3, 4, 3, 2, 1])
-      carver.removeHorizontalSeam([-1, 0, 1, 0, 1])
-
   * 250 random 6-by-5 images with p = (0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.5)
-    - failed on image 1 of 250
-    - failed on operation 5 of 5
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 4 is not between 0 and 4
-    - invalid seam = { 2, 3, 4, 4, 5 }
-    - sequence of operations was:
-      Picture picture = new Picture(...)
-      
-       6-by-5 picture (RGB values given in hex)
-       #060103 #050304 #020504 #090908 #080807 #090000 
-       #030908 #030007 #030609 #060406 #090002 #030002 
-       #060404 #080501 #090203 #050305 #060409 #040508 
-       #010207 #070807 #030101 #020005 #080503 #070808 
-       #080409 #030602 #080901 #030203 #080501 #060103
-
-      SeamCarver carver = new SeamCarver(picture)
-      carver.picture()
-      carver.removeVerticalSeam([3, 4, 4, 3, 2])
-      carver.picture()
-      carver.picture()
-      carver.removeVerticalSeam([2, 3, 4, 4, 5])
-
   * 250 random 6-by-6 images with p = (0.0, 0.0, 0.3, 0.3, 0.0, 0.0, 0.0, 0.4)
-    - failed on image 1 of 250
-    - failed on operation 1 of 5
-    - fails to throw an exception when calling removeVerticalSeam()
-      with an invalid seam
-    - entry 5 is not between 0 and 5
-    - invalid seam = { 3, 4, 5, 5, 5, 6 }
-    - sequence of operations was:
-      Picture picture = new Picture(...)
-      
-       6-by-6 picture (RGB values given in hex)
-       #060708 #040600 #020207 #050804 #040807 #050909 
-       #090103 #010500 #060101 #050306 #010100 #050405 
-       #090703 #060805 #090508 #080109 #040308 #020108 
-       #000502 #020006 #070002 #060303 #020407 #090808 
-       #050500 #070409 #070207 #040908 #000007 #030602 
-       #020703 #000905 #030802 #000503 #000405 #050106
-
-      SeamCarver carver = new SeamCarver(picture)
-      carver.removeVerticalSeam([3, 4, 5, 5, 5, 6])
-
-==> FAILED
+==> passed
 
 
-Total: 31/34 tests passed!
+Total: 34/34 tests passed!
 
 
 ================================================================
@@ -640,9 +501,9 @@ Test 2: create a SeamCarver object for a given 736-by-584 picture;
 ==> passed
 
 Tests 3a-3c: time removeVerticalSeam() for a given 736-by-584 picture
-  * student   solution calls per second:      18.89
-  * reference solution calls per second:      54.37
-  * reference / student ratio:                 2.88
+  * student   solution calls per second:      19.45
+  * reference solution calls per second:      67.36
+  * reference / student ratio:                 3.46
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
@@ -650,17 +511,17 @@ Tests 3a-3c: time removeVerticalSeam() for a given 736-by-584 picture
 
 Tests 4a-4c: time findVerticalSeam() and removeVerticalSeam()
              for a given 736-by-584 picture
-  * student   solution calls per second:       8.83
-  * reference solution calls per second:      10.65
-  * reference / student ratio:                 1.21
+  * student   solution calls per second:       8.71
+  * reference solution calls per second:      10.71
+  * reference / student ratio:                 1.23
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
 => passed      student <=   2.3x reference
 
 Tests 5a-5c: time removeHorizontalSeam() for a given 736-by-584 picture
-  * student   solution calls per second:      68.39
-  * reference solution calls per second:      18.90
+  * student   solution calls per second:      66.99
+  * reference solution calls per second:      18.99
   * reference / student ratio:                 0.28
 
 => passed      student <= 150.0x reference
@@ -669,9 +530,9 @@ Tests 5a-5c: time removeHorizontalSeam() for a given 736-by-584 picture
 
 Tests 6a-6c: time findHorizontalSeam() and removeHorizontalSeam()
              for a given 736-by-584 picture
-  * student   solution calls per second:      16.48
-  * reference solution calls per second:       6.62
-  * reference / student ratio:                 0.40
+  * student   solution calls per second:      16.08
+  * reference solution calls per second:       6.80
+  * reference / student ratio:                 0.42
 
 => passed      student <= 150.0x reference
 => passed      student <=  15.0x reference
@@ -679,8 +540,8 @@ Tests 6a-6c: time findHorizontalSeam() and removeHorizontalSeam()
 
 Tests 7a-7c: time findHorizontalSeam(), removeHorizontalSeam(), findVerticalSeam(),
              and removeVerticalSeam() for a given 736-by-584 picture
-  * student   solution calls per second:       5.88
-  * reference solution calls per second:       4.23
+  * student   solution calls per second:       5.87
+  * reference solution calls per second:       4.22
   * reference / student ratio:                 0.72
 
 => passed      student <= 150.0x reference

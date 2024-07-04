@@ -66,15 +66,6 @@ public class SeamCarver {
             }
         }
 
-        // StdOut.println("energies:");
-        // for (int y = 0; y < h; y++) {
-        //     for (int x = 0; x < w; x++) {
-        //         StdOut.printf("%.2f", energies[x][y]);
-        //         StdOut.print(" ");
-        //     }
-        //     StdOut.println();
-        // }
-
         for (int x = 0; x < w - 1; x++) {
             for (int y = 0; y < h; y++) {
                 // from   -> (x, y)
@@ -103,21 +94,6 @@ public class SeamCarver {
                 }
             }
         }
-        // StdOut.println("distTo:");
-        // for (int y = 0; y < h; y++) {
-        //     for (int x = 0; x < w; x++) {
-        //         StdOut.printf("%.2f", distTo[x][y]);
-        //         StdOut.print(" ");
-        //     }
-        //     StdOut.println();
-        // }
-        // StdOut.println("edgeTo:");
-        // for (int y = 0; y < h; y++) {
-        //     for (int x = 0; x < w; x++) {
-        //         StdOut.print(edgeTo[x][y] + " ");
-        //     }
-        //     StdOut.println();
-        // }
 
         int minPos = 0; // y
         double minDist = Double.POSITIVE_INFINITY;
@@ -163,8 +139,11 @@ public class SeamCarver {
     private void validateSeam(int[] seam, int w, int h) {
         if (h <= 1) throw new IllegalArgumentException();
         if (seam == null || seam.length != w) throw new IllegalArgumentException();
-        for (int i = 1; i < seam.length; i++) {
-            if (Math.abs(seam[i] - seam[i-1]) > 1) throw new IllegalArgumentException();
+        for (int i = 0; i < seam.length; i++) {
+            if (seam[i] < 0 || seam[i] >= h) throw new IllegalArgumentException();
+            if (i > 0) {
+                if (Math.abs(seam[i] - seam[i-1]) > 1) throw new IllegalArgumentException();
+            }
         }
     }
 
