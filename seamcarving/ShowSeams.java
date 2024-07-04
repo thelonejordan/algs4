@@ -9,6 +9,8 @@
  *
  ******************************************************************************/
 
+package seamcarving;
+
 import edu.princeton.cs.algs4.Picture;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -34,7 +36,7 @@ public class ShowSeams {
         StdOut.printf("image is %d columns by %d rows\n", picture.width(), picture.height());
         picture.show();        
         SeamCarver sc = new SeamCarver(picture);
-        
+
         StdOut.printf("Displaying horizontal seam calculated.\n");
         showHorizontalSeam(sc);
 
