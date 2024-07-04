@@ -160,9 +160,9 @@ public class SeamCarver {
         return findSeam(transpose(pic), energies);
     }
 
-    private void validateSeam(int[] seam, int length) {
-        if (length <= 1) throw new IllegalArgumentException();
-        if (seam == null || seam.length != length) throw new IllegalArgumentException();
+    private void validateSeam(int[] seam, int w, int h) {
+        if (h <= 1) throw new IllegalArgumentException();
+        if (seam == null || seam.length != w) throw new IllegalArgumentException();
         for (int i = 1; i < seam.length; i++) {
             if (Math.abs(seam[i] - seam[i-1]) > 1) throw new IllegalArgumentException();
         }
@@ -193,13 +193,13 @@ public class SeamCarver {
 
     // remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
-        validateSeam(seam, width());
+        validateSeam(seam, width(), height());
         pic = removeSeam(pic, seam);
     }
 
     // remove vertical seam from current picture
     public void removeVerticalSeam(int[] seam) {
-        validateSeam(seam, height());
+        validateSeam(seam, height(), width());
         pic = transpose(removeSeam(transpose(pic), seam));
     }
 
