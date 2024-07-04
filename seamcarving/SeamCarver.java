@@ -170,8 +170,8 @@ public class SeamCarver {
 
     private static Picture transpose(Picture picture) {
         Picture transposed = new Picture(picture.height(), picture.width());
-        for (int x = 0; x < picture.height(); x++) {
-            for (int y = 0; y < picture.width(); y++) {
+        for (int x = 0; x < transposed.width(); x++) {
+            for (int y = 0; y < transposed.height(); y++) {
                 transposed.setRGB(x, y, picture.getRGB(y, x));
             }
         }
@@ -179,12 +179,12 @@ public class SeamCarver {
     }
 
     private static Picture removeSeam(Picture picture, int[] seam) {
-        Picture ret = new Picture(picture.width() - 1, picture.height());
+        Picture ret = new Picture(picture.width(), picture.height() - 1);
         for (int x = 0; x < ret.width(); x++) {
             for (int y = 0; y < ret.height(); y++) {
                 int rgb;
-                if (x < seam[y]) rgb = picture.getRGB(x, y);
-                else rgb = picture.getRGB(x + 1, y);
+                if (y < seam[x]) rgb = picture.getRGB(x, y);
+                else rgb = picture.getRGB(x, y + 1);
                 ret.setRGB(x, y, rgb);
             }
         }

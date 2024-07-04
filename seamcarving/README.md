@@ -1,4 +1,4 @@
-## WORDNET
+## SEAM CARVING
 
 Specification: https://coursera.cs.princeton.edu/algs4/assignments/seam/specification.php
 
