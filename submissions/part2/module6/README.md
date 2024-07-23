@@ -7,8 +7,8 @@ Compilation:  PASSED
 API:          PASSED
 
 SpotBugs:     PASSED
-PMD:          FAILED (6 warnings)
-Checkstyle:   FAILED (0 errors, 3 warnings)
+PMD:          PASSED
+Checkstyle:   PASSED
 
 Correctness:  23/23 tests passed
 Memory:       4/4 tests passed
@@ -23,7 +23,7 @@ Aggregate score: 100.00%
 ```
 The following files were submitted:
 ----------------------------------
-5.8K Jul 23 20:27 BaseballElimination.java
+5.9K Jul 23 20:41 BaseballElimination.java
 
 
 ********************************************************************************
@@ -59,13 +59,6 @@ BaseballElimination:
 
 % pmd .
 *-----------------------------------------------------------
-BaseballElimination.java:16: The private instance (or static) variable 'teamsMap' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-BaseballElimination.java:17: The private instance (or static) variable 'teamsMapInv' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-BaseballElimination.java:18: The private instance (or static) variable 'wins' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-BaseballElimination.java:19: The private instance (or static) variable 'losses' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-BaseballElimination.java:20: The private instance (or static) variable 'remaining' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-BaseballElimination.java:21: The private instance (or static) variable 'against' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-PMD ends with 6 warnings.
 
 
 ================================================================
@@ -73,10 +66,6 @@ PMD ends with 6 warnings.
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] BaseballElimination.java:15:23: The instance variable 'N' must start with a lowercase letter and use camelCase. [MemberName]
-[WARN] BaseballElimination.java:94:13: The local variable 'V' must start with a lowercase letter and use camelCase. [LocalVariableName]
-[WARN] BaseballElimination.java:163:13: The local variable 'N' must start with a lowercase letter and use camelCase. [LocalVariableName]
-Checkstyle ends with 0 errors and 3 warnings.
 
 % custom checkstyle checks for BaseballElimination.java
 *-----------------------------------------------------------
@@ -274,13 +263,13 @@ Running 1 total tests.
 
     n   constructor isEliminated() + certificateOfElimination()
 ----------------------------------------------------------------
-   30       0.01       0.43
-   36       0.00       0.92
-   42       0.00       1.80
-   48       0.00       3.40
-   54       0.00       5.72
-   60       0.00       9.73
-time = 9.96e-08 * n^4.48  (R^2 = 1.00)
+   30       0.01       0.45
+   36       0.01       0.97
+   42       0.00       1.92
+   48       0.00       3.53
+   54       0.00       6.07
+   60       0.00      10.19
+time = 1.12e-07 * n^4.47  (R^2 = 1.00)
 
 Total: 1/1 tests passed!
 

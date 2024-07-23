@@ -13,32 +13,32 @@ import edu.princeton.cs.algs4.FordFulkerson;
 
 public class BaseballElimination {
 
-    private final int N;
-    private ST<String, Integer> teamsMap = new ST<>();
-    private String[] teamsMapInv;
-    private int[] wins;
-    private int[] losses;
-    private int[] remaining;
-    private int[][] against;
+    private final int numTeams;
+    private final ST<String, Integer> teamsMap = new ST<>();
+    private final String[] teamsMapInv;
+    private final int[] wins;
+    private final int[] losses;
+    private final int[] remaining;
+    private final int[][] against;
     private Bag<String> cert;
 
     // create a baseball division from given filename in format specified below
     public BaseballElimination(String filename) {
         In in = new In(filename);
-        N = in.readInt();
-        wins = new int[N];
-        losses = new int[N];
-        remaining = new int[N];
-        against = new int[N][N];
-        teamsMapInv = new String[N];
-        for (int i = 0; i < N; i++) {
+        numTeams = in.readInt();
+        wins = new int[numTeams];
+        losses = new int[numTeams];
+        remaining = new int[numTeams];
+        against = new int[numTeams][numTeams];
+        teamsMapInv = new String[numTeams];
+        for (int i = 0; i < numTeams; i++) {
             String team = in.readString();
             teamsMap.put(team, i);
             teamsMapInv[i] = team;
             wins[i] = in.readInt();
             losses[i] = in.readInt();
             remaining[i] = in.readInt();
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < numTeams; j++) {
                 against[i][j] = in.readInt();
             }
         }
@@ -46,7 +46,7 @@ public class BaseballElimination {
 
     // number of teams
     public int numberOfTeams() {
-        return N;
+        return numTeams;
     }
 
     // all teams
@@ -90,14 +90,14 @@ public class BaseballElimination {
     }
 
     private boolean computeEliminated(int teamID) {
-        int n = N-1;
+        int n = numTeams-1;
         int matchups = n*(n-1)/2;
-        int V = matchups + n + 2;
+        int numNodes = matchups + n + 2;
 
         int s = 0; // source node
-        int t = V-1; // target node
+        int t = numNodes-1; // target node
         
-        FlowNetwork network = new FlowNetwork(V);
+        FlowNetwork network = new FlowNetwork(numNodes);
         int matchupID = 1;
         int offset = matchups + 1;
         double targetMaxFlow = 0;
@@ -141,7 +141,7 @@ public class BaseballElimination {
         validateTeam(team);
         int teamID = teamsMap.get(team);
         // trivial elimination
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < numTeams; i++) {
             if (i == teamID) continue;
             if (wins[teamID] + remaining[teamID] < wins[i]) {
                 cert = new Bag<String>();
@@ -161,8 +161,7 @@ public class BaseballElimination {
 
     public static void main(String[] args) {
         BaseballElimination division = new BaseballElimination(args[0]);
-        int N = division.numberOfTeams();
-        StdOut.println("number of teams: " + N);
+        StdOut.println("number of teams: " + division.numberOfTeams());
         for (String team : division.teams()) {
             if (division.isEliminated(team)) {
                 StdOut.print(team + " is eliminated by the subset R = { ");
