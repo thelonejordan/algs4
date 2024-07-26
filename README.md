@@ -1,5 +1,7 @@
 # Welcome to Algorithms Parts I, II
 
+*by [Robert Sedgewick](https://sedgewick.io/), [Kevin Wayne](https://www.cs.princeton.edu/people/profile/wayne)*
+
 ```
         __        __   _
         \ \      / /__| | ___ ___  _ __ ___   ___
