@@ -1,5 +1,5 @@
-## BASEBALL ELIMINATION
+## BOGGLE
 
-Specification: https://coursera.cs.princeton.edu/algs4/assignments/baseball/specification.php
+Specification: https://coursera.cs.princeton.edu/algs4/assignments/boggle/specification.php
 
-Grade: 100% ([assessment report](../submissions/part2/module9/README.md))
+Grade: 0% ([assessment report](../submissions/part2/module9/README.md))

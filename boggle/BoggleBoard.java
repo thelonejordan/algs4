@@ -7,6 +7,8 @@
  *
  ******************************************************************************/
 
+package boggle;
+
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
@@ -72,7 +74,7 @@ public class BoggleBoard {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 String letters = BOGGLE_1992[n*i+j];
-                int r = StdRandom.uniform(letters.length());
+                int r = StdRandom.uniformInt(letters.length());
                 board[i][j] = letters.charAt(r);
             }
         }
