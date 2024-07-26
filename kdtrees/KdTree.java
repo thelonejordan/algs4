@@ -1,7 +1,7 @@
-// javac -cp .:lib/algs4.jar kdtree/KdTree.java
-// java -cp .:lib/algs4.jar kdtree.KdTree < kdtree/input10.txt
+// javac -cp .:lib/algs4.jar kdtrees/KdTree.java
+// java -cp .:lib/algs4.jar kdtrees.KdTree < kdtrees/input10.txt
 
-package kdtree;
+package kdtrees;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

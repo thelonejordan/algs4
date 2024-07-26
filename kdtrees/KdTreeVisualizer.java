@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac -cp .:lib/algs4.jar kdtree/KdTreeVisualizer.java
- *  Execution:    java -cp .:lib/algs4.jar kdtree.KdTreeVisualizer
+ *  Compilation:  javac -cp .:lib/algs4.jar kdtrees/KdTreeVisualizer.java
+ *  Execution:    java -cp .:lib/algs4.jar kdtrees.KdTreeVisualizer
  *  Dependencies: KdTree.java
  *
  *  Add the points that the user clicks in the standard draw window
@@ -8,7 +8,7 @@
  *
  ******************************************************************************/
 
-package kdtree;
+package kdtrees;
 
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;

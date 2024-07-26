@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FOLDER=kdtree
+FOLDER=kdtrees
 
 rm PointSET.java
 rm KdTree.java

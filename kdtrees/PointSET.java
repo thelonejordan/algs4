@@ -1,7 +1,7 @@
-// javac -cp .:lib/algs4.jar kdtree/PointSET.java
-// java -cp .:lib/algs4.jar kdtree.PointSET < kdtree/input10.txt
+// javac -cp .:lib/algs4.jar kdtrees/PointSET.java
+// java -cp .:lib/algs4.jar kdtrees.PointSET < kdtrees/input10.txt
 
-package kdtree;
+package kdtrees;
 
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
