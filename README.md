@@ -37,29 +37,45 @@
 * [Algorithms 4th Edition](http://algs4.cs.princeton.edu/home/)
 
 
-## Basic Commands
+## Basic Commands (Java)
 
-Compile a program
+Compile a program (say Program.java)
 
 ```sh
-javac SomeProgram.java
+javac Program.java
 ```
 
 ```sh
 # include jar lib
-javac -cp .:example.jar SomeProgram.java
+javac -cp .:example.jar Program.java
 ```
 
 Execute a program
 
 ```sh
-java SomeProgram
+java Program
 ```
 
 ```sh
 # include jar lib
-java -cp .:example.jar SomeProgram
+java -cp .:example.jar Program
 ```
+
+## Solutions (Part I)
+
+* [Percolation](percolation)
+* [Deques and Randomized Queues](queues)
+* [Collinear Points](collinear)
+* [8 Puzzle](eightpuzzle)
+* [Kd-Trees](kdtrees)
+
+## Solutions (Part II)
+
+* [WordNet](wordnet)
+* [Seam Carving](seamcarving)
+* [Baseball Elimination](baseball)
+* Boggle
+* Burrows-Wheeler
 
 ## Appendix
 
