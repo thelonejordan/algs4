@@ -36,6 +36,21 @@
 
 * [Algorithms 4th Edition](http://algs4.cs.princeton.edu/home/)
 
+## Solutions (Part I)
+
+* [Percolation](percolation)
+* [Deques and Randomized Queues](queues)
+* [Collinear Points](collinear)
+* [8 Puzzle](eightpuzzle)
+* [Kd-Trees](kdtrees)
+
+## Solutions (Part II)
+
+* [WordNet](wordnet)
+* [Seam Carving](seamcarving)
+* [Baseball Elimination](baseball)
+* Boggle
+* Burrows-Wheeler
 
 ## Basic Commands (Java)
 
@@ -60,22 +75,6 @@ java Program
 # include jar lib
 java -cp .:example.jar Program
 ```
-
-## Solutions (Part I)
-
-* [Percolation](percolation)
-* [Deques and Randomized Queues](queues)
-* [Collinear Points](collinear)
-* [8 Puzzle](eightpuzzle)
-* [Kd-Trees](kdtrees)
-
-## Solutions (Part II)
-
-* [WordNet](wordnet)
-* [Seam Carving](seamcarving)
-* [Baseball Elimination](baseball)
-* Boggle
-* Burrows-Wheeler
 
 ## Appendix
 
