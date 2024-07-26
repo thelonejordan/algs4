@@ -49,7 +49,7 @@
 * [WordNet](wordnet)
 * [Seam Carving](seamcarving)
 * [Baseball Elimination](baseball)
-* Boggle
+* [Boggle](boggle)
 * Burrows-Wheeler
 
 ## Basic Commands (Java)
