@@ -27,16 +27,17 @@
                                        |/
 ```
 
-Coursera:
+## Coursera
 
 * [Algorithms Part I](https://www.coursera.org/learn/algorithms-part1)
 * [Algorithms Part II](https://www.coursera.org/learn/algorithms-part2)
 
-Course Book:
+## Course Book
 
 * [Algorithms 4th Edition](http://algs4.cs.princeton.edu/home/)
 
-### Commands
+
+## Basic Commands
 
 Compile a program
 
@@ -60,30 +61,25 @@ java SomeProgram
 java -cp .:example.jar SomeProgram
 ```
 
-### Links
+## Appendix
 
-#### Course
+Install openjdk  
+Install checkstyle, spotbugs, pmd (optional)
 
-* https://algs4.cs.princeton.edu/home/
-* https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
-* https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
-* https://github.com/kevin-wayne/algs4
-* https://algs4.cs.princeton.edu/code/algs4-data.zip
-* https://algs4.cs.princeton.edu/code/
-
-#### Jars
+### Jars
 
 * https://algs4.cs.princeton.edu/code/algs4.jar
 * https://introcs.cs.princeton.edu/code/stdlib.jar
 * http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar
 
-#### Brew
+### Course links
 
-* https://formulae.brew.sh/formula/openjdk
-* https://formulae.brew.sh/formula/checkstyle
-* https://formulae.brew.sh/formula/spotbugs
-* https://formulae.brew.sh/formula/pmd
+* https://algs4.cs.princeton.edu/code/
+* https://algs4.cs.princeton.edu/code/algs4-data.zip
+* https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/package-summary.html
 
-#### More
+### More stuff
 
+* https://github.com/kevin-wayne/algs4
+* https://lift.cs.princeton.edu/java/mac/ (configurations files are here)
 * https://openjdk.org/jeps/330
