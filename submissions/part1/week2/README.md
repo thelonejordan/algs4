@@ -11,10 +11,10 @@ PMD:          PASSED
 Checkstyle:   PASSED
 
 Correctness:  49/49 tests passed
-Memory:       133/133 tests passed
+Memory:       134/133 tests passed
 Timing:       193/193 tests passed
 
-Aggregate score: 100.00%
+Aggregate score: 100.08%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -23,9 +23,9 @@ Aggregate score: 100.00%
 ```
 The following files were submitted:
 ----------------------------------
-3.9K Apr 18 04:58 Deque.java
- 406 Apr 18 04:58 Permutation.java
-3.4K Apr 18 04:58 RandomizedQueue.java
+3.9K Jul 27 23:43 Deque.java
+ 927 Jul 27 23:43 Permutation.java
+3.3K Jul 27 23:43 RandomizedQueue.java
 
 
 ********************************************************************************
@@ -38,14 +38,14 @@ The following files were submitted:
 
 % javac RandomizedQueue.java
 *-----------------------------------------------------------
-RandomizedQueue.java:15: warning: [unchecked] unchecked cast
+RandomizedQueue.java:19: warning: [unchecked] unchecked cast
         Item[] newarr = (Item[]) new Object[2];
                                  ^
   required: Item[]
   found:    Object[]
   where Item is a type-variable:
     Item extends Object declared in class RandomizedQueue
-RandomizedQueue.java:32: warning: [unchecked] unchecked cast
+RandomizedQueue.java:36: warning: [unchecked] unchecked cast
         Item[] newarr = (Item[]) new Object[capacity];
                                  ^
   required: Item[]
@@ -432,37 +432,37 @@ Running 9 total tests.
 
 Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
+  G
+  F
   D
-  H
-  I
 
   % java Permutation 3 < distinct.txt
-  A
-  F
   H
+  G
+  F
 
   % java Permutation 8 < duplicates.txt
-  BB
-  BB
-  BB
   CC
+  BB
+  BB
   BB
   CC
   BB
   AA
+  BB
 
 ==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
-  it
-  of
-  wisdom
-  of
-  was
   best
-  times
   age
+  of
+  times
+  was
+  it
+  the
+  times
 
   % java Permutation 0 < distinct.txt
   [no output]
@@ -637,23 +637,13 @@ Test 2: check that the maximum size of any Deque or RandomizedQueue object
 Test 3 (bonus): check that maximum size of any or Deque or RandomizedQueue object
                 created is equal to k
   * filename = tale.txt, n = 138653, k = 5
-    - max size of RandomizedQueue object = 138653
-
   * filename = tale.txt, n = 138653, k = 50
-    - max size of RandomizedQueue object = 138653
-
   * filename = tale.txt, n = 138653, k = 500
-    - max size of RandomizedQueue object = 138653
-
   * filename = tale.txt, n = 138653, k = 5000
-    - max size of RandomizedQueue object = 138653
-
   * filename = tale.txt, n = 138653, k = 50000
-    - max size of RandomizedQueue object = 138653
+==> passed
 
-==> FAILED
-
-Total: 2/2 tests passed!
+Total: 3/2 tests passed!
 
 
 ================================================================
@@ -904,18 +894,18 @@ Test 5a-5i: Total memory usage after inserting n items,
 
                  n        bytes
 ----------------------------------------------------------
-=> passed       32           88         
-=> passed       64           88         
-=> passed      128           88         
-=> passed      256           88         
-=> passed      512           88         
-=> passed     1024           88         
-=> passed     2048           88         
-=> passed     4096           88         
-=> passed     8192           88         
+=> passed       32           72         
+=> passed       64           72         
+=> passed      128           72         
+=> passed      256           72         
+=> passed      512           72         
+=> passed     1024           72         
+=> passed     2048           72         
+=> passed     4096           72         
+=> passed     8192           72         
 ==> 9/9 tests passed
 
-Memory: 88.00   (R^2 = 1.000)
+Memory: 72.00   (R^2 = 1.000)
 
 
 Test 6a-6i: Total memory usage of iterator after inserting n items.
@@ -997,18 +987,18 @@ Test 10: Total memory usage after inserting 4096 items, then successively
 
                  n        bytes
 ----------------------------------------------------------
-=> passed     2048        65592         
-=> passed     1024        32824         
-=> passed      512        16440         
-=> passed      256         8248         
-=> passed      128         4152         
-=> passed       64         2104         
-=> passed       32         1080         
-=> passed       16          568         
-=> passed        8          312         
+=> passed     2049        65592         
+=> passed     1025        32824         
+=> passed      513        16440         
+=> passed      257         8248         
+=> passed      129         4152         
+=> passed       65         2104         
+=> passed       33         1080         
+=> passed       17          568         
+=> passed        9          312         
 ==> 9/9 tests passed
 
-Memory: 32.00 n + 56.00   (R^2 = 1.000)
+Memory: 32.00 n + 24.00   (R^2 = 1.000)
 
 
 Min observed memory for RandomizedQueue: 8.00 n + 56.00   (R^2 = 1.000)
@@ -1131,7 +1121,7 @@ Test 6a-6g: make n random calls to addLast(), removeLast(), isEmpty(), and size(
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.00
-=> passed      128000     0.00
+=> passed      128000     0.01
 => passed      256000     0.01
 => passed      512000     0.02
 => passed     1024000     0.03
@@ -1175,7 +1165,7 @@ Test 8a-8g: make n calls to addFirst(); iterate over the n items by calling
 => passed      256000     0.00
 => passed      512000     0.01
 => passed     1024000     0.02
-=> passed     2048000     0.05
+=> passed     2048000     0.04
 ==> 12/12 tests passed
 
 
@@ -1190,7 +1180,7 @@ Test 9a-9k: make n calls to addFirst()/addLast(); interleave n calls each to
 => passed        8193     0.00
 => passed       16385     0.00
 => passed       32769     0.00
-=> passed       65537     0.00
+=> passed       65537     0.01
 => passed      128001     0.01
 => passed      256001     0.01
 => passed      512001     0.03
@@ -1239,8 +1229,8 @@ Test 4a-k: make n calls to enqueue() followed by n calls to dequeue()
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
-=> passed      128000     0.00
+=> passed       65536     0.00
+=> passed      128000     0.01
 => passed      256000     0.01
 => passed      512000     0.01
 => passed     1024000     0.03
@@ -1262,8 +1252,8 @@ Test 5a-k: make n calls to enqueue() followed by n random calls to
 => passed       65536     0.01
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.05
-=> passed     1024000     0.12
+=> passed      512000     0.04
+=> passed     1024000     0.09
 ==> 11/11 tests passed
 
 
@@ -1281,9 +1271,9 @@ Test 6a-k: make n calls to enqueue() followed by n random calls to
 => passed       32768     0.00
 => passed       65536     0.00
 => passed      128000     0.01
-=> passed      256000     0.02
-=> passed      512000     0.05
-=> passed     1024000     0.13
+=> passed      256000     0.01
+=> passed      512000     0.03
+=> passed     1024000     0.07
 ==> 11/11 tests passed
 
 
@@ -1302,8 +1292,8 @@ Test 7a-k: make n calls to enqueue() followed by n random calls to
 => passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.06
-=> passed     1024000     0.14
+=> passed      512000     0.04
+=> passed     1024000     0.11
 ==> 11/11 tests passed
 
 
@@ -1320,9 +1310,9 @@ Test 8a-k: make n calls to enqueue() followed by n calls each to
 => passed       32768     0.00
 => passed       65536     0.00
 => passed      128000     0.01
-=> passed      256000     0.02
-=> passed      512000     0.04
-=> passed     1024000     0.08
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.05
 ==> 11/11 tests passed
 
 
@@ -1337,10 +1327,10 @@ Test 9a-i: make 100 calls to enqueue; 99 calls to dequeue;
 => passed        4096     0.00
 => passed        8192     0.00
 => passed       16384     0.00
-=> passed       32768     0.00
+=> passed       32768     0.01
 => passed       65536     0.01
 => passed      128000     0.02
-=> passed      256000     0.05
+=> passed      256000     0.04
 ==> 9/9 tests passed
 
 

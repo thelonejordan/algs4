@@ -15,8 +15,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private int sz;
 
     // construct an empty randomized queue
+    @SuppressWarnings("unchecked") // comment this out before submitting
     public RandomizedQueue() {
-        @SuppressWarnings("unchecked") // comment this out before submitting
         Item[] newarr = (Item[]) new Object[2];
         arr = newarr;
         sz = 0;
@@ -32,8 +32,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return sz;
     }
 
+    @SuppressWarnings("unchecked") // comment this out before submitting
     private void resize(int capacity) {
-        @SuppressWarnings("unchecked") // comment this out before submitting
         Item[] newarr = (Item[]) new Object[capacity];
         for (int i = 0; i < sz; i++) newarr[i] = arr[i];
         arr = newarr;
@@ -54,8 +54,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         int idx = StdRandom.uniformInt(sz);
         Item item = arr[idx];
         if (idx != sz - 1) arr[idx] = arr[sz - 1];
-        // no loitering
-        // (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
+        // no loitering (see slide 4 of https://algs4.cs.princeton.edu/lectures/keynote/13StacksAndQueues-2x2.pdf)
         arr[--sz] = null;
         if (sz > 0 && sz == arr.length / 4) resize(arr.length / 2);
         return item;
@@ -111,8 +110,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         rq.enqueue(4);
         rq.enqueue(5);
         StdOut.println(rq.dequeue());
+        StdOut.println("size: " + rq.size());
+        StdOut.println("isEmpty: " + rq.isEmpty());
+        StdOut.println("items:");
         for (int i : rq) StdOut.println(i);
-        StdOut.println(rq.size());
-        StdOut.println(rq.isEmpty());
     }
 }
