@@ -3,7 +3,6 @@
 
 package boggle;
 
-import edu.princeton.cs.algs4.TrieSET;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.SET;
@@ -11,31 +10,57 @@ import edu.princeton.cs.algs4.Stack;
 
 public class BoggleSolver {
 
-    private final TrieSET dict;
+    private static final int R = 26;
+    private Node root = new Node();
     private SET<String> found;
 
     // Initializes the data structure using the given array of strings as the dictionary.
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
     public BoggleSolver(String[] dictionary) {
-        dict = new TrieSET();
         for (int i = 0; i < dictionary.length; i++) {
             String word = dictionary[i];
             if (word.length() >= 3) {
-                dict.add(word);
+                add(word);
             }
         }
     }
 
-    // private static void printMarked(boolean[][] marked, int m, int n) {
-    //     for (int i = 0; i < m; i++) {
-    //         for (int j = 0; j < n; j++) {
-    //             if (marked[i][j]) StdOut.print(" 1");
-    //             else StdOut.print(" 0");
-    //         }
-    //         StdOut.println();
-    //     }
-    //     StdOut.println();
-    // }
+    private static class Node {
+        private boolean exists = false;
+        private Node[] next = new Node[R];
+    }
+
+    private void add(String key) {
+        root = put(root, key, 0);
+    }
+
+    private static Node put(Node x, String key, int d) {
+        if (x == null) x = new Node();
+        if (d == key.length()) {
+            x.exists = true;
+            return x;
+        }
+        char c = key.charAt(d);
+        x.next[c - 'A'] = put(x.next[c - 'A'], key, d + 1);
+        return x;
+    }
+
+    private boolean contains(String key) {
+        Node x = get(root, key, 0);
+        return x != null && x.exists;
+    }
+
+    private boolean containsPrefix(String prefix) {
+        Node x = get(root, prefix, 0);
+        return x != null;
+    }
+
+    private static Node get(Node x, String key, int d) {
+        if (x == null) return null;
+        if (d == key.length()) return x;
+        char c = key.charAt(d);
+        return get(x.next[c - 'A'], key, d + 1);
+    }
 
     // private static void printStack(Stack<Integer> stack, int m, int n) {
     //     StdOut.print(stack.size());
@@ -74,9 +99,10 @@ public class BoggleSolver {
     }
 
     private void dfs(BoggleBoard board, int x, int y, boolean[][] marked, Stack<Integer> stack) {
-        // StdOut.println("(" + x + ", " + y + ")");
         marked[x][y] = true;
         stack.push(xyTo1D(x, y, board.cols()));
+        // StdOut.println("(" + x + ", " + y + ")");
+        // printStack(stack, board.rows(), board.cols());
         char[] arr = new char[stack.size()];
         int idx = 1;
         for (int v : stack) {
@@ -90,40 +116,16 @@ public class BoggleSolver {
             else st.append(c);
         }
         String word = st.toString();
-        if (dict.contains(word)) found.add(word);
-        // printStack(stack, board.rows(), board.cols());
-        // printMarked(marked, board.rows(), board.cols());
-        if (x > 0) {
-            int x2 = x - 1;
-            if (!marked[x2][y]) dfs(board, x2, y, marked, stack); // top
-            if (y > 0) {
-                int y2 = y - 1;
-                if (!marked[x2][y2]) dfs(board, x2, y2, marked, stack); // top left
-            }
-            if (y < board.cols() - 1) {
-                int y2 = y + 1;
-                if (!marked[x2][y2]) dfs(board, x2, y2, marked, stack); // top right
-            }
-        }
-        if (y > 0) {
-            int y2 = y - 1;
-            if (!marked[x][y2]) dfs(board, x, y2, marked, stack); // left
-        }
-        if (y < board.cols() - 1) {
-            int y2 = y + 1;
-            if (!marked[x][y2]) dfs(board, x, y2, marked, stack); // right
-        }
-        if (x < board.rows() - 1) {
-            int x2 = x + 1;
-            if (!marked[x2][y]) dfs(board, x2, y, marked, stack); // bottom
-            if (y > 0) {
-                int y2 = y - 1;
-                if (!marked[x2][y2]) dfs(board, x2, y2, marked, stack); // bottom left
-            }
-            if (y < board.cols() - 1) {
-                int y2 = y + 1;
-                if (!marked[x2][y2]) dfs(board, x2, y2, marked, stack); // bottom right
-            }
+        if (containsPrefix(word)) {
+            if (contains(word)) found.add(word);
+            if (x > 0 && !marked[x-1][y]) dfs(board, x-1, y, marked, stack); // top
+            if (x > 0 && y > 0 && !marked[x-1][y-1]) dfs(board, x-1, y-1, marked, stack); // top left
+            if (x > 0 && y < board.cols()-1 && !marked[x-1][y+1]) dfs(board, x-1, y+1, marked, stack); // top right
+            if (y > 0 && !marked[x][y-1]) dfs(board, x, y-1, marked, stack); // left
+            if (y < board.cols()-1 && !marked[x][y+1]) dfs(board, x, y+1, marked, stack); // right
+            if (x < board.rows()-1 && !marked[x+1][y]) dfs(board, x+1, y, marked, stack); // bottom
+            if (x < board.rows()-1 && y > 0 && !marked[x+1][y-1]) dfs(board, x+1, y-1, marked, stack); // bottom left
+            if (x < board.rows()-1 && y < board.cols()-1 && !marked[x+1][y+1]) dfs(board, x+1, y+1, marked, stack); // bottom right
         }
         stack.pop();
         marked[x][y] = false;
@@ -140,7 +142,7 @@ public class BoggleSolver {
     // (You can assume the word contains only the uppercase letters A through Z.)
     public int scoreOf(String word) {
         int n = word.length();
-        if (dict.contains(word) && n > 2) {
+        if (contains(word) && n > 2) {
             if (n <= 4) return 1;
             if (n == 5) return 2;
             if (n == 6) return 3;
