@@ -7,8 +7,8 @@ Compilation:  PASSED
 API:          PASSED
 
 SpotBugs:     PASSED
-PMD:          FAILED (1 warning)
-Checkstyle:   FAILED (0 errors, 2 warnings)
+PMD:          PASSED
+Checkstyle:   PASSED
 
 Correctness:  0/13 tests passed
 Memory:       0/3 tests passed
@@ -23,7 +23,7 @@ Aggregate score: 12.22%
 ```
 The following files were submitted:
 ----------------------------------
-5.4K Jul 28 20:43 BoggleSolver.java
+5.6K Jul 28 21:13 BoggleSolver.java
 
 
 ********************************************************************************
@@ -59,8 +59,6 @@ BoggleSolver:
 
 % pmd .
 *-----------------------------------------------------------
-BoggleSolver.java:13: The private instance (or static) variable 'dict' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-PMD ends with 1 warning.
 
 
 ================================================================
@@ -68,9 +66,6 @@ PMD ends with 1 warning.
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] BoggleSolver.java:62:18: The method 'DFS' must start with a lowercase letter and use camelCase. [MethodName]
-[WARN] BoggleSolver.java:75:18: The method 'DFS' must start with a lowercase letter and use camelCase. [MethodName]
-Checkstyle ends with 0 errors and 2 warnings.
 
 
 ================================================================
@@ -91,18 +86,7 @@ Running 13 total tests.
 Test 1: check getAllValidWords() on two fixed 4-by-4 boards given in assignment
   * dictionary = dictionary-algs4.txt; board = board4x4.txt
   * dictionary = dictionary-algs4.txt; board = board-q.txt
-    - number of entries in student   solution: 21
-    - number of entries in reference solution: 29
-    - 8 missing entries in student solution, including:
-      'REQUIRE'
-
-         4 4
-         S  N  R  T  
-         O  I  E  L  
-         E  Qu T  T  
-         R  S  A  T
-
-==> FAILED
+==> passed
 
 Test 2: check getAllValidWords() on fixed 4-by-4 boards
   * dictionary = dictionary-yawl.txt; board = board4x4.txt
@@ -189,23 +173,23 @@ Running 9 total tests.
 
 Test 1: timing constructor (must be <= 5x reference solution)
  *  dictionary-algs4.txt
-    - student   solution time (in seconds): 0.01
+    - student   solution time (in seconds): 0.02
     - reference solution time (in seconds): 0.00
-    - ratio:                                3.29
+    - ratio:                                3.58
 
 ==> passed
 
  *  dictionary-enable2k.txt
     - student   solution time (in seconds): 0.12
     - reference solution time (in seconds): 0.02
-    - ratio:                                5.75
+    - ratio:                                5.81
 
 ==> FAILED
 
  *  dictionary-yawl.txt
     - student   solution time (in seconds): 0.17
     - reference solution time (in seconds): 0.03
-    - ratio:                                6.52
+    - ratio:                                6.53
 
 ==> FAILED
 
@@ -229,9 +213,9 @@ Test 1: timing constructor (must be <= 5x reference solution)
 
 Test 2: timing getAllValidWords() for 5.0 seconds using dictionary-yawl.txt
         (must be <= 2x reference solution)
-    - reference solution calls per second: 7381.68
-    - student   solution calls per second: 0.64
-    - reference / student ratio:           11467.04
+    - reference solution calls per second: 8511.96
+    - student   solution calls per second: 0.50
+    - reference / student ratio:           16870.32
 
 => FAILED    student <= 10000x reference
 => FAILED    student <=    25x reference
