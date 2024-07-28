@@ -52,7 +52,7 @@
 * [Seam Carving](seamcarving)
 * [Baseball Elimination](baseball)
 * [Boggle](boggle)
-* Burrows-Wheeler
+* [Burrows-Wheeler](burrowswheeler)
 
 ## Basic Commands (Java)
 
