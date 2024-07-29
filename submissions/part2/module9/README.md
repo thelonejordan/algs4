@@ -23,7 +23,7 @@ Aggregate score: 97.78%
 ```
 The following files were submitted:
 ----------------------------------
-5.8K Jul 28 22:44 BoggleSolver.java
+5.1K Jul 28 23:53 BoggleSolver.java
 
 
 ********************************************************************************
@@ -245,21 +245,21 @@ Test 1: timing constructor (must be <= 5x reference solution)
  *  dictionary-algs4.txt
     - student   solution time (in seconds): 0.01
     - reference solution time (in seconds): 0.00
-    - ratio:                                1.43
+    - ratio:                                1.49
 
 ==> passed
 
  *  dictionary-enable2k.txt
     - student   solution time (in seconds): 0.02
     - reference solution time (in seconds): 0.02
-    - ratio:                                1.01
+    - ratio:                                1.03
 
 ==> passed
 
  *  dictionary-yawl.txt
     - student   solution time (in seconds): 0.03
     - reference solution time (in seconds): 0.03
-    - ratio:                                0.94
+    - ratio:                                0.86
 
 ==> passed
 
@@ -272,9 +272,9 @@ Test 1: timing constructor (must be <= 5x reference solution)
 
 Test 2: timing getAllValidWords() for 5.0 seconds using dictionary-yawl.txt
         (must be <= 2x reference solution)
-    - reference solution calls per second: 8733.29
-    - student   solution calls per second: 3290.95
-    - reference / student ratio:           2.65
+    - reference solution calls per second: 9056.32
+    - student   solution calls per second: 3354.71
+    - reference / student ratio:           2.70
 
 => passed    student <= 10000x reference
 => passed    student <=    25x reference

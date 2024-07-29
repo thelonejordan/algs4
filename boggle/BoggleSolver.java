@@ -62,17 +62,6 @@ public class BoggleSolver {
         return get(x.next[c - 'A'], key, d + 1);
     }
 
-    // private static void printStack(Stack<Integer> stack, int m, int n) {
-    //     StdOut.print(stack.size());
-    //     for (int i : stack) {
-    //         // StdOut.print(" " + i);
-    //         int x = toX(i, n);
-    //         int y = toY(i, n);
-    //         StdOut.print("-(" +x+","+y+")");
-    //     }
-    //     StdOut.println();
-    // }
-
     private static int xyTo1D(int x, int y, int n) {
         return x * n + y;
     }
@@ -101,21 +90,13 @@ public class BoggleSolver {
     private void dfs(BoggleBoard board, int x, int y, boolean[][] marked, Stack<Integer> stack) {
         marked[x][y] = true;
         stack.push(xyTo1D(x, y, board.cols()));
-        // StdOut.println("(" + x + ", " + y + ")");
-        // printStack(stack, board.rows(), board.cols());
-        char[] arr = new char[stack.size()];
-        int idx = 1;
-        for (int v : stack) {
-            arr[stack.size() - idx] = board.getLetter(toX(v, board.cols()), toY(v, board.cols()));
-            idx++;
-        }
         StringBuilder st = new StringBuilder();
-        for (int i = 0; i < arr.length; i++) {
-            char c = arr[i];
-            if (c == 'Q') st.append("QU");
+        for (int v : stack) {
+            char c = board.getLetter(toX(v, board.cols()), toY(v, board.cols()));
+            if (c == 'Q') st.append("UQ");
             else st.append(c);
         }
-        String word = st.toString();
+        String word = st.reverse().toString();
         if (containsPrefix(word)) {
             if (contains(word)) found.add(word);
             if (x > 0 && !marked[x-1][y]) dfs(board, x-1, y, marked, stack); // top
@@ -127,8 +108,8 @@ public class BoggleSolver {
             if (x < board.rows()-1 && y > 0 && !marked[x+1][y-1]) dfs(board, x+1, y-1, marked, stack); // bottom left
             if (x < board.rows()-1 && y < board.cols()-1 && !marked[x+1][y+1]) dfs(board, x+1, y+1, marked, stack); // bottom right
         }
-        stack.pop();
         marked[x][y] = false;
+        stack.pop();
     }
 
     // Returns the set of all valid words in the given Boggle board, as an Iterable.
