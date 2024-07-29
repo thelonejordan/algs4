@@ -1,5 +1,6 @@
 // javac -cp .:lib/algs4.jar boggle/BoggleSolver.java
 // java -cp .:lib/algs4.jar boggle.BoggleSolver boggle/dictionary-algs4.txt boggle/board4x4.txt
+// java -cp .:lib/algs4.jar boggle.BoggleSolver boggle/dictionary-algs4.txt boggle/board-q.txt
 
 package boggle;
 
@@ -57,7 +58,7 @@ public class BoggleSolver {
         else {
             int offset = 1;
             if (prefix.endsWith("QU")) offset = 2;
-            x = get(prefixNode, prefix, prefix.length()-offset);
+            x = get(prefixNode, prefix, prefix.length() - offset);
         }
         prefixNode = x;
         return x != null;
@@ -73,54 +74,73 @@ public class BoggleSolver {
         return node;
     }
 
-    private static int xyTo1D(int x, int y, int n) {
-        return x * n + y;
+    private static class Dice {
+        private int x;
+        private int y;
+        private char character;
+        private final Stack<Dice> adj = new Stack<>();
     }
 
-    private static int toX(int v, int n) {
-        return  v / n;
-    }
-
-    private static int toY(int v, int n) {
-        return  v % n;
+    private static Dice[][] dices(BoggleBoard board) {
+        Dice[][] dices = new Dice[board.rows()][board.cols()];
+        for (int i = 0; i < board.rows(); i++) {
+            for (int j = 0; j < board.cols(); j++) {
+                Dice dice = new Dice();
+                dice.x = i;
+                dice.y = j;
+                dice.character = board.getLetter(i, j);
+                dices[i][j] = dice;
+            }
+        }
+        for (int x = 0; x < board.rows(); x++) {
+            for (int y = 0; y < board.cols(); y++) {
+                Dice dice = dices[x][y];
+                if (x > 0) dice.adj.push(dices[x-1][y]); // top
+                if (x > 0 && y > 0) dice.adj.push(dices[x-1][y-1]); // top left
+                if (x > 0 && y < board.cols()-1) dice.adj.push(dices[x-1][y+1]); // top right
+                if (y > 0) dice.adj.push(dices[x][y-1]); // left
+                if (y < board.cols()-1) dice.adj.push(dices[x][y+1]); // right
+                if (x < board.rows()-1) dice.adj.push(dices[x+1][y]); // bottom
+                if (x < board.rows()-1 && y > 0) dice.adj.push(dices[x+1][y-1]); // bottom left
+                if (x < board.rows()-1 && y < board.cols()-1) dice.adj.push(dices[x+1][y+1]); // bottom right
+            }
+        }
+        return dices;
     }
 
     private void dfs(BoggleBoard board) {
         int m = board.rows();
         int n = board.cols();
         found = new SET<>();
+        boolean[][] marked;
+        Stack<Character> stack;
+        Dice[][] dices = dices(board);
         for (int x = 0; x < m; x++) {
             for (int y = 0; y < n; y++) {
-                boolean[][] marked = new boolean[m][n];
-                Stack<Integer> stack = new Stack<>();
-                dfs(board, x, y, marked, stack);
+                marked = new boolean[m][n];
+                stack = new Stack<>();
+                dfs(m, n, dices[x][y], marked, stack);
             }
         }
     }
 
-    private void dfs(BoggleBoard board, int x, int y, boolean[][] marked, Stack<Integer> stack) {
-        marked[x][y] = true;
-        stack.push(xyTo1D(x, y, board.cols()));
-        StringBuilder st = new StringBuilder();
-        for (int v : stack) {
-            char c = board.getLetter(toX(v, board.cols()), toY(v, board.cols()));
+    private void dfs(int m, int n, Dice dice, boolean[][] marked, Stack<Character> stack) {
+        marked[dice.x][dice.y] = true;
+        stack.push(dice.character);
+        StringBuilder st = new StringBuilder(m * n * 2);
+        for (char c : stack) {
             if (c == 'Q') st.append("UQ");
             else st.append(c);
         }
         String word = st.reverse().toString();
         if (hasPrefix(word)) {
             if (prefixNode.exists) found.add(word);
-            if (x > 0 && !marked[x-1][y]) dfs(board, x-1, y, marked, stack); // top
-            if (x > 0 && y > 0 && !marked[x-1][y-1]) dfs(board, x-1, y-1, marked, stack); // top left
-            if (x > 0 && y < board.cols()-1 && !marked[x-1][y+1]) dfs(board, x-1, y+1, marked, stack); // top right
-            if (y > 0 && !marked[x][y-1]) dfs(board, x, y-1, marked, stack); // left
-            if (y < board.cols()-1 && !marked[x][y+1]) dfs(board, x, y+1, marked, stack); // right
-            if (x < board.rows()-1 && !marked[x+1][y]) dfs(board, x+1, y, marked, stack); // bottom
-            if (x < board.rows()-1 && y > 0 && !marked[x+1][y-1]) dfs(board, x+1, y-1, marked, stack); // bottom left
-            if (x < board.rows()-1 && y < board.cols()-1 && !marked[x+1][y+1]) dfs(board, x+1, y+1, marked, stack); // bottom right
+            for (Dice adjDice : dice.adj) {
+                if (!marked[adjDice.x][adjDice.y]) dfs(m, n, adjDice, marked, stack);
+            }
         }
         prefixNode = null;
-        marked[x][y] = false;
+        marked[dice.x][dice.y] = false;
         stack.pop();
     }
 
