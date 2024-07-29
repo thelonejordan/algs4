@@ -14,7 +14,6 @@ public class BoggleSolver {
     private static final int R = 26;
     private Node root = new Node();
     private SET<String> found;
-    private Node prefixNode = null;
 
     // Initializes the data structure using the given array of strings as the dictionary.
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
@@ -28,7 +27,7 @@ public class BoggleSolver {
     }
 
     private static class Node {
-        private boolean exists = false;
+        private String word = null;
         private Node[] next = new Node[R];
     }
 
@@ -39,7 +38,7 @@ public class BoggleSolver {
     private static Node put(Node x, String key, int d) {
         if (x == null) x = new Node();
         if (d == key.length()) {
-            x.exists = true;
+            x.word = key;
             return x;
         }
         char c = key.charAt(d);
@@ -49,10 +48,10 @@ public class BoggleSolver {
 
     private boolean contains(String key) {
         Node x = get(root, key, 0);
-        return x != null && x.exists;
+        return x != null && x.word != null;
     }
 
-    private boolean hasPrefix(String prefix) {
+    private Node prefixNode(String prefix, Node prefixNode) {
         Node x;
         if (prefixNode == null) x = get(root, prefix, 0);
         else {
@@ -60,8 +59,7 @@ public class BoggleSolver {
             if (prefix.endsWith("QU")) offset = 2;
             x = get(prefixNode, prefix, prefix.length() - offset);
         }
-        prefixNode = x;
-        return x != null;
+        return x;
     }
 
     private static Node get(Node x, String key, int d) {
@@ -110,12 +108,12 @@ public class BoggleSolver {
         Dice[][] dices = dices(board);
         for (int x = 0; x < board.rows(); x++) {
             for (int y = 0; y < board.cols(); y++) {
-                dfs(board.rows(), board.cols(), dices[x][y], new Stack<Character>());
+                dfs(board.rows(), board.cols(), dices[x][y], new Stack<Character>(), null);
             }
         }
     }
 
-    private void dfs(int rows, int cols, Dice dice, Stack<Character> stack) {
+    private void dfs(int rows, int cols, Dice dice, Stack<Character> stack, Node cache) {
         dice.marked = true;
         stack.push(dice.character);
         StringBuilder st = new StringBuilder(rows * cols * 2);
@@ -124,13 +122,13 @@ public class BoggleSolver {
             else st.append(c);
         }
         String word = st.reverse().toString();
-        if (hasPrefix(word)) {
-            if (prefixNode.exists) found.add(word);
+        cache = prefixNode(word, cache);
+        if (cache != null) {
+            if (cache.word != null) found.add(cache.word);
             for (Dice adjDice : dice.adj) {
-                if (!adjDice.marked) dfs(rows, cols, adjDice, stack);
+                if (!adjDice.marked) dfs(rows, cols, adjDice, stack, cache);
             }
         }
-        prefixNode = null;
         dice.marked = false;
         stack.pop();
     }
