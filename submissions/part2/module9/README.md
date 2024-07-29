@@ -23,7 +23,7 @@ Aggregate score: 97.78%
 ```
 The following files were submitted:
 ----------------------------------
-6.0K Jul 29 14:53 BoggleSolver.java
+5.8K Jul 29 16:37 BoggleSolver.java
 
 
 ********************************************************************************
@@ -217,7 +217,7 @@ Test 2: memory with dictionary-shakespeare.txt (must be <= 2x reference solution
 
 Test 3: memory with dictionary-yawl.txt (must be <= 2x reference solution)
   * memory of dictionary[]           = 20260488 bytes
-  * memory of student   BoggleSolver = 154480640 bytes
+  * memory of student   BoggleSolver = 154480376 bytes
   * memory of reference BoggleSolver = 177012856 bytes
   * student / reference              = 0.87
 ==> passed
@@ -245,14 +245,14 @@ Test 1: timing constructor (must be <= 5x reference solution)
  *  dictionary-algs4.txt
     - student   solution time (in seconds): 0.01
     - reference solution time (in seconds): 0.00
-    - ratio:                                1.38
+    - ratio:                                1.49
 
 ==> passed
 
  *  dictionary-enable2k.txt
     - student   solution time (in seconds): 0.02
     - reference solution time (in seconds): 0.02
-    - ratio:                                1.03
+    - ratio:                                1.00
 
 ==> passed
 
@@ -272,9 +272,9 @@ Test 1: timing constructor (must be <= 5x reference solution)
 
 Test 2: timing getAllValidWords() for 5.0 seconds using dictionary-yawl.txt
         (must be <= 2x reference solution)
-    - reference solution calls per second: 8244.67
-    - student   solution calls per second: 3368.72
-    - reference / student ratio:           2.45
+    - reference solution calls per second: 7210.82
+    - student   solution calls per second: 3422.57
+    - reference / student ratio:           2.11
 
 => passed    student <= 10000x reference
 => passed    student <=    25x reference

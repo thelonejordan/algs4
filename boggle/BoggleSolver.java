@@ -75,9 +75,8 @@ public class BoggleSolver {
     }
 
     private static class Dice {
-        private int x;
-        private int y;
         private char character;
+        private boolean marked = false;
         private final Stack<Dice> adj = new Stack<>();
     }
 
@@ -86,8 +85,6 @@ public class BoggleSolver {
         for (int i = 0; i < board.rows(); i++) {
             for (int j = 0; j < board.cols(); j++) {
                 Dice dice = new Dice();
-                dice.x = i;
-                dice.y = j;
                 dice.character = board.getLetter(i, j);
                 dices[i][j] = dice;
             }
@@ -109,25 +106,19 @@ public class BoggleSolver {
     }
 
     private void dfs(BoggleBoard board) {
-        int m = board.rows();
-        int n = board.cols();
         found = new SET<>();
-        boolean[][] marked;
-        Stack<Character> stack;
         Dice[][] dices = dices(board);
-        for (int x = 0; x < m; x++) {
-            for (int y = 0; y < n; y++) {
-                marked = new boolean[m][n];
-                stack = new Stack<>();
-                dfs(m, n, dices[x][y], marked, stack);
+        for (int x = 0; x < board.rows(); x++) {
+            for (int y = 0; y < board.cols(); y++) {
+                dfs(board.rows(), board.cols(), dices[x][y], new Stack<Character>());
             }
         }
     }
 
-    private void dfs(int m, int n, Dice dice, boolean[][] marked, Stack<Character> stack) {
-        marked[dice.x][dice.y] = true;
+    private void dfs(int rows, int cols, Dice dice, Stack<Character> stack) {
+        dice.marked = true;
         stack.push(dice.character);
-        StringBuilder st = new StringBuilder(m * n * 2);
+        StringBuilder st = new StringBuilder(rows * cols * 2);
         for (char c : stack) {
             if (c == 'Q') st.append("UQ");
             else st.append(c);
@@ -136,11 +127,11 @@ public class BoggleSolver {
         if (hasPrefix(word)) {
             if (prefixNode.exists) found.add(word);
             for (Dice adjDice : dice.adj) {
-                if (!marked[adjDice.x][adjDice.y]) dfs(m, n, adjDice, marked, stack);
+                if (!adjDice.marked) dfs(rows, cols, adjDice, stack);
             }
         }
         prefixNode = null;
-        marked[dice.x][dice.y] = false;
+        dice.marked = false;
         stack.pop();
     }
 
