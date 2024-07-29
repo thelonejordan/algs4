@@ -13,7 +13,7 @@ public class BoggleSolver {
 
     private static final int R = 26;
     private Node root = new Node();
-    private SET<String> found;
+    private SET<String> validWords;
 
     // Initializes the data structure using the given array of strings as the dictionary.
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
@@ -51,17 +51,6 @@ public class BoggleSolver {
         return x != null && x.word != null;
     }
 
-    private Node prefixNode(String prefix, Node prefixNode) {
-        Node x;
-        if (prefixNode == null) x = get(root, prefix, 0);
-        else {
-            int offset = 1;
-            if (prefix.endsWith("QU")) offset = 2;
-            x = get(prefixNode, prefix, prefix.length() - offset);
-        }
-        return x;
-    }
-
     private static Node get(Node x, String key, int d) {
         Node node = x;
         while (d < key.length() && node != null) {
@@ -72,6 +61,12 @@ public class BoggleSolver {
         return node;
     }
 
+    private Node prefixNode(Node prefixNode, char c) {
+        if (prefixNode == null) prefixNode = root;
+        if (c == 'Q') return get(prefixNode, "QU", 0);
+        return prefixNode.next[c - 'A'];
+    }
+
     private static class Dice {
         private char character;
         private boolean marked = false;
@@ -79,65 +74,59 @@ public class BoggleSolver {
     }
 
     private static Dice[][] dices(BoggleBoard board) {
-        Dice[][] dices = new Dice[board.rows()][board.cols()];
-        for (int i = 0; i < board.rows(); i++) {
-            for (int j = 0; j < board.cols(); j++) {
+        int rows = board.rows();
+        int cols = board.cols();
+        Dice[][] dices = new Dice[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 Dice dice = new Dice();
                 dice.character = board.getLetter(i, j);
                 dices[i][j] = dice;
             }
         }
-        for (int x = 0; x < board.rows(); x++) {
-            for (int y = 0; y < board.cols(); y++) {
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < cols; y++) {
                 Dice dice = dices[x][y];
                 if (x > 0) dice.adj.push(dices[x-1][y]); // top
                 if (x > 0 && y > 0) dice.adj.push(dices[x-1][y-1]); // top left
-                if (x > 0 && y < board.cols()-1) dice.adj.push(dices[x-1][y+1]); // top right
+                if (x > 0 && y < cols-1) dice.adj.push(dices[x-1][y+1]); // top right
                 if (y > 0) dice.adj.push(dices[x][y-1]); // left
-                if (y < board.cols()-1) dice.adj.push(dices[x][y+1]); // right
-                if (x < board.rows()-1) dice.adj.push(dices[x+1][y]); // bottom
-                if (x < board.rows()-1 && y > 0) dice.adj.push(dices[x+1][y-1]); // bottom left
-                if (x < board.rows()-1 && y < board.cols()-1) dice.adj.push(dices[x+1][y+1]); // bottom right
+                if (y < cols-1) dice.adj.push(dices[x][y+1]); // right
+                if (x < rows-1) dice.adj.push(dices[x+1][y]); // bottom
+                if (x < rows-1 && y > 0) dice.adj.push(dices[x+1][y-1]); // bottom left
+                if (x < rows-1 && y < cols-1) dice.adj.push(dices[x+1][y+1]); // bottom right
             }
         }
         return dices;
     }
 
     private void dfs(BoggleBoard board) {
-        found = new SET<>();
+        validWords = new SET<>();
         Dice[][] dices = dices(board);
         for (int x = 0; x < board.rows(); x++) {
             for (int y = 0; y < board.cols(); y++) {
-                dfs(board.rows(), board.cols(), dices[x][y], new Stack<Character>(), null);
+                dfs(board.rows(), board.cols(), dices[x][y], null);
             }
         }
     }
 
-    private void dfs(int rows, int cols, Dice dice, Stack<Character> stack, Node cache) {
+    private void dfs(int rows, int cols, Dice dice, Node cache) {
         dice.marked = true;
-        stack.push(dice.character);
-        StringBuilder st = new StringBuilder(rows * cols * 2);
-        for (char c : stack) {
-            if (c == 'Q') st.append("UQ");
-            else st.append(c);
-        }
-        String word = st.reverse().toString();
-        cache = prefixNode(word, cache);
+        cache = prefixNode(cache, dice.character);
         if (cache != null) {
-            if (cache.word != null) found.add(cache.word);
+            if (cache.word != null) validWords.add(cache.word);
             for (Dice adjDice : dice.adj) {
-                if (!adjDice.marked) dfs(rows, cols, adjDice, stack, cache);
+                if (!adjDice.marked) dfs(rows, cols, adjDice, cache);
             }
         }
         dice.marked = false;
-        stack.pop();
     }
 
     // Returns the set of all valid words in the given Boggle board, as an Iterable.
     public Iterable<String> getAllValidWords(BoggleBoard board) {
         if (board == null) throw new IllegalArgumentException();
         dfs(board);
-        return found;
+        return validWords;
     }
 
     // Returns the score of the given word if it is in the dictionary, zero otherwise.
