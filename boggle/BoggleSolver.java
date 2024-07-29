@@ -64,10 +64,13 @@ public class BoggleSolver {
     }
 
     private static Node get(Node x, String key, int d) {
-        if (x == null) return null;
-        if (d == key.length()) return x;
-        char c = key.charAt(d);
-        return get(x.next[c - 'A'], key, d + 1);
+        Node node = x;
+        while (d < key.length() && node != null) {
+            char c = key.charAt(d);
+            node = node.next[c - 'A'];
+            d++;
+        }
+        return node;
     }
 
     private static int xyTo1D(int x, int y, int n) {
