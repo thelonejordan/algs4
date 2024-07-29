@@ -13,6 +13,7 @@ public class BoggleSolver {
     private static final int R = 26;
     private Node root = new Node();
     private SET<String> found;
+    private Node prefixNode = null;
 
     // Initializes the data structure using the given array of strings as the dictionary.
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
@@ -50,8 +51,15 @@ public class BoggleSolver {
         return x != null && x.exists;
     }
 
-    private boolean containsPrefix(String prefix) {
-        Node x = get(root, prefix, 0);
+    private boolean hasPrefix(String prefix) {
+        Node x;
+        if (prefixNode == null) x = get(root, prefix, 0);
+        else {
+            int offset = 1;
+            if (prefix.endsWith("QU")) offset = 2;
+            x = get(prefixNode, prefix, prefix.length()-offset);
+        }
+        prefixNode = x;
         return x != null;
     }
 
@@ -97,8 +105,8 @@ public class BoggleSolver {
             else st.append(c);
         }
         String word = st.reverse().toString();
-        if (containsPrefix(word)) {
-            if (contains(word)) found.add(word);
+        if (hasPrefix(word)) {
+            if (prefixNode.exists) found.add(word);
             if (x > 0 && !marked[x-1][y]) dfs(board, x-1, y, marked, stack); // top
             if (x > 0 && y > 0 && !marked[x-1][y-1]) dfs(board, x-1, y-1, marked, stack); // top left
             if (x > 0 && y < board.cols()-1 && !marked[x-1][y+1]) dfs(board, x-1, y+1, marked, stack); // top right
@@ -108,6 +116,7 @@ public class BoggleSolver {
             if (x < board.rows()-1 && y > 0 && !marked[x+1][y-1]) dfs(board, x+1, y-1, marked, stack); // bottom left
             if (x < board.rows()-1 && y < board.cols()-1 && !marked[x+1][y+1]) dfs(board, x+1, y+1, marked, stack); // bottom right
         }
+        prefixNode = null;
         marked[x][y] = false;
         stack.pop();
     }
