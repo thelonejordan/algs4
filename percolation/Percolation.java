@@ -36,8 +36,7 @@ public class Percolation {
     }
 
     private boolean isBlue(int idx) {
-        int root = model.find(idx);
-        return opened[idx] && model.find(virtualSource) == root;
+        return opened[idx] && model.find(virtualSource) == model.find(idx);
     }
 
     private void link(int idx) {
