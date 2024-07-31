@@ -13,10 +13,10 @@ PMD:          PASSED
 Checkstyle:   PASSED
 
 Correctness:  38/38 tests passed
-Memory:       8/8 tests passed
+Memory:       9/8 tests passed
 Timing:       20/20 tests passed
 
-Aggregate score: 100.00%
+Aggregate score: 101.25%
 [ Compilation: 5%, API: 5%, Style: 0%, Correctness: 60%, Timing: 10%, Memory: 20% ]
 ```
 
@@ -25,8 +25,8 @@ Aggregate score: 100.00%
 ```
 The following files were submitted:
 ----------------------------------
-3.1K Apr 14 23:49 Percolation.java
-2.2K Apr 14 23:49 PercolationStats.java
+3.1K Jul 31 23:28 Percolation.java
+2.3K Jul 31 23:28 PercolationStats.java
 
 
 ********************************************************************************
@@ -303,13 +303,13 @@ Running 17 total tests.
 Test 1: check formatting of output of main()
   % java-algs4 PercolationStats 20 10
   mean                    = 0.57575
-  stddev                  = 0.044049372551969716
-  95% confidence interval = [0.5484479160339565, 0.6030520839660435]
+  stddev                  = 0.03951177742845234
+  95% confidence interval = [0.5512603466291941, 0.6002396533708059]
 
   % java-algs4 PercolationStats 200 100
-  mean                    = 0.5903820000000003
-  stddev                  = 0.011123876109386043
-  95% confidence interval = [0.5882017202825607, 0.5925622797174399]
+  mean                    = 0.5932597499999999
+  stddev                  = 0.009233440606941664
+  95% confidence interval = [0.5914499956410393, 0.5950695043589604]
 
 ==> passed
 
@@ -508,11 +508,11 @@ Test 4: Call PercolationStats constructor and instance methods with trials = 3
 
          n  seconds log ratio
      ------------------------
-       724     0.15       2.5
-      1024     0.40       2.8
-      1448     1.12       3.0
-      2048     2.73       2.6
-      2896     6.61       2.6
+       724     0.17       2.7
+      1024     0.49       3.1
+      1448     1.26       2.7
+      2048     2.80       2.3
+      2896     6.98       2.6
 ==> passed
 
 
@@ -535,22 +535,21 @@ Test 1a-1d: check that total memory <= 17 n^2 + 128 n + 1024 bytes
 
                  n        bytes
 --------------------------------------------
-=> passed       64        69936         
-=> passed      256      1114416         
-=> passed      512      4456752         
-=> passed     1024     17826096         
+=> passed       64        41184         
+=> passed      256       655584         
+=> passed      512      2621664         
+=> passed     1024     10485984         
 ==> 4/4 tests passed
 
 
-Estimated student memory = 17.00 n^2 + 0.00 n + 304.00   (R^2 = 1.000)
+Estimated student memory = 10.00 n^2 + 0.00 n + 224.00   (R^2 = 1.000)
 
 
 Test 2 (bonus): check that total memory <= 11 n^2 + 128 n + 1024 bytes
-   -  failed memory test for n = 64
-==> FAILED
+==> passed
 
 
-Total: 4/4 tests passed!
+Total: 5/4 tests passed!
 
 
 ================================================================
@@ -572,13 +571,13 @@ Test 1a-1e: Creates an n-by-n percolation system; open sites at random until
                                        2 * connected()
                  n       union()              + find()        constructor
 -----------------------------------------------------------------------------------
-=> passed       16          333                   280                   2         
-=> passed       32         1385                  1168                   2         
-=> passed       64         5645                  4800                   2         
-=> passed      128        22980                 19422                   2         
-=> passed      256        93108                 78056                   2         
-=> passed      512       363121                308482                   2         
-=> passed     1024      1489295               1249358                   2         
+=> passed       16          191                   753                   1         
+=> passed       32          782                  3059                   1         
+=> passed       64         2856                 11943                   1         
+=> passed      128        11621                 48666                   1         
+=> passed      256        45936                193841                   1         
+=> passed      512       182995                773260                   1         
+=> passed     1024       738749               3112485                   1         
 ==> 7/7 tests passed
 
 
@@ -596,13 +595,13 @@ Tests 2a-2f: Check whether the number of calls to union(), connected(), and find
 
                  n     per open()      per isOpen()    per isFull()    per percolates() 
 ---------------------------------------------------------------------------------------------
-=> passed       16        8               0               2               2         
-=> passed       32        8               0               2               2         
-=> passed       64        8               0               2               2         
-=> passed      128        8               0               2               2         
-=> passed      256        8               0               2               2         
-=> passed      512        8               0               2               2         
-=> passed     1024        8               0               2               2         
+=> passed       16        8               0               2               0         
+=> passed       32        8               0               2               0         
+=> passed       64        8               0               2               0         
+=> passed      128        8               0               2               0         
+=> passed      256        8               0               2               0         
+=> passed      512        8               0               2               0         
+=> passed     1024        8               0               2               0         
 ==> 7/7 tests passed
 
 
@@ -619,11 +618,11 @@ Test 3: Create an n-by-n percolation system; interleave calls to percolates()
                         log   union-find     log
          n  seconds   ratio   operations   ratio
      -------------------------------------------
-      1024     0.13     2.6      4163622     1.9
-      1448     0.40     3.2      8442368     2.0
-      2048     0.93     2.4     16678984     2.0
-      2896     2.36     2.7     33572382     2.0
-      4096     5.14     2.3     66889776     2.0
+      1024     0.11     2.0      4527390     1.9
+      1448     0.31     2.9      9172283     2.0
+      2048     0.86     2.9     18269923     2.0
+      2896     2.13     2.6     36681817     2.0
+      4096     4.65     2.3     73527742     2.0
 ==> passed
 
 
@@ -636,11 +635,11 @@ Test 4: Create an n-by-n percolation system; interleave calls to open(),
                         log   union-find     log
          n  seconds   ratio   operations   ratio
      -------------------------------------------
-      1024     0.14     1.9      4156790     2.0
-      1448     0.39     3.0      8399990     2.0
-      2048     0.96     2.6     16711426     2.0
-      2896     2.40     2.6     33665084     2.0
-      4096     5.32     2.3     66980620     2.0
+      1024     0.13     1.9      5165812     2.0
+      1448     0.34     2.8     10422650     2.0
+      2048     0.93     2.9     20750213     2.0
+      2896     2.33     2.7     41719267     2.0
+      4096     5.09     2.3     83332888     2.0
 ==> passed
 
 

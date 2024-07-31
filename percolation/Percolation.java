@@ -1,101 +1,96 @@
 package percolation;
 
-// TODO: fix bonus test (MEMORY :: Analyzing memory of Percolation)
-
-// Test 2 (bonus): check that total memory <= 11 n^2 + 128 n + 1024 bytes
-// -  failed memory test for n = 64
-// ==> FAILED
-
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
 
-    private int gridsize;
-    private int virtualSource;
-    private int virtualSink;
+    private final int gridsize;
+    private final int virtualSource;
+    private final WeightedQuickUnionUF model;
+    private boolean[] linked; // to sink
     private boolean[] opened;
     private int openedCount;
-    private WeightedQuickUnionUF model;
-    private WeightedQuickUnionUF backwash;
+    private boolean percolates = false;
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
-        if (n < 1) throw new IllegalArgumentException("invalid arg");
+        if (n < 1) throw new IllegalArgumentException();
         gridsize = n;
         int numel = gridsize * gridsize;
         virtualSource = numel;
-        virtualSink = virtualSource + 1;
-        model = new WeightedQuickUnionUF(numel + 2);
-        backwash = new WeightedQuickUnionUF(numel + 1);
-        opened = new boolean[numel]; // source and sink are always open
+        model = new WeightedQuickUnionUF(numel + 1);
+        opened = new boolean[numel]; // source is always open
+        linked = new boolean[numel + 1];
         openedCount = 0;
-    }
-
-    private int flatIndex(int row, int col) {
-        validate(row, col);
-        return (row - 1) * gridsize + col - 1;
     }
 
     private void validate(int row, int col) {
         if ((row < 1) || (col < 1) || (row > gridsize) || (col > gridsize)) {
-            throw new IllegalArgumentException("invalid args");
+            throw new IllegalArgumentException();
         }
+    }
+
+    private int xyTo1D(int row, int col) {
+        validate(row, col);
+        return (row - 1) * gridsize + col - 1;
+    }
+
+    private boolean isBlue(int idx) {
+        int root = model.find(idx);
+        return opened[idx] && model.find(virtualSource) == root;
+    }
+
+    private void link(int idx) {
+        linked[idx] = true;
+        linked[model.find(idx)] = true;
+        if (isBlue(idx)) percolates = true;
+    }
+
+    private boolean linked(int idx) {
+        return linked[idx] || linked[model.find(idx)];
     }
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        int idx = flatIndex(row, col);
+        int idx = xyTo1D(row, col);
         if (opened[idx]) return;
         opened[idx] = true;
         openedCount++;
+        boolean c = linked(idx) || row == gridsize;
 
-        if (row == 1) {
-            model.union(virtualSource, idx);
-            backwash.union(virtualSource, idx);
+        if (row == 1) model.union(virtualSource, idx);
+        if (row > 1) { // up exists
+            int up = xyTo1D(row - 1, col);
+            if (!c && linked(up)) c = true;
+            if (opened[up]) model.union(idx, up);
         }
-        else {
-            // up exists
-            int up = idx - gridsize;
-            if (opened[up]) {
-                model.union(idx, up);
-                backwash.union(idx, up);
-            }
+        if (row < gridsize) { // down exists
+            int down = xyTo1D(row + 1, col);
+            if (!c && linked(down)) c = true;
+            if (opened[down]) model.union(idx, down);
         }
-        if (row == gridsize) {
-            model.union(virtualSink, idx);
-            // no backwash here
+        if (col > 1) { // left exists
+            int left = xyTo1D(row, col - 1);
+            if (!c && linked(left)) c = true;
+            if (opened[left]) model.union(idx, left);
         }
-        else {
-            // down exists
-            int down = idx + gridsize;
-            if (opened[down]) {
-                model.union(idx, down);
-                backwash.union(idx, down);
-            }
+        if (col < gridsize) { // right exists
+            int right = xyTo1D(row, col + 1);
+            if (!c && linked(right)) c = true;
+            if (opened[right]) model.union(idx, right);
         }
-        int left = idx - 1;
-        int right = idx + 1;
-        if (col != 1 && opened[left]) {
-            model.union(idx, left);
-            backwash.union(idx, left);
-        }
-        if (col != gridsize && opened[right]) {
-            model.union(idx, right);
-            backwash.union(idx, right);
-        }
+
+        if (c) link(idx);
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        int idx = flatIndex(row, col);
-        return opened[idx];
+        return opened[xyTo1D(row, col)];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        int idx = flatIndex(row, col);
-        // return model.connected(virtualSource, idx);
-        return isOpen(row, col) && backwash.find(virtualSource) == backwash.find(idx);
+        return isBlue(xyTo1D(row, col));
     }
 
     // returns the number of open sites
@@ -105,12 +100,6 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        // return model.connected(virtual_source, virtualSink);
-        return model.find(virtualSource) == model.find(virtualSink);
-    }
-
-    // test client (optional)
-    public static void main(String[] args) {
-        // TODO: write this
+        return percolates;
     }
 }
