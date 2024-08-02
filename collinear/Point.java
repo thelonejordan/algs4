@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac -cp .:lib/algs4.jar collinear/Point.java
- *  Execution:    java -cp .:lib/algs4.jar collinear.Point
+ *  Compilation:  javac-algs4 collinear/Point.java
+ *  Execution:    java-algs4 collinear.Point
  *  Dependencies: none
  *
  *  An immutable data type for points in the plane.

@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac ShowSeams.java
- *  Execution:    java ShowSeams input.png
+ *  Compilation:  javac-algs4 ShowSeams.java
+ *  Execution:    java-algs4 ShowSeams input.png
  *  Dependencies: SeamCarver.java SCUtility.java
  *
  *  Read image from file specified as command line argument. Show 3 images 

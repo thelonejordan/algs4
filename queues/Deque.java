@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar queues/Deque.java
-// java -cp .:lib/algs4.jar queues.Deque
+// javac-algs4 queues/Deque.java
+// java-algs4 queues.Deque
 
 package queues;
 

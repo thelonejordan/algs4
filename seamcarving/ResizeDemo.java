@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac ResizeDemo.java
- *  Execution:    java ResizeDemo input.png columnsToRemove rowsToRemove
+ *  Compilation:  javac-algs4 ResizeDemo.java
+ *  Execution:    java-algs4 ResizeDemo input.png columnsToRemove rowsToRemove
  *  Dependencies: SeamCarver.java SCUtility.java
  *                
  *

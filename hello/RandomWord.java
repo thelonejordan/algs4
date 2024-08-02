@@ -1,6 +1,6 @@
-// javac -cp lib/algs4.jar hello/RandomWord.java
-// java -cp .:lib/algs4.jar hello.RandomWord
-// java -cp .:lib/algs4.jar hello.RandomWord < hello/algorithms.txt
+// javac-algs4 hello/RandomWord.java
+// java-algs4 hello.RandomWord
+// java-algs4 hello.RandomWord < hello/algorithms.txt
 
 package hello;
 

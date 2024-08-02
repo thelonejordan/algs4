@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar seamcarving/SeamCarver.java
-// java -cp .:lib/algs4.jar seamcarving.SeamCarver seamcarving/6x5.png
+// javac-algs4 seamcarving/SeamCarver.java
+// java-algs4 seamcarving.SeamCarver seamcarving/6x5.png
 
 package seamcarving;
 

@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar eightpuzzle/PuzzleChecker.java
-// java -cp .:lib/algs4.jar eightpuzzle.PuzzleChecker eightpuzzle/puzzle*.txt
+// javac-algs4 eightpuzzle/PuzzleChecker.java
+// java-algs4 eightpuzzle.PuzzleChecker eightpuzzle/puzzle*.txt
 
 /******************************************************************************
  *  Compilation:  javac-algs4 PuzzleChecker.java

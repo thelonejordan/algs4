@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar wordnet/WordNet.java
-// java -cp .:lib/algs4.jar wordnet.WordNet wordnet/synsets.txt wordnet/hypernyms.txt
+// javac-algs4 wordnet/WordNet.java
+// java-algs4 wordnet.WordNet wordnet/synsets.txt wordnet/hypernyms.txt
 
 package wordnet;
 

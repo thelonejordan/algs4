@@ -1,7 +1,5 @@
-package collinear;
-
 /*************************************************************************
- *  Compilation:  javac -cp .:lib/alg4s.jar collinear/LineSegment.java
+ *  Compilation:  javac-algs4 collinear/LineSegment.java
  *  Execution:    none
  *  Dependencies: Point.java
  *
@@ -11,6 +9,8 @@ package collinear;
  *  DO NOT MODIFY THIS CODE.
  *
  *************************************************************************/
+
+package collinear;
 
 public class LineSegment {
     private final Point p;   // one endpoint of this line segment

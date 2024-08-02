@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac ShowEnergy.java
- *  Execution:    java ShowEnergy input.png
+ *  Compilation:  javac-algs4 ShowEnergy.java
+ *  Execution:    java-algs4 ShowEnergy input.png
  *  Dependencies: SeamCarver.java SCUtility.java
  *                
  *

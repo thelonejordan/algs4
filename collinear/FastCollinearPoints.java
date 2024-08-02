@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar collinear/FastCollinearPoints.java
-// java -cp .:lib/algs4.jar collinear.FastCollinearPoints collinear/input6.txt
+// javac-algs4 collinear/FastCollinearPoints.java
+// java-algs4 collinear.FastCollinearPoints collinear/input6.txt
 
 package collinear;
 

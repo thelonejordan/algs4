@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar baseball/BaseballElimination.java
-// java -cp .:lib/algs4.jar baseball.BaseballElimination baseball/teams12.txt
+// javac-algs4 baseball/BaseballElimination.java
+// java-algs4 baseball.BaseballElimination baseball/teams12.txt
 
 package baseball;
 

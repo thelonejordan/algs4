@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar eightpuzzle/Board.java
-// java -cp .:lib/algs4.jar eightpuzzle.Board
+// javac-algs4 eightpuzzle/Board.java
+// java-algs4 eightpuzzle.Board
 
 package eightpuzzle;
 

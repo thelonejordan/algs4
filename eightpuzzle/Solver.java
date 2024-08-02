@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar eightpuzzle/Solver.java
-// java -cp .:lib/algs4.jar eightpuzzle.Solver eightpuzzle/puzzle04.txt
+// javac-algs4 eightpuzzle/Solver.java
+// java-algs4 eightpuzzle.Solver eightpuzzle/puzzle04.txt
 
 package eightpuzzle;
 

@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar kdtrees/PointSET.java
-// java -cp .:lib/algs4.jar kdtrees.PointSET < kdtrees/input10.txt
+// javac-algs4 kdtrees/PointSET.java
+// java-algs4 kdtrees.PointSET < kdtrees/input10.txt
 
 package kdtrees;
 

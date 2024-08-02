@@ -1,11 +1,11 @@
 /******************************************************************************
- *  Compilation:  javac KdTreeGenerator.java
- *  Execution:    java KdTreeGenerator n
+ *  Compilation:  javac-algs4 KdTreeGenerator.java
+ *  Execution:    java-algs4 KdTreeGenerator n
  *  Dependencies: 
  *
  *  Creates n random points in the unit square and print to standard output.
  *
- *  % java KdTreeGenerator 5
+ *  % java-algs4 KdTreeGenerator 5
  *  0.195080 0.938777
  *  0.351415 0.017802
  *  0.556719 0.841373

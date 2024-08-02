@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac -cp .:lib/algs4.jar kdtrees/RangeSearchVisualizer.java
- *  Execution:    java -cp .:lib/algs4.jar kdtrees.RangeSearchVisualizer kdtrees/input10.txt
+ *  Compilation:  javac-algs4 kdtrees/RangeSearchVisualizer.java
+ *  Execution:    java-algs4 kdtrees.RangeSearchVisualizer kdtrees/input10.txt
  *  Dependencies: PointSET.java KdTree.java
  *
  *  Read points from a file (specified as a command-line argument) and

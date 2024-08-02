@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar percolation/PercolationStats.java
-// java -cp .:lib/algs4.jar percolation.PercolationStats 30 100
+// javac-algs4 percolation/PercolationStats.java
+// java-algs4 percolation.PercolationStats 30 100
 
 package percolation;
 

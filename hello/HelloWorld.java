@@ -1,7 +1,5 @@
 // javac hello/HelloWorld.java
-//java hello.HelloWorld
-
-package hello;
+// java hello.HelloWorld
 
 /******************************************************************************
  *  Source:       https://introcs.cs.princeton.edu/java/11hello/HelloWorld.java.html
@@ -22,6 +20,8 @@ package hello;
  *  lines in our programs and encourage you to do the same.
  *
  ******************************************************************************/
+
+ package hello;
 
 public class HelloWorld {
 

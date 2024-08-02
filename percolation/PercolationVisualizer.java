@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac -cp .:lib/algs4.jar percolation/PercolationVisualizer.java
- *  Execution:    java -cp .:lib/algs4.jar percolation.PercolationVisualizer input.txt
+ *  Compilation:  javac-algs4 percolation/PercolationVisualizer.java
+ *  Execution:    java-algs4 percolation.PercolationVisualizer input.txt
  *  Dependencies: Percolation.java
  *
  *  This program takes the name of a file as a command-line argument.

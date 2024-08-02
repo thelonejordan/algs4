@@ -1,6 +1,6 @@
-// javac -cp .:lib/algs4.jar boggle/BoggleSolver.java
-// java -cp .:lib/algs4.jar boggle.BoggleSolver boggle/dictionary-algs4.txt boggle/board4x4.txt
-// java -cp .:lib/algs4.jar boggle.BoggleSolver boggle/dictionary-algs4.txt boggle/board-q.txt
+// javac-algs4 boggle/BoggleSolver.java
+// java-algs4 boggle.BoggleSolver boggle/dictionary-algs4.txt boggle/board4x4.txt
+// java-algs4 boggle.BoggleSolver boggle/dictionary-algs4.txt boggle/board-q.txt
 
 package boggle;
 

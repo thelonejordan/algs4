@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar queues/RandomizedQueue.java
-// java -cp .:lib/algs4.jar queues.RandomizedQueue
+// javac-algs4 queues/RandomizedQueue.java
+// java-algs4 queues.RandomizedQueue
 
 package queues;
 

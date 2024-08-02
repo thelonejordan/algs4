@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar wordnet/SAP.java
-// java -cp .:lib/algs4.jar wordnet.SAP wordnet/digraph1.txt
+// javac-algs4 wordnet/SAP.java
+// java-algs4 wordnet.SAP wordnet/digraph1.txt
 
 package wordnet;
 

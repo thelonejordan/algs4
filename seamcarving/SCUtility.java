@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Compilation:  javac SCUtility.java
+ *  Compilation:  javac-algs4 SCUtility.java
  *  Execution:    none
  *  Dependencies: SeamCarver.java
  *

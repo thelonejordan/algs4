@@ -1,5 +1,5 @@
-// javac -cp .:lib/algs4.jar collinear/BruteCollinearPoints.java
-// java -cp .:lib/algs4.jar collinear.BruteCollinearPoints collinear/input6.txt
+// javac-algs4 collinear/BruteCollinearPoints.java
+// java-algs4 collinear.BruteCollinearPoints collinear/input6.txt
 
 package collinear;
 
