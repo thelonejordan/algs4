@@ -36,13 +36,15 @@ public class BurrowsWheeler {
         int first = BinaryStdIn.readInt();
         String lastCol = BinaryStdIn.readString();
         int len = lastCol.length();
-        int[] next = new int[len];
-        int[] count = new int[R + 1];
-        char[] firstCol = new char[len];
-        for (int i = 0; i < len; i++) count[lastCol.charAt(i) + 1]++;
-        for (int i = 0; i < R; i++) count[i + 1] += count[i];
+
+        int[] sortedPos = new int[R + 1]; // starting position of each character in the sorted order (first column)
+        for (int i = 0; i < len; i++) sortedPos[lastCol.charAt(i) + 1]++;
+        for (int i = 0; i < R; i++) sortedPos[i + 1] += sortedPos[i];
+
+        char[] firstCol = new char[len]; // sorted characters in the first column
+        int[] next = new int[len]; // i being the (sorted) position of a suffix, next[i] gives the position of the next one
         for (int i = 0; i < len; i++) {
-            int posi = count[lastCol.charAt(i)]++;
+            int posi = sortedPos[lastCol.charAt(i)]++;
             firstCol[posi] = lastCol.charAt(i);
             next[posi] = i;
         }
