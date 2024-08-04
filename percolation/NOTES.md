@@ -41,8 +41,8 @@ Goal. Design efficient data structure for union-find.
 
 | algorithm | worst-case time |
 |:---------:|:---------------:|
-| quick-find | `MN` |
-| quick-union | `MN` |
-| weighted QU | `N + Mlog(N)` |
-| QU + path compression | `N + Mlog(N)` |
-| weighted QU + path compression | `N + Mlg*(N)` |
+| quick-find | $MN$ |
+| quick-union | $MN$ |
+| weighted QU | $N + M\lg(N)$ |
+| QU + path compression | $N + M\lg(N)$ |
+| weighted QU + path compression | $N + M\lg*(N)$ |
