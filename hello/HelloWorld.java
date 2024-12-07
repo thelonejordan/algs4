@@ -21,7 +21,7 @@
  *
  ******************************************************************************/
 
- package hello;
+package hello;
 
 public class HelloWorld {
 
